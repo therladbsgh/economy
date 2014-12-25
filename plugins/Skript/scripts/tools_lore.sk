@@ -1,0 +1,29 @@
+#
+# these triggers fix some drops.
+#
+
+#on sneak toggle:
+#	set the lore of player's tool to "Test||Test2"
+#	set the lore of player's tool to "Cannot mine iron ores"
+
+on right click:
+	lore of player's tool contains "Test2"
+	message "HI" to player
+
+on break of diamond ore:
+	lore of player's tool contains "Cannot mine diamond ore"
+	message "Detected deny break diamond lore." to player
+	cancel event
+	set data value of player's tool to data value of player's tool - 1
+
+on break of gold ore:
+	lore of player's tool contains "Cannot mine gold ore"
+	message "Detected deny break gold lore." to player
+	cancel event
+	set data value of player's tool to data value of player's tool - 1
+
+on break of iron ore:
+	lore of player's tool contains "Cannot mine iron ore"
+	message "Detected deny break iron lore." to player
+	cancel event
+	set data value of player's tool to data value of player's tool - 1

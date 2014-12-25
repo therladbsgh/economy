@@ -1,0 +1,319 @@
+# Automatically detect new versions
+autoupdate: true
+stackrestrictor: true
+default: economy
+worlds:
+  world: economy
+packs:
+  economy:
+    '2256':
+      '0':
+        enchantments:
+          NO_ATTRIBUTES: 1
+      '1':
+        name: '&rTool Hilt (&7Level 2&r)'
+        lore:
+        - '&eUsed to make Level 2 tools.'
+      '2':
+        name: '&rTool Hilt (&3Level 3&r)'
+        lore:
+        - '&eUsed to make Level 3 tools.'
+      '3':
+        name: '&rTool Hilt (&5Level 4&r)'
+        lore:
+        - '&eUsed to make Level 4 tools.'
+      '4':
+        name: '&rTool Hilt (&6Level 5&r)'
+        lore:
+        - '&eUsed to make Level 5 tools.'
+      '5':
+        name: '&rTool Hilt (&4Level X&r)'
+        lore:
+        - '&eUsed to make Level X tools.'
+    '304':
+      all:
+        name: '&rStone Leggings'
+    '305':
+      all:
+        name: '&rStone Boots'
+    '373':
+      '7':
+        name: '&ePotion of Lame'
+    '5':
+      '6':
+        name: '&rWood Planks (&7Level 2&r)'
+        lore:
+        - '&eReclaimed metal'
+      '7':
+        name: '&rWood Planks (&3Level 3&r)'
+        lore:
+        - '&eRefined metal'
+      '8':
+        name: '&rWood Planks (&5Level 4&r)'
+        lore:
+        - '&eNice quality'
+      '9':
+        name: '&rWood Planks (&6Level 5&r)'
+        lore:
+        - '&eUber quality'
+      '10':
+        name: '&rWood Planks (&4Level X&r)'
+        lore:
+        - '&eHoly crap how did you get that quality'
+    '278':
+      all:
+        enchantments:
+          NO_ATTRIBUTES: 1
+    '264':
+      '0':
+        name: '&rDiamond (&8Level 1&r)'
+        lore:
+        - '&eScrap metal'
+      '1':
+        name: '&rDiamond (&7Level 2&r)'
+        lore:
+        - '&eReclaimed metal'
+      '2':
+        name: '&rDiamond (&3Level 3&r)'
+        lore:
+        - '&eRefined metal'
+      '3':
+        name: '&rDiamond (&5Level 4&r)'
+        lore:
+        - '&eNice quality'
+      '4':
+        name: '&rDiamond (&6Level 5&r)'
+        lore:
+        - '&eUber quality'
+      '5':
+        name: '&rDiamond (&4Level X&r)'
+        lore:
+        - '&eHoly crap how did you get that quality'
+    '265':
+      '0':
+        name: '&rIron Ingot (&8Level 1&r)'
+        lore:
+        - '&eScrap metal'
+      '1':
+        name: '&rIron Ingot (&7Level 2&r)'
+        lore:
+        - '&eReclaimed metal'
+      '2':
+        name: '&rIron Ingot (&3Level 3&r)'
+        lore:
+        - '&eRefined metal'
+      '3':
+        name: '&rIron Ingot (&5Level 4&r)'
+        lore:
+        - '&eNice quality'
+      '4':
+        name: '&rIron Ingot (&6Level 5&r)'
+        lore:
+        - '&eUber quality'
+      '5':
+        name: '&rIron Ingot (&4Level X&r)'
+        lore:
+        - '&eHoly crap how did you get that quality'
+    '266':
+      '0':
+        name: '&rGold Ingot (&8Level 1&r)'
+        lore:
+        - '&eScrap metal'
+      '1':
+        name: '&rGold Ingot (&7Level 2&r)'
+        lore:
+        - '&eReclaimed metal'
+      '2':
+        name: '&rGold Ingot (&3Level 3&r)'
+        lore:
+        - '&eRefined metal'
+      '3':
+        name: '&rGold Ingot (&5Level 4&r)'
+        lore:
+        - '&eNice quality'
+      '4':
+        name: '&rGold Ingot (&6Level 5&r)'
+        lore:
+        - '&eUber quality'
+      '5':
+        name: '&rGold Ingot (&4Level X&r)'
+        lore:
+        - '&eHoly crap how did you get that quality'
+    '43':
+      '11':
+        name: '&rCobblestone (&7Level 2&r)'
+        lore:
+        - '&eReclaimed metal'
+      '19':
+        name: '&rCobblestone (&3Level 3&r)'
+        lore:
+        - '&eRefined metal'
+      '27':
+        name: '&rCobblestone (&5Level 4&r)'
+        lore:
+        - '&eNice quality'
+      '35':
+        name: '&rCobblestone (&6Level 5&r)'
+        lore:
+        - '&eUber quality'
+      '43':
+        name: '&rCobblestone (&4Level X&r)'
+        lore:
+        - '&eHoly crap how did you get that quality'
+    '302':
+      all:
+        name: '&rStone Helmet'
+    '303':
+      all:
+        name: '&rStone Chestplate'
+  example:
+    '290':
+      other:
+        name: Dirty Hoe (Wood)
+      '0':
+        name: Wooden Hoe
+    '354':
+      '0':
+        name: Jaffa Cake
+    '35':
+      all:
+        lore:
+        - For the artist in you
+      '0':
+        name: White
+      '1':
+        name: Orange
+      '2':
+        name: Magenta
+      '3':
+        name: Light Blue
+      '4':
+        name: Yellow
+      '5':
+        name: Lime
+      '6':
+        name: Pink
+      '7':
+        name: Gray
+      '8':
+        name: Light Gray
+      '9':
+        name: Cyan
+      '10':
+        name: Purple
+      '11':
+        name: Blue
+      '12':
+        name: Brown
+      '13':
+        name: Green
+      '14':
+        name: Red
+      '15':
+        name: Black
+    '291':
+      other:
+        name: Dirty Hoe (Stone)
+      '0':
+        name: Stone Hoe
+    '36':
+      '0':
+        name: MISSINGNO.&k###
+    '292':
+      other:
+        name: Dirty Hoe (Iron)
+      '0':
+        name: Iron Hoe
+    '293':
+      other:
+        name: Dirty Hoe (Diamond)
+      '0':
+        name: Diamond Hoe
+    '294':
+      other:
+        name: Dirty Hoe (Gold)
+      '0':
+        name: Golden Hoe
+    '7':
+      '0':
+        lore:
+        - I can make your bedrock
+    '264':
+      '0':
+        name: '&lDIAMOND'
+        lore:
+        - The mighty diamond
+        - Look how it shines
+    '12':
+      '0':
+        name: Beach
+    '398':
+      all:
+        name: Pigpole
+    '368':
+      other:
+        name: Grenade
+      '1':
+        name: 'Grenade Lv: 2'
+      '2':
+        name: 'Grenade Lv: 3'
+      '3':
+        name: 'Grenade Lv: 4'
+      '4':
+        name: 'Grenade Lv: 5'
+    '400':
+      '1':
+        name: Sweet Potato Pie
+      '2':
+        name: Pecan Pie
+    '17':
+      other:
+        name: Crap logs
+      '0':
+        name: Normal logs
+    '19':
+      '0':
+        name: Bounty
+        lore:
+        - the quicker picker-upper
+    '276':
+      0-10:
+        lore:
+        - Scratched
+      11-199:
+        lore:
+        - Battleworn
+      200-499:
+        lore:
+        - Bloodied
+      500-1000:
+        lore:
+        - Feared
+      1001-1500:
+        lore:
+        - Lightly Damaged
+      1501-1560:
+        lore:
+        - Damaged
+      1561-1562:
+        lore:
+        - FIX ME
+    '341':
+      '0':
+        name: '&2Slimer'
+        lore:
+        - Gross, wipe that on something
+    '373':
+      '0':
+        lore:
+        - '&r&7Instant Awesome'
+    '280':
+      '0':
+        name: Magic
+    '90':
+      '0':
+        lore:
+        - '&r&6Now you''re thinking'
+    exact:
+      keys: {}
+      values: {}

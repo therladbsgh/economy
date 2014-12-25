@@ -1,0 +1,161 @@
+options:
+	Logo: &8[&6TF2&8] &6
+
+command /testfloor <item type>:
+	trigger:
+		# "%argument%" parsed as an item type isn't a block:
+			# message "&dThe argument has to be a block!"
+			# stop
+		set {_blocks} to 0
+		loop blocks within {tf2testing.point1} to {tf2testing.point2}:
+			
+			{tf2testing.floorblock.%location of loop-block%} isn't set:
+				loop-block is glass:
+					set {tf2testing.floorblock.%location of loop-block%} to true
+			{tf2testing.floorblock.%location of loop-block%} is set:
+				set loop-block to arg
+				loop blocks above loop-block:
+					loop-block-2 isn't loop-block-1
+					loop-block-2 isn't air:
+						@noupdate::set loop-block-2 to air
+				add 1 to {_blocks}
+		message "&dChanged %{_blocks}% to %arg%"
+
+command /testchunk:
+	trigger:
+		set {_chunks} to 0
+		loop blocks within {tf2testing.point1} to {tf2testing.point2}:
+			{tf2testing.floorblock.%location of loop-block%} is set:
+				{_foundchunk.%chunk at loop-block%} isn't set:
+					set {_foundchunk.%chunk at loop-block%} to true
+					chance of 30%:
+						set {_no} to random integer between 0 and 4
+						{_no} is 0:
+							set {_no} to 1
+						{_no} is 4:
+							loop blocks within chunk at loop-block:
+								loop-block-2 is grass or dirt:
+									set {_cont} to false
+									loop blocks in radius 6 of loop-block-2:
+										y coord of loop-block-3 is y coord of loop-block-2:
+											{tf2testing.floorblock.%location of loop-block-3%} is set:
+												set {_cont} to true
+									{_cont} is true:
+										chance of 10%:
+											grow tree at block above loop-block-2
+						{_no} isn't 4:
+							execute console command "/scload load MvMTest%{_no}% %world% %rounded down x coord of block above loop-block% %rounded down y coord of block above loop-block% %rounded down z coord of block above loop-block%"
+					{tf2testing.chunks::%chunk at loop-block%} isn't set:
+						set {tf2testing.chunks::%chunk at loop-block%} to true
+						add chunk at loop-block to {tf2testing.chunks::*}
+						add 1 to {_chunks}
+					{tf2testing.chunks::%chunk at loop-block%} is set:
+						pop burst colored red at block above loop-block
+		wait 1 second
+		set {_mainchunk} to "%random element out of {tf2testing.canbemain::*}%"
+		while {_mainchunk} is "true":
+			set {_mainchunk} to "%random element out of {tf2testing.canbemain::*}%"
+		loop blocks within {tf2testing.point1} to {tf2testing.point2}:
+			"%chunk at loop-block%" is "%{_mainchunk}%"
+			pop ball large colored gold and red and yellow at block 10 above loop-block			
+			broadcast "FOUND MAIN CHUNK - %chunk at loop-block%"
+			execute console command "/scload load MvMMainChunk %world% %rounded down x coord of block above loop-block% %rounded down y coord of block above loop-block% %rounded down z coord of block above loop-block%"
+			exit loop
+		message "&dAdded %{_chunks}% chunks"
+
+command /makepath:
+	trigger:
+		add 1 to {pathamt}
+		set {makingpath.%player%} to {pathamt}
+		delete {pathlocations.%{makingpath.%player%}%::*}
+		message "&dUse /stoppath to stop making the path. Walk to add locations to this path. Locations will only be added if the block below you isn't air."
+		
+command /stoppath:
+	trigger:
+		{makingpath.%player%} isn't set:
+			message "&dYou're not making a path"
+			stop
+		message "&dStopped making a path. The new path contains %size of {pathlocations.%{makingpath.%player%}%::*}% blocks."
+		delete {makingpath.%player%}
+		
+on any movement:
+	#message "&c%block at event-player%"
+	{makingpath.%event-player%} is set
+	set {_no} to {makingpath.%event-player%}
+	"%block at block below event-player%" is "air":
+		stop
+	set {_loc} to location of event-player
+	"%{pathlocations.%{makingpath.%event-player%}%::*}%" contains "%location of block at event-player%":
+		stop
+	remove location of block at event-player from {pathlocations.%{makingpath.%event-player%}%::*}
+	add location of block at event-player to {pathlocations.%{makingpath.%event-player%}%::*}
+	message "&dAdded a new block to the path" to event-player
+	while {makingpath.%event-player%} is {_no}:
+		make event-player see block at {_loc} as redstone block
+		wait 1 tick
+	make event-player see block at {_loc} as block at {_loc}
+		
+command /testwave:
+	trigger:
+		set {_amt} to random integer between 1 and 3
+		loop {_amt} times:
+			loop blocks in radius 4 of {tf2testing.zombielocation}:
+				loop-block is air:
+					chance of 30%:
+						chance of 60%:
+							spawn a zombie at loop-block
+							set name of spawned zombie to "&dBasic Zombie"
+							set helmet of spawned zombie to a zombie head
+						chance of 20%:
+							spawn a zombie at loop-block
+							set age of spawned zombie to baby
+							apply invisibility to spawned zombie for 10 days
+							set helmet of spawned zombie to a skeleton head
+							set name of spawned zombie to "&dFloating Head"
+						chance of 10%:
+							spawn a zombie at loop-block
+							set maximum health of spawned zombie  to 50
+							heal spawned zombie
+							set {_helm} to "MHF_Golem" parsed as an offline player
+							set helmet of spawned zombie to {_helm}'s skull
+							apply resistance 2 to spawned zombie  for 10 days
+							set name of spawned zombie  to "&6Golem of Doom"
+							#disguise spawned zombie pigman as "iron_golem"
+						# chance of 1%:
+							# spawn a skeleton at loop-block
+							# disguise spawned skeleton as "ender_dragon"
+							# set name of spawned skeleton to "&6Ender God"
+							# set helmet of spawned skeleton to a skeleton head
+							# set maximum health of spawned skeleton to 100
+							# heal spawned skeleton
+		loop 10 times:
+			loop all entities:
+				loop-entity is a zombie or a zombie pigman:
+					make loop-entity pathfind to player with speed 1
+					chance of 10%
+					pop burst colored white at loop-entity
+			wait 1 second
+		# loop entities in radius 7 of {tf2testing.zombielocation}:
+			# make loop-entity pathfind to {tf2testing.point1} with speed 1.25
+			# add loop-entity to {testmobs::*}
+		# while size of {testmobs::*} is more than 1:
+			# loop {testmobs::*}:
+				# make loop-value pathfind to {tf2testing.point1} with speed 1.25
+command /resetplace:
+	trigger:
+		message "&dStarting!"
+		set {_blocks} to 0
+		loop blocks within {tf2testing.newpoint1} to {tf2testing.newpoint2}:
+			loop-block is 18 or log:
+				spawn 20 of particle blockcrack_%id of loop-block%_%data value of loop-block%:0 offset at 0.3, 0.3, 0.3 at loop-block
+				set loop-block to air
+				add 1 to {_blocks}
+			{tf2testing.floorblock.%location of loop-block%} is set:
+				spawn 20 of particle blockcrack_%id of loop-block%_%data value of loop-block%:0 offset at 0.3, 0.3, 0.3 at loop-block
+				set loop-block to glass
+				loop blocks above loop-block:
+					loop-block-2 isn't loop-block-1
+					loop-block-2 isn't air:
+						@noupdate::set loop-block-2 to air
+				add 1 to {_blocks}
+		message "&dChanged %{_blocks}% blocks!"

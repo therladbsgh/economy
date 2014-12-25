@@ -1,0 +1,98 @@
+default: user
+groups:
+  offworlder:
+    permissions: []
+    groups: []
+  vip:
+    permissions: []
+    groups: []
+  sniper:
+    permissions: []
+    groups: []
+  default:
+    permissions: []
+    groups: []
+  albatross:
+    permissions: []
+    groups: []
+  admin:
+    permissions:
+    - bPermissions.admin
+    - sbc.cheats
+    - sbc.fly
+    - sbc.radar
+    - craftbook.mech.elevator
+    - craftbook.mech.elevator.use
+    groups:
+    - mods
+    meta:
+      priority: '70'
+      prefix: '&3[Admin]'
+  infantry:
+    permissions: []
+    groups: []
+  builder:
+    permissions: []
+    groups: []
+  guest:
+    permissions:
+    - essentials.help
+    - essentials.info
+    - essentials.list
+    - essentials.motd
+    - essentials.ping
+    - essentials.rules
+    - essentials.spawn
+    - essentials.suicide
+    groups: []
+    meta:
+      priority: '10'
+      prefix: '&f[Guest]'
+  mods:
+    permissions: []
+    groups:
+    - user
+    meta:
+      priority: '60'
+      prefix: '&b[Mods]'
+  donator:
+    permissions: []
+    groups:
+    - vip
+    meta:
+      priority: '47'
+      prefix: '&6[Donator]'
+  user:
+    permissions:
+    - bchatmanager.chat.message
+    - essentials.afk
+    - essentials.balance
+    - essentials.clearinventory
+    - essentials.compass
+    - essentials.delhome
+    - essentials.getpos
+    - essentials.home
+    - essentials.kit
+    - essentials.kit.*
+    - essentials.mail
+    - essentials.mail.send
+    - essentials.msg
+    - essentials.pay
+    - essentials.seen
+    - essentials.sethome
+    - essentials.signs.use.balance
+    - essentials.signs.use.buy
+    - essentials.signs.use.kit
+    - essentials.signs.use.mail
+    - essentials.signs.use.sell
+    - essentials.signs.use.warp
+    - essentials.tpa
+    - essentials.tpaccept
+    - essentials.tpdeny
+    - essentials.warp
+    - essentials.warp.*
+    - essentials.warp.list
+    - craftbook.mech.elevator.use
+    - war.player
+    groups:
+    - guest

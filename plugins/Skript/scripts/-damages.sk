@@ -1,0 +1,35 @@
+#
+# these triggers relate to damage.
+#
+
+on damage:
+	damage cause is attack or projectile or entity explosion or potion
+	set the invulnerability time of victim to 1 ticks
+	push victim downwards at speed 1
+
+on damage:
+	projectile is snowball or arrow
+	set the invulnerability time of victim to 1 ticks
+	push victim downwards at speed 1
+
+on right click:
+	player is holding glass
+	make player shoot a snowball at speed 1
+	wait 5 ticks
+
+on shoot:
+  shooter is holding glass
+  if projectile is a snowball:
+    wait 5 ticks
+    push projectile in the direction of shooter at speed -0.95
+    loop 100 times:
+      push projectile upward at speed 0.3
+#      push projectile in the direction of shooter at speed -0.15
+      wait 10 ticks
+
+on left click:
+	player is holding glass:
+		loop entities in radius 10 around the player:
+			loop-entity is snowball
+			push loop-entity in the direction of player at speed 2
+	

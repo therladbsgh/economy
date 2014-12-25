@@ -1,0 +1,19 @@
+mine:
+  ==: com.koletar.jj.mineresetlite.Mine
+  resetDelay: 10
+  surface: ''
+  maxZ: 1025
+  maxY: 51
+  maxX: 1025
+  fillMode: false
+  world: world
+  minY: 51
+  resetWarnings: []
+  minX: 996
+  composition:
+    '10:0': 0.01
+    '4:0': 0.99
+  name: mine2lava2
+  resetClock: 4
+  minZ: 1005
+  isSilent: false

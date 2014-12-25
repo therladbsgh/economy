@@ -1,0 +1,7 @@
+#
+# these triggers fix some drops.
+#
+
+on drink of potion:
+	name of item is "Potion of Lame"
+	message "HI"

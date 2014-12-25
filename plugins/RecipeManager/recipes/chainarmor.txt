@@ -1,0 +1,25 @@
+//Chain helm
+craft vanilla chain helmet
+stone:0 + stone:0 + stone:0
+stone:0 + air + stone:0
+= 302:0:1
+
+//Chain chestplate
+craft vanilla chain helmet
+stone:0 + air + stone:0
+stone:0 + stone:0 + stone:0
+stone:0 + stone:0 + stone:0
+= 303:0:1
+
+//Chain leggings
+craft vanilla chain helmet
+stone:0 + stone:0 + stone:0
+stone:0 + air + stone:0
+stone:0 + air + stone:0
+= 304:0:1
+
+//Chain boots
+craft vanilla chain helmet
+stone:0 + air + stone:0
+stone:0 + air + stone:0
+= 305:0:1

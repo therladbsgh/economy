@@ -1,0 +1,133 @@
+# Citizens NPC Storage
+
+last-created-npc-id: 12
+npc:
+  '8':
+    name: Left click me
+    uuid: cfd4d82c-128a-442e-96aa-13da5511a827
+    traits:
+      text:
+        talk-close: true
+        random-talker: true
+        realistic-looking: true
+        range: '1.0'
+        talkitem: '*'
+        text:
+          '0': I am an NPC. Left click to select a quest, and right click to activate that quest.
+      quester:
+        quester:
+          holder: 0
+      inventory: {}
+      location:
+        world: world
+        x: '407.42696040123485'
+        y: '104.0'
+        z: '40.852120716371246'
+        yaw: '161.55288696289062'
+        pitch: '0.0'
+      spawned: true
+      speech: chat
+      owner:
+        owner: Superboop
+        uuid: 441a80b7-94ea-3dd9-9075-8f150c228243
+      lookclose:
+        enabled: true
+        range: '3.0'
+        realisticlooking: true
+    traitnames: owner,spawned,text,location,inventory,speech,quester,lookclose,type
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true
+    metadata:
+      cached-skin-uuid: 09c3f1eb-ce3c-4f62-b81d-1087fe7c9a11
+      player-skin-name: shlove1214
+      cached-skin-uuid-name: shlove1214
+  '10':
+    name: Bob
+    uuid: 1031b39d-77d2-4589-b52a-8b7828a1222b
+    traits:
+      spawned: true
+      location:
+        world: world
+        x: '391.29216922330903'
+        y: '96.0'
+        z: '40.96472578829927'
+        yaw: '-71.87444305419922'
+        pitch: '0.0'
+      inventory: {}
+      speech: chat
+      text:
+        talk-close: true
+        random-talker: false
+        realistic-looking: true
+        range: '1.0'
+        talkitem: default
+        text:
+          '0': Be sure to read the &6rules &fand &6commands &fhere.
+      quester:
+        quester:
+          holder: 1
+      owner:
+        owner: Superboop
+        uuid: 441a80b7-94ea-3dd9-9075-8f150c228243
+      lookclose:
+        enabled: true
+        range: '3.0'
+        realisticlooking: true
+    traitnames: owner,spawned,location,text,inventory,speech,quester,lookclose,type
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true
+    metadata:
+      cached-skin-uuid: cd5539e4-d6ca-4682-b65a-91084a5c4649
+      player-skin-name: Superboop
+      cached-skin-uuid-name: Superboop
+  '12':
+    metadata:
+      cached-skin-uuid: 069a79f4-44e9-4726-a5be-fca90e38aaf5
+      player-skin-name: Notch
+      cached-skin-uuid-name: Notch
+    name: Carl
+    uuid: a6e22e87-87d2-4a61-b827-d0965605b226
+    traits:
+      speech: chat
+      inventory: {}
+      location:
+        world: world
+        x: '390.9088581940532'
+        y: '88.0'
+        z: '40.84466695614206'
+        yaw: '-77.25022888183594'
+        pitch: '0.0'
+      spawned: true
+      text:
+        talk-close: true
+        random-talker: false
+        realistic-looking: true
+        range: '1.0'
+        talkitem: default
+        text:
+          '0': Be sure to choose a &6job &fhere!
+      quester:
+        quester:
+          holder: 2
+      owner:
+        owner: Superboop
+        uuid: 441a80b7-94ea-3dd9-9075-8f150c228243
+      lookclose:
+        enabled: true
+        range: '3.0'
+        realisticlooking: true
+    traitnames: owner,spawned,text,location,inventory,speech,quester,lookclose,type
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true

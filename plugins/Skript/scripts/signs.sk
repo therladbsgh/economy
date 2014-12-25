@@ -1,0 +1,271 @@
+#JOB SIGNS---------------------------------------------------------
+on sign change:
+	line 1 of block is "[Job]"
+	line 2 of block is not ""
+	player has permission "economy.sign.create"
+	set line 1 of block to "&1%line 1 of block%"
+	set line 2 of block to "&4%line 2 of block%"
+	message "Sign created." to player
+
+
+#MINER SIGNS---------------------------------------------------------
+
+on sign change:
+	line 1 of block is "[Mine]"
+	player has permission "economy.sign.create"
+	set line 1 of block to "&1%line 1 of block%"
+	message "Sign created." to player
+
+on right click on sign:
+	line 1 of the clicked sign is "&1[Mine]"
+	line 2 of the clicked sign is not ""
+	player has permission "economy.miner.warpsign":
+		player is op:
+			make player execute command "warp %line 2 of the clicked sign%"
+		else:
+			op player
+			make player execute command "warp %line 2 of the clicked sign%"
+			deop player
+	else:
+		message "&cYou are not a miner." to player
+
+on right click on sign:
+	line 1 of the clicked sign is "&1[Job]"
+	line 2 of the clicked sign is "&4[Miner]"
+	player has permission "economy.class":
+		player's money >= 100:
+			set money of player to money of player - 100
+			message "&6Subtracting &c$100 &6from your account." to player
+			execute console command "world world"
+			execute console command "user %player%"
+			execute console command "user setgroup miner"
+			give player 1 wood pickaxe
+			give player 5 bread
+			message "&6Congratulations, you are now a &1Miner." to player
+		else:
+			message "&cYou need at least $100 to change jobs." to player
+	else:
+		execute console command "world world"
+		execute console command "user %player%"
+		execute console command "user setgroup miner"
+		give player 1 wood pickaxe
+		give player 5 bread
+		message "&6Congratulations, you are now a &1Miner." to player	
+		message "&6All subsequent job changes will require money." to player	
+
+
+#HERB SIGNS---------------------------------------------------------
+
+on sign change:
+	line 1 of block is "[Herb]"
+	player has permission "economy.sign.create"
+	set line 1 of block to "&1%line 1 of block%"
+	message "Sign created." to player
+
+on right click on sign:
+	line 1 of the clicked sign is "&1[Herb]"
+	line 2 of the clicked sign is not ""
+	player has permission "economy.forester.warpsign":
+		player is op:
+			make player execute command "warp %line 2 of the clicked sign%"
+		else:
+			op player
+			make player execute command "warp %line 2 of the clicked sign%"
+			deop player
+	else:
+		message "&cYou are not a forester." to player
+
+on right click on sign:
+	line 1 of the clicked sign is "&1[Job]"
+	line 2 of the clicked sign is "&4[Forester]"
+	player has permission "economy.class":
+		player's money >= 100:
+			set money of player to money of player - 100
+			message "&6Subtracting &c$100 &6from your account." to player
+			execute console command "world world"
+			execute console command "user %player%"
+			execute console command "user setgroup forester"
+			give player 1 wood axe
+			give player 1 wood hoe
+			give player 5 bread
+			message "&6Congratulations, you are now a &1Forester." to player
+		else:
+			message "&cYou need at least $100 to change jobs." to player
+	else:
+		execute console command "world world"
+		execute console command "user %player%"
+		execute console command "user setgroup forester"
+		give player 1 wood axe
+		give player 1 wood hoe
+		give player 5 bread
+		message "&6Congratulations, you are now a &1Forester." to player
+		message "&6All subsequent job changes will require money." to player
+
+#EXCAVATOR SIGNS---------------------------------------------------------
+
+on sign change:
+	line 1 of block is "[Earth]"
+	player has permission "economy.sign.create"
+	set line 1 of block to "&1%line 1 of block%"
+	message "Sign created." to player
+
+on right click on sign:
+	line 1 of the clicked sign is "&1[Earth]"
+	line 2 of the clicked sign is not ""
+	player has permission "economy.excavator.warpsign":
+		player is op:
+			make player execute command "warp %line 2 of the clicked sign%"
+		else:
+			op player
+			make player execute command "warp %line 2 of the clicked sign%"
+			deop player
+	else:
+		message "&cYou are not an excavator." to player
+
+on right click on sign:
+	line 1 of the clicked sign is "&1[Job]"
+	line 2 of the clicked sign is "&4[Excavator]"
+	player has permission "economy.class":
+		player's money >= 100:
+			set money of player to money of player - 100
+			message "&6Subtracting &c$100 &6from your account." to player
+			execute console command "world world"
+			execute console command "user %player%"
+			execute console command "user setgroup excavator"
+			give player 1 wood shovel
+			give player 1 wood pickaxe
+			give player 5 bread
+			message "&6Congratulations, you are now a &1Excavator." to player
+		else:
+			message "&cYou need at least $100 to change jobs." to player
+	else:
+		execute console command "world world"
+		execute console command "user %player%"
+		execute console command "user setgroup excavator"
+		give player 1 wood shovel
+		give player 1 wood pickaxe
+		give player 5 bread
+		message "&6Congratulations, you are now a &1Excavator." to player
+		message "&6All subsequent job changes will require money." to player
+
+#FARM SIGNS---------------------------------------------------------
+
+on sign change:
+	line 1 of block is "[Farm]"
+	player has permission "economy.sign.create"
+	set line 1 of block to "&1%line 1 of block%"
+	message "Sign created." to player
+
+on right click on sign:
+	line 1 of the clicked sign is "&1[Farm]"
+	line 2 of the clicked sign is not ""
+	player has permission "economy.farmer.warpsign":
+		player is op:
+			make player execute command "warp %line 2 of the clicked sign%"
+		else:
+			op player
+			make player execute command "warp %line 2 of the clicked sign%"
+			deop player
+	else:
+		message "&cYou are not a farmer." to player
+
+on right click on sign:
+	line 1 of the clicked sign is "&1[Job]"
+	line 2 of the clicked sign is "&4[Farmer]"
+	player has permission "economy.class":
+		player's money >= 100:
+			set money of player to money of player - 100
+			message "&6Subtracting &c$100 &6from your account." to player
+			execute console command "world world"
+			execute console command "user %player%"
+			execute console command "user setgroup farmer"
+			give player 1 wood sword
+			give player 5 bread
+			message "&6Congratulations, you are now a &1Farmer." to player
+		else:
+			message "&cYou need at least $100 to change jobs." to player
+	else:
+		execute console command "world world"
+		execute console command "user %player%"
+		execute console command "user setgroup farmer"
+		give player 1 wood sword
+		give player 5 bread
+		message "&6Congratulations, you are now a &1Farmer." to player
+		message "&6All subsequent job changes will require money." to player
+			
+
+#CRAFTER SIGNS---------------------------------------------------------
+
+on sign change:
+	line 1 of block is "[Craft]"
+	player has permission "economy.sign.create"
+	set line 1 of block to "&1%line 1 of block%"
+	message "Sign created." to player
+
+on right click on sign:
+	line 1 of the clicked sign is "&1[Craft]"
+	line 2 of the clicked sign is not ""
+	player has permission "economy.crafter.warpsign":
+		player is not op:
+			op player
+			make player execute command "warp %line 2 of the clicked sign%"
+			deop player
+		else:
+			make player execute command "warp %line 2 of the clicked sign%"
+	else:
+		message "&cYou are not a crafter." to player
+
+on right click on sign:
+	line 1 of the clicked sign is "&1[Job]"
+	line 2 of the clicked sign is "&4[Crafter]"
+	player has permission "economy.class":
+		player's money >= 500:
+			set money of player to money of player - 500
+			message "&6Subtracting &c$500 &6from your account." to player
+			execute console command "world world"
+			execute console command "user %player%"
+			execute console command "user setgroup crafter"
+			message "&6Congratulations, you are now a &1Crafter." to player
+		else:
+			message "&cYou need at least $500 to change jobs." to player
+	else:
+		message "&cThis is an advanced class. Please choose a basic class." to player
+
+#SMELTER SIGNS---------------------------------------------------------
+
+on sign change:
+	line 1 of block is "[Smelt]"
+	player has permission "economy.sign.create"
+	set line 1 of block to "&1%line 1 of block%"
+	message "Sign created." to player
+
+on right click on sign:
+	line 1 of the clicked sign is "&1[Smelt]"
+	line 2 of the clicked sign is not ""
+	player has permission "economy.smelter.warpsign":
+		player is not op:
+			op player
+			make player execute command "warp %line 2 of the clicked sign%"
+			deop player
+		else:
+			make player execute command "warp %line 2 of the clicked sign%"
+	else:
+		message "&cYou are not a smelter." to player
+
+on right click on sign:
+	line 1 of the clicked sign is "&1[Job]"
+	line 2 of the clicked sign is "&4[Smelter]"
+	player has permission "economy.class":
+		player's money >= 500:
+			set money of player to money of player - 500
+			message "&6Subtracting &c$500 &6from your account." to player
+			execute console command "world world"
+			execute console command "user %player%"
+			execute console command "user setgroup smelter"
+			message "&6Congratulations, you are now a &1Smelter." to player
+			give player 8 coal
+		else:
+			message "&cYou need at least $500 to change jobs." to player
+	else:
+		message "&cThis is an advanced class. Please choose a basic class." to player
+

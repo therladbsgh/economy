@@ -1,0 +1,65 @@
+users:
+  asdfasfa:
+    permissions: []
+    groups:
+    - user
+  creeperg0d:
+    permissions: []
+    groups:
+    - mods
+  d3stined4haters:
+    permissions: []
+    groups:
+    - donator
+  jttcote:
+    permissions: []
+    groups:
+    - builder
+  mattxy69:
+    permissions: []
+    groups:
+    - mods
+  noodlesandrice:
+    permissions: []
+    groups:
+    - albatross
+  pigworld:
+    permissions: []
+    groups:
+    - donator
+  player:
+    permissions:
+    - ichat.color
+    - ichat.format.color
+    - ichat.format.formatting
+    - ichat.reload
+    groups:
+    - sniper
+  prodfk:
+    permissions: []
+    groups:
+    - admin
+  self:
+    permissions: []
+    groups:
+    - user
+  werds1:
+    permissions: []
+    groups:
+    - albatross
+  playe:
+    permissions: []
+    groups:
+    - user
+  1notten:
+    permissions: []
+    groups:
+    - offworlder
+  superboo:
+    permissions: []
+    groups:
+    - user
+  shlove1214:
+    permissions: []
+    groups:
+    - albatross

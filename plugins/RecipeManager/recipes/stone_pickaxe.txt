@@ -1,0 +1,47 @@
+//Level 1 Stone Pickaxe
+craft vanilla stonepick creation
+@override
+cobblestone + cobblestone + cobblestone
+air + stick:0 + air
+air + stick:0 + air
+= stone_pickaxe:0:1
+@name &rStone Pickaxe (&8Tier 1&r)
+
+//Level 2 Stone Pickaxe
+craft level 2 stonepick creation
+43:11 + 43:11 + 43:11
+air + 2256:1 + air
+air + 2256:1 + air
+= stone_pickaxe:0:1
+@name &rStone Pickaxe (&7Tier 2&r)
+@enchantitem unbreaking 2
+
+//Level 3 Stone Pickaxe
+craft level 2 stonepick creation
+43:19 + 43:19 + 43:19
+air + 2256:2 + air
+air + 2256:2 + air
+= stone_pickaxe:0:1
+@name &rStone Pickaxe (&3Tier 3&r)
+@enchantitem unbreaking 3
+@lore &a+10% enchant success rate
+
+//Level 4 Stone Pickaxe
+craft level 2 stonepick creation
+43:27 + 43:27 + 43:27
+air + 2256:3 + air
+air + 2256:3 + air
+= stone_pickaxe:0:1
+@name &rStone Pickaxe (&5Tier 4&r)
+@lore &aInfinite durability
+@lore &a+30% enchant success rate
+
+//Level 5 Stone Pickaxe
+craft level 2 stonepick creation
+43:35 + 43:35 + 43:35
+air + 2256:4 + air
+air + 2256:4 + air
+= stone_pickaxe:0:1
+@name &rStone Pickaxe (&6Tier 5&r)
+@lore &aInfinite durability
+@lore &a+50% enchant success rate

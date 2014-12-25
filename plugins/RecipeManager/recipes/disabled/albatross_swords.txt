@@ -1,0 +1,56 @@
+//Green Dye + Wood Sword = Poison Sword
+combine PoisonSword
+268 + dye:2
+= 268
+//  @copy all
+  @name &eBlade of Grass
+  @lore &350% chance to poison target
+  @lore &425% chance to poison yourself
+
+//Red Dye + Wood Sword = Eyelander
+combine Eyelander
+268 + dye:1
+= 268
+//  @copy all
+  @name &eEyelander
+  @lore &3Regenerates health for 5 seconds on kill
+  @lore &3Boosts speed for 5 seconds on kill
+  @lore &4-50% Damage penalty
+
+//Yellow + Wood Sword = Stun Sword
+combine Stun Sword
+268 + dye:11
+= 268
+//  @copy all
+  @name &eThunderbolt
+  @lore &3On Hit: Stun enemy for 5 seconds
+  @lore &4On Miss: Hit yourself. Idiot.
+
+//Green Dye + Stone Sword = Poison Sword
+combine PoisonSword
+272 + dye:2:3
+= 272
+//  @copy all
+  @name &eBlade of Grass
+  @lore &350% chance to badly poison target
+  @lore &425% chance to badly poison yourself
+
+//Red Dye + Stone Sword = Eyelander
+combine Eyelander
+272 + dye:1:3
+= 272
+//  @copy all
+  @name &eEyelander
+  @lore &3Regenerates health greatly for 5 seconds on kill
+  @lore &3Boosts speed greatly for 5 seconds on kill
+  @lore &4-50% Damage penalty
+
+//Yellow + Stone Sword = Stun Sword
+combine Stun Sword
+272 + dye:11:3
+= 272
+//  @copy all
+  @name &eThunderbolt
+  @lore &3On Hit: Stun enemy severely for 8 seconds
+  @lore &4On Miss: Hit yourself. Idiot.
+

@@ -1,0 +1,39 @@
+//Creates level 2 Cobblestone
+craft level 2 Cobblestone
+cobblestone:0 + cobblestone:0
+cobblestone:0 + cobblestone:0
+= 43:11
+@name &rCobblestone (&7Level 2&r)
+@lore &eReclaimed metal
+
+//Creates iron pickaxe on other levels
+craft level 3 Cobblestone
+43:11 + 43:11
+43:11 + 43:11
+= 43:19
+@name &rCobblestone (&3Level 3&r)
+@lore &eRefined metal
+
+//Creates iron pickaxe on other levels
+craft level 4 Cobblestone
+43:19 + 43:19
+43:19 + 43:19
+= 43:27
+@name &rCobblestone (&5Level 4&r)
+@lore &eNice quality
+
+//Creates iron pickaxe on other levels
+craft level 5 Cobblestone
+43:27 + 43:27
+43:27 + 43:27
+= 43:35
+@name &rCobblestone (&6Level 5&r)
+@lore &eUber quality
+
+//Creates iron pickaxe on other levels
+craft level 6 Cobblestone
+43:35 + 43:35
+43:35 + 43:35
+= 43:43
+@name &rCobblestone (&4Level X&r)
+@lore &eHoly crap how did you get that quality

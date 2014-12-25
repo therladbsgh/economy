@@ -1,0 +1,31 @@
+uuid: 441a80b7-94ea-3dd9-9075-8f150c228243
+timestamps:
+  login: 1419408747478
+  lastteleport: 1419329221935
+  logout: 1419409047879
+ipAddress: 127.0.0.1
+lastlocation:
+  world: world
+  x: 403.8257351444553
+  y: 104.0
+  z: 40.47217988687507
+  yaw: -90.94683
+  pitch: 15.750074
+homes:
+  home:
+    world: world
+    x: 403.16755023385065
+    y: 96.0
+    z: 38.54080807248402
+    yaw: -295.54715
+    pitch: 24.9
+logoutlocation:
+  world: world
+  x: 397.6224221439865
+  y: 88.0
+  z: 46.81346489479342
+  yaw: 108.55382
+  pitch: 14.699988
+money: '891584.4'
+godmode: true
+afk: false

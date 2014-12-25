@@ -1,0 +1,30 @@
+#
+# these triggers fix some drops.
+#
+
+#on block break:
+#	block is diamond ore
+#	player is holding iron pickaxe
+#	name of player's tool contains "Tier 1"
+#	cancel event
+#	set data value of player's tool to data value of player's tool - 1
+
+on break of iron ore:
+	lore of player's tool does not contain "Cannot mine iron ore"
+	player is holding golden pickaxe
+	player's game mode is not creative
+	drop iron ore
+
+on break of gold ore:
+	lore of player's tool does not contain "Cannot mine gold ore"
+	player is holding golden pickaxe
+	player's game mode is not creative
+	drop gold ore
+
+on break of diamond ore:
+	lore of player's tool does not contain "Cannot mine diamond ore"
+	player is holding iron pickaxe or gold pickaxe or diamond pickaxe
+	player's game mode is not creative
+	cancel event
+	set block to air
+	drop diamond ore

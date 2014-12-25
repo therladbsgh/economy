@@ -1,0 +1,40 @@
+id: 11163df6-f292-494c-a7e4-94f46f7ab1a0
+coords:
+  -389,105,20:
+    ==: RM_FurnaceData
+  -389,106,20:
+    ==: RM_FurnaceData
+  -389,104,20:
+    ==: RM_FurnaceData
+  -361,68,-16:
+    ==: RM_FurnaceData
+  -381,105,3:
+    ==: RM_FurnaceData
+  -361,68,-15:
+    ==: RM_FurnaceData
+  -394,104,-72:
+    ==: RM_FurnaceData
+  -381,105,41:
+    ==: RM_FurnaceData
+  -381,105,35:
+    ==: RM_FurnaceData
+  -390,104,19:
+    ==: RM_FurnaceData
+  -381,105,-3:
+    ==: RM_FurnaceData
+  -390,106,19:
+    ==: RM_FurnaceData
+  -390,105,19:
+    ==: RM_FurnaceData
+  -389,106,18:
+    ==: RM_FurnaceData
+  -388,104,19:
+    ==: RM_FurnaceData
+  -389,105,18:
+    ==: RM_FurnaceData
+  -389,104,18:
+    ==: RM_FurnaceData
+  -388,106,19:
+    ==: RM_FurnaceData
+  -388,105,19:
+    ==: RM_FurnaceData

@@ -1,0 +1,252 @@
+options:
+	Logo: &7<] &6Team Fortress 2 &7[> &6
+
+command /playercmd [<player>] [<text>]:
+	executable by: console
+	trigger:
+		make arg 1 execute command "%arg 2%"
+	
+every 1 minute and 30 seconds:
+	{announce} isn't set:
+		set {announce} to 0
+	add 1 to {announce}
+	{announce} is 1:
+		broadcast "&b&l***&a Welcome to &bMCOTG&a TF2 Beta Test ##2! &cPlease report bugs with /bugs&b. &eRequest for Features with /feature&b! Thanks for being awesome!"
+	{announce} is 2:
+		broadcast "&b&l***&a MCOTG&c TF2&a is in &lBETA&a! There WILL be bugs!"
+	{announce} is 3:
+		broadcast "&b&l***&a TF2 is still in development, and things may change Daily, even Hourly!"
+		set {announce} to 0
+
+on damage:
+	world isn't "GridMon"
+	victim is an item frame
+	attacker is sneaking:
+		attacker is op:
+			stop
+	cancel event
+	displayed item on victim is rose red:
+		execute console command "tf2 a playerclass %attacker% Scout"
+		stop
+	displayed item on victim is cactus green :
+		execute console command "tf2 a playerclass %attacker% Soldier"
+		stop
+	displayed item on victim is brown dye:
+		execute console command "tf2 a playerclass %attacker% Pyro"
+		stop
+	displayed item on victim is lapis:
+		execute console command "tf2 a playerclass %attacker% Demoman"
+		stop
+	displayed item on victim is purple dye:
+		execute console command "tf2 a playerclass %attacker% Heavy"
+		stop
+	displayed item on victim is cyan dye:
+		message "%{tf2.logo}%&4Engineer is in development at the moment!" to attacker
+		stop
+		execute console command "tf2 a playerclass %attacker% Pyro"
+		stop
+	displayed item on victim is light gray dye:
+		execute console command "tf2 a playerclass %attacker% Medic"
+		stop
+	displayed item on victim is gray dye:
+		execute console command "tf2 a playerclass %attacker% Sniper"
+		stop
+	displayed item on victim is pink dye:
+		message "%{tf2.logo}%&4Spy is in development at the moment!" to attacker
+		stop
+		execute console command "tf2 a playerclass %attacker% Spy"
+		stop
+						
+on rightclick on entity:
+	world isn't "GridMon"
+	clicked entity is an item frame
+	player is sneaking:
+		player is op:
+			stop
+	cancel event
+	displayed item on clicked entity is rose red:
+		execute console command "tf2 a playerclass %player% Scout"
+		stop
+	displayed item on clicked entity is cactus green :
+		execute console command "tf2 a playerclass %player% Soldier"
+		stop
+	displayed item on clicked entity is brown dye:
+		execute console command "tf2 a playerclass %player% Pyro"
+		stop
+	displayed item on clicked entity is lapis:
+		execute console command "tf2 a playerclass %player% Demoman"
+		stop
+	displayed item on clicked entity is purple dye:
+		execute console command "tf2 a playerclass %player% Heavy"
+		stop
+	displayed item on clicked entity is cyan dye:
+		message "%{tf2.logo}%&4Engineer is in development at the moment!"
+		stop
+		execute console command "tf2 a playerclass %player% Pyro"
+		stop
+	displayed item on clicked entity is light gray dye:
+		execute console command "tf2 a playerclass %player% Medic"
+		stop
+	displayed item on clicked entity is gray dye:
+		execute console command "tf2 a playerclass %player% Sniper"
+		stop
+	displayed item on clicked entity is pink dye:
+		message "%{tf2.logo}%&4Spy is in development at the moment!"
+		stop
+		execute console command "tf2 a playerclass %player% Spy"
+		stop
+		
+on region enter:
+	wait 2 ticks
+	set {_region} to "%regions at player%"
+	"%{_region}%" contains "lobbysumo":
+		remove all sticks from player
+		set slot 4 of player to a stick of knockback 3 named "&aSuper Sumo Stick!" with lore "Punch people off with this||powerful stick!"
+		message "&7[&aLobby Sumo&7] &ePunch people into the Void!"
+		while "%regions at player%" contains "lobbysumo":
+			set current slot of player to 5
+			wait 1 tick
+		message "&7[&aLobby Sumo&7] &eCome back again soon!"
+		remove all sticks from player
+		
+on explosion:
+	add east to {_listofdirections::*}
+	add west to {_listofdirections::*}
+	add south to {_listofdirections::*}	
+	add north to {_listofdirections::*}
+	set {_y} to 1000
+	cancel event
+	loop the destroyed blocks:
+		loop-block is grass or dirt or sand or torch or fence or lily pad or any ore or 18 or tall grass or flower:
+			set {_backup.%location of loop-block%.id} to "%id of loop-block%"
+			set {_backup.%location of loop-block%.dv} to "%data value of loop-block%"
+			"%{_ycoordlist::*}%" doesn't contain "%rounded down y coord of loop-block%":
+				add rounded down y coord of loop-block to {_ycoordlist::*}
+			rounded down y coord of loop-block is less than {_y}:
+				set {_y} to rounded down y coord of loop-block
+			add location of loop-block to {_break::*}
+	message "%{_break::*}%"
+	wait 10 ticks
+	loop {_break::*}:
+		loop blocks in radius 0 around loop-value:
+			spawn undroppable falling block of loop-block at loop-block
+			add location of loop-block to {_ycoord.%rounded down y coord of loop-block%::*}
+			pop burst colored red at loop-value
+			@noupdate::set loop-block to air
+			loop entities in radius 0 around loop-block:
+				loop-entity is a falling block
+				set {_ent} to loop-entity
+				set {_speed} to a random number between .3 and .4
+				
+				push {_ent} up at speed {_speed}
+				
+				set {_dir.1} to random element out of {_listofdirections::*}
+				set {_dir.2} to random element out of {_listofdirections::*}
+				set {_dir.3} to random element out of {_listofdirections::*}
+				
+				set {_dir.1.speed} to random number between .1 and .6
+				set {_dir.2.speed} to random number between .1 and .6
+				set {_dir.3.speed} to random number between .1 and .6
+			
+				push {_ent} {_dir.1} at speed {_dir.1.speed}
+				push {_ent} {_dir.2} at speed {_dir.2.speed}
+				push {_ent} {_dir.3} at speed {_dir.3.speed}
+	wait 8 seconds
+	loop {_ycoordlist::*} sorted from lowest to highest:
+		loop {_ycoord.%loop-number%::*}:
+			@noupdate::set block at loop-value to "%{_backup.%loop-value%.id}%:%{_backup.%loop-value%.dv}%" parsed as a item type
+			spawn 25 of particle blockcrack_%{_backup.%loop-value%.id}%_%{_backup.%loop-value%.dv}%:0 offset at 0.3, 0.3, 0.3 at loop-value
+			wait 3 tick
+	
+every 1 minute:
+	{tf2lobby.fungame.enabled} isn't set:
+		{tf2.mapstatus} isn't set:
+			chance of 20%:
+				invoke "tf2lobby-fungame"
+				
+sub "tf2lobby-fungame":
+	set {_region} to "tf2region" parsed as a region
+	set {tf2lobby.fungame.enabled} to true
+	loop blocks in region {_region}:
+		loop-block is grass or dirt:
+			block above loop-block is air
+			chance of 20%:
+				set {_mob} to random integer between 1 and 8
+				{_mob} is 8:
+					spawn a baby mooshroom at block above loop-block
+				{_mob} is 7:
+					spawn a baby villager at block above loop-block
+				{_mob} is 6:
+					spawn a baby ocelot at block above loop-block
+				{_mob} is 5:
+					spawn a baby wolf at block above loop-block
+				{_mob} is 4:
+					spawn a baby chicken at block above loop-block
+				{_mob} is 3:
+					spawn a baby cow at block above loop-block
+				{_mob} is 2:
+					spawn a baby sheep at block above loop-block
+				{_mob} is 1:
+					spawn a baby pig at block above loop-block
+	broadcast "&7[&aLobby Fun&7] &eBaby Animals have spawned everywhere! Punch them to make them love you!"
+	wait 1 minute
+	delete {tf2lobby.fungame.enabled}
+	loop all entities in "tf2lobby":
+		loop-entity is a baby mooshroom, baby villager, baby ocelot, baby wolf, baby chicken, baby cow, baby sheep or baby pig:
+			delete loop-entity
+	
+on damage:
+	victim is a baby mooshroom, baby villager, baby ocelot, baby wolf, baby chicken, baby cow, baby sheep or baby pig:
+		cancel event
+		push victim upwards at speed 1.5
+		wait 1 seconds
+		spawn 25 of particle lava:0 offset at 0.5, 0.5, 0.5 at victim
+		play lava pop at victim with pitch 0
+		play lava pop at victim with pitch 1
+		play lava pop at victim with pitch 2
+		pop burst colored red at victim
+		delete victim
+		
+			
+	
+on damage:
+	victim is a player
+	"%damage cause%" is "void":
+		broadcast "&7[&aLobby Sumo&7] &e%victim%&e was knocked into the void!" to "tf2lobby"
+		spawn 30 of particle happy villager:0 offset at 0.5, 0.5, 0.5 at attacker
+		cancel event
+		teleport victim to spawn
+		
+command /tf2:adminitems [<text>]:
+	aliases: adminitems
+	permission: tf2.admin
+	permission message: No Perm
+	trigger:
+		remove all compasses from player
+		remove all books named "&aAdmin Menu" from player
+		add a book named "&aAdmin Menu" to player
+		add a compass named "&aWorldEdit TP'r" to player
+
+on rightclick on a villager:
+	name of clicked villager is "&aHorse Tamer"
+	vehicle of player isn't set
+	message "&7[&aHorse Tamer&7]&a Ok then! Have fun!"
+	spawn a horse at {horsespawn}
+	set maximum health of spawned horse to 3
+	set display name of spawned horse to "&a%player%'s Racing Horse!"
+	make player ride spawned horse
+	set the owner of spawned horse to player
+	equip spawned horse with a saddle
+	player is op:
+		equip spawned horse with diamond horse armor
+	set {_horse} to spawned horse
+	while vehicle of player is {_horse}:
+		inventory name of current inventory of player is "&a%player%'s Racing Horse!":
+			show "s;1;i;nether quartz ore;n;&aStop Riding!;l;Stops riding the horse!" with 3 rows named "&aHorse Options" to player
+		wait 1 tick
+
+on vehicle exit:
+	player's vehicle is a horse
+	cancel event
+	delete player's vehicle
+	message "&7[&aHorse Tamer&7]&a If you want to go again, just talk to me!"

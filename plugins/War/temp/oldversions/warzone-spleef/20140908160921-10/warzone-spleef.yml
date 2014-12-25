@@ -1,0 +1,47 @@
+set:
+  warzone:
+    spleef:
+      config:
+        autoassign: true
+        blockheads: true
+      info:
+        authors:
+        - Superboop
+        teleport:
+          x: -2937
+          y: 57
+          z: -3010
+          yaw: 90
+        world: world
+        lobby:
+          orientation: south
+          world: world
+          materials:
+            floor:
+              ==: org.bukkit.inventory.ItemStack
+              type: GLASS
+            outline:
+              ==: org.bukkit.inventory.ItemStack
+              type: WOOD
+            gate:
+              ==: org.bukkit.inventory.ItemStack
+              type: OBSIDIAN
+            light:
+              ==: org.bukkit.inventory.ItemStack
+              type: GLOWSTONE
+        materials:
+          main:
+            ==: org.bukkit.inventory.ItemStack
+            type: OBSIDIAN
+          stand:
+            ==: org.bukkit.inventory.ItemStack
+            type: FENCE
+          light:
+            ==: org.bukkit.inventory.ItemStack
+            type: GLOWSTONE
+  team:
+    default:
+      config:
+        lifepool: 10
+        maxscore: 3
+        teamsize: 4

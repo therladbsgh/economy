@@ -1,0 +1,114 @@
+
+options:
+	Logo: &7[&4TF2&7] &6
+	Version: 0.3 Alpha
+
+on script load:
+	wipe server crafting recipes
+	wait 2 ticks
+	execute console command "/sk reload \TF2Recipes\"
+	
+on rightclick on a hopper:
+	cancel event
+	block above block isn't fire
+	world is "TF2Lobby"
+	open chest with 1 rows named "&aTrash" to player
+	wait 1 second
+	while the inventory name of the current inventory of event-player is "&aTrash":
+		#set {_slot} to -1
+		#loop 9 times:
+		#	add 1 to {_slot}
+		#	set slot {_slot} of current inventory of player to a diamond
+		wait 1 tick
+	remove all books from player
+	set slot 0 of player to a book named "&cBook of Classes!" with lore "&4Select your class for the game!"
+	set slot 1 of player to a book named "&cBook of &4&lHATSSSSSSSSSssssss!" with lore "&4Select a hat!" 
+	spawn 15 of particle happy villager:0 offset at 0.3, 0.3, 0.3 at block
+	play eat at block with pitch 1
+	message "&7&o*** &a&oOm, nom, nom, nom!" to player
+	
+on inventory click:
+	inventory name of the current inventory of event-player is "&aTrash" or "container.crafting":
+		stop
+	gamemode of player isn't creative
+	cancel event
+	
+on rightclick on a workbench:
+	wait 1 tick
+	inventory name of the current inventory of player is "container.crafting":
+		clear inventory of player
+		set inventory of player to player's ender chest
+		while inventory name of the current inventory of player is "container.crafting":
+			wait 1 tick
+		set inventory of player's ender chest
+	#message "%{tf2.logo}%If you need help with crafting, talk to the &aWise Crafter&6"
+	#message "&6 or &cSmithy the Smith&r!"
+	#cancel event
+	# open chest with 3 rows named "TF2 Crafting" to player
+	# wait 10 ticks
+	# while the inventory name of the current inventory of event-player is "TF2 Crafting":
+		# remove all sponge from player
+		# remove all sponge from current inventory of player
+		# set slot 6 of current inventory of player to sponge named "&4XXXXXXXXXXXXX"
+		# set slot 7 of current inventory of player to sponge named "&4XXXXXXXXXXXXX"
+		# set slot 8 of current inventory of player to sponge named "&4XXXXXXXXXXXXX"
+		# set slot 15 of current inventory of player to sponge named "&4XXXXXXXXXXXXX"
+		# set slot 16 of current inventory of player to sponge named "&4XXXXXXXXXXXXX"
+		# set slot 17 of current inventory of player to sponge named "&4XXXXXXXXXXXXX"
+		# set slot 24 of current inventory of player to sponge named "&4XXXXXXXXXXXXX"
+		# set slot 25 of current inventory of player to sponge named "&4XXXXXXXXXXXXX"
+		# set slot 26 of current inventory of player to sponge named "&4XXXXXXXXXXXXX"
+		# #set {_slot} to -1
+		# #loop 9 times:
+		# #	add 1 to {_slot}
+		# #	set slot {_slot} of current inventory of player to a diamond
+		# wait 1 tick
+	
+on craft:
+	play anvil use at player with pitch 1
+	
+on rightclick on an entity:
+	display name of event-entity is "&aWise Crafter"
+	
+# every 1 second:
+	# loop 20 times:
+		# #message "k" to all ops
+		# spawn a falling crafting table at block 2 blocks above {tf2c.crafthouseroof}
+		# #drop a workbench at block 2 blocks above {tf2c.crafthouseroof}
+		# add east to {_listofdirections::*}
+		# add west to {_listofdirections::*}
+		# add south to {_listofdirections::*}	
+		# add north to {_listofdirections::*}
+		# loop entities in radius 2 of block 2 blocks above {tf2c.crafthouseroof}:
+			# loop-entity is a falling block or dropped item:
+				# set {_speed} to a random number between .3 and 1.2
+				# {tf2c.luckydipchest.%loop-entity%} isn't set:
+					# chance of 0.2%:
+						# set {tf2c.luckydipchest.%loop-entity%} to true
+					# {tf2c.luckydipchest.%loop-entity%} isn't set:
+						# set {tf2c.luckydipchest.%loop-entity%} to false
+				# push loop-entity up at speed {_speed}
+				
+				# set {_dir.1} to random element out of {_listofdirections::*}
+				# set {_dir.2} to random element out of {_listofdirections::*}
+				# set {_dir.3} to random element out of {_listofdirections::*}
+				
+				# set {_dir.1.speed} to random number between .1 and .6
+				# set {_dir.2.speed} to random number between .1 and .6
+				# set {_dir.3.speed} to random number between .1 and .6
+			
+				# push loop-entity {_dir.1} at speed {_dir.1.speed}
+				# push loop-entity {_dir.2} at speed {_dir.2.speed}
+				# push loop-entity {_dir.3} at speed {_dir.3.speed}
+		# wait 1 tick
+
+# on block land:
+	# cancel event
+	# {tf2c.luckydipchest.%event-entity%} is true
+	# pop "burst" colored purple and black at event-location
+	# set block at event-location to an ender chest
+
+# on click on an ender chest:
+	# world is "TF2Lobby"
+	# set block to air
+	# message "%{tf2.logo}%Wow, you found a random item dispenser!"

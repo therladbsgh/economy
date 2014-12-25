@@ -1,0 +1,58 @@
+#
+# these triggers fix some drops.
+#
+
+command /cc:
+	description: Clears chat
+	usage: /cc
+	aliases: clearchat
+	executable by: players
+	trigger:
+		loop 99 times:
+			message "" to player
+		message "&6Chat cleared!" to player
+
+command /stillalive:
+	description: This was a triumph
+	usage: /stillalive
+	aliases: sa
+	executable by: players
+	trigger:
+		message "Playing -Still Alive- in 5 seconds. Turn down your ambient music volume!"
+		wait 5 seconds
+		message "-Still Alive-" to player
+		play midi "stillalive" to player
+
+command /cavestory:
+	description: This was a triumph
+	usage: /cavestory
+	aliases: cs
+	executable by: players
+	trigger:
+		message "Playing -Cave Story- in 5 seconds. Turn down your ambient music volume!"
+		wait 5 seconds
+		message "-Cave Story-" to player
+		play midi "curly" to player
+
+command /dubstep:
+	description: Why?
+	usage: /dubstep
+	executable by: players
+	trigger:
+		message "Playing -Generic Dubstep- in 5 seconds. Turn down your ambient music volume!"
+		wait 5 seconds
+		message "-Generic Dubstep-" to player
+		if player is op:
+			make player execute command "play me dubstep true"
+		else:
+			op player
+			make player execute command "play me dubstep true"
+			deop player
+
+command /lol <text> <text>:
+	description: we hebben lol
+	usage: /lol
+	executable by: players
+	trigger:
+		loop players:
+			message "<%argument 1%> %argument 2%" to loop-player

@@ -1,0 +1,123 @@
+﻿on enchant:
+	if item is pickaxe:
+		if enchanting level is 30:
+			chance of 20%:
+				set lore of item to "&r&6Heated"
+	if item is axe:
+		if enchanting level is 30:
+			chance of 20%:
+				set lore of item to "&r&6Heated"
+	if item is shovel:
+		if enchanting level is 30:
+			chance of 20%:
+				set lore of item to "&r&6Heated"
+		
+on mine:
+	if player is holding a pickaxe:
+		if lore of player's tool contains "&r&6Heated":
+			if event-block is iron ore:
+				cancel event
+				set block to air
+				if player's tool is enchanted with unbreaking 1:
+					chance of 50%:
+						damage player's tool by 1
+				if player's tool is enchanted with unbreaking 2:
+					chance of 33%:
+						damage player's tool by 1
+				if player's tool is enchanted with unbreaking 3:
+					chance of 25%:
+						damage player's tool by 1
+				play mob spawner flames at the event-block to the player
+				chance of 70%:
+					give 1 xp to the player
+					play ORB_PICKUP at event-block with pitch 0
+				drop 1 iron ingot
+			if event-block is gold ore:
+				if player's tool is not enchanted with silk touch:
+					cancel event
+					set block to air
+					if player's tool is enchanted with unbreaking 1:
+						chance of 50%:
+							damage player's tool by 1
+					if player's tool is enchanted with unbreaking 2:
+						chance of 33%:
+							damage player's tool by 1
+					if player's tool is enchanted with unbreaking 3:
+						chance of 25%:
+							damage player's tool by 1
+					play mob spawner flames at the event-block to the player
+					give 1 xp to the player
+					play ORB_PICKUP at event-block with pitch 0
+					drop 1 gold ingot
+			if event-block is stone:
+				cancel event
+				set block to air
+				if player's tool is enchanted with unbreaking 1:
+					chance of 50%:
+						damage player's tool by 1
+				if player's tool is enchanted with unbreaking 2:
+					chance of 33%:
+						damage player's tool by 1
+				if player's tool is enchanted with unbreaking 3:
+					chance of 25%:
+						damage player's tool by 1
+				play mob spawner flames at the event-block to the player
+				chance of 10%:
+					give 1 xp to the player
+					play ORB_PICKUP at event-block with pitch 0
+				drop 1 stone			
+	if player is holding a shovel:
+		if lore of player's tool contains "&r&6Heated":
+			if event-block is clay:	
+				cancel event
+				set block to air
+				if player's tool is enchanted with unbreaking 1:
+					chance of 50%:
+						damage player's tool by 1
+				if player's tool is enchanted with unbreaking 2:
+					chance of 33%:
+						damage player's tool by 1
+				if player's tool is enchanted with unbreaking 3:
+					chance of 25%:
+						damage player's tool by 1
+				play mob spawner flames at the event-block to the player
+				chance of 35%:
+					give 1 xp to the player
+					play ORB_PICKUP at event-block with pitch 0
+				drop 4 brick
+			if event-block is sand:	
+				cancel event
+				set block to air
+				if player's tool is enchanted with unbreaking 1:
+					chance of 50%:
+						damage player's tool by 1
+				if player's tool is enchanted with unbreaking 2:
+					chance of 33%:
+						damage player's tool by 1
+				if player's tool is enchanted with unbreaking 3:
+					chance of 25%:
+						damage player's tool by 1
+				play mob spawner flames at the event-block to the player
+				chance of 10%:
+					give 1 xp to the player
+					play ORB_PICKUP at event-block with pitch 0				
+				drop 1 glass
+	if player is holding an axe:
+		if lore of player's tool contains "&r&6Heated":
+			if event-block is oak log, birch log, dark oak log, jungle log, or spruce log:	
+				cancel event
+				set block to air
+				if player's tool is enchanted with unbreaking 1:
+					chance of 50%:
+						damage player's tool by 1
+				if player's tool is enchanted with unbreaking 2:
+					chance of 33%:
+						damage player's tool by 1
+				if player's tool is enchanted with unbreaking 3:
+					chance of 25%:
+						damage player's tool by 1
+				play mob spawner flames at the event-block to the player
+				chance of 15%:
+					give 1 xp to the player
+					play ORB_PICKUP at event-block with pitch 0		
+				drop 1 charcoal

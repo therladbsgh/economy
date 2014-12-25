@@ -1,0 +1,76 @@
+first steps:
+  name: First Steps
+  description: '&f<&e[NPC] &fLeft click me> Welcome to the Economy server! I will
+    serve as your guide. To begin, talk to Bob on the 3rd floor. Take the elevator
+    down (crouch on the iron block).'
+  flags: ACTIVE;
+  objectives:
+    '0':
+      type: NPC
+      index: 10
+      cancel: true
+  events:
+    '0':
+      type: MSG
+      occasion: -3
+      message: '&f<&e[NPC] &fBob> Great, you talked to me!'
+    '1':
+      type: QUEST
+      occasion: -3
+      quest: 1
+  ID: 0
+second step:
+  name: Second step
+  description: '&f<&e[NPC] &fBob> If you have read the &6rules &fand &6commands&f,
+    you should go talk to Carl now. He is in the 2nd floor.'
+  flags: ACTIVE;
+  objectives:
+    '0':
+      type: NPC
+      index: 12
+      cancel: true
+  conditions:
+    '0':
+      type: QUEST
+      quest: First Steps
+  events:
+    '0':
+      type: MSG
+      occasion: -3
+      message: '&f<&e[NPC] &fCarl> You just met Bob, right? Nice to meet you.'
+  ID: 1
+third step:
+  name: Third step
+  description: '&f<&e[NPC] &fCarl> If you are new, you need to select a &6job&f. I''ve
+    just given you 100 dollars. Go to the signs over there and get a job!'
+  flags: ACTIVE;
+  objectives:
+    '0':
+      type: NPC
+      prerequisites: '1'
+      index: 12
+      cancel: true
+    '1':
+      type: ACTION
+      block: '323'
+      click: 2
+      location: 399.00;89.00;48.00;world;0.00;0.00;
+      range: 8
+  conditions:
+    '0':
+      type: QUEST
+      quest: Second step
+  events:
+    '0':
+      type: MONEY
+      occasion: -1
+      amount: 150.0
+    '1':
+      type: MSG
+      occasion: -3
+      message: '&f<&e[NPC] &fCarl> Great, you''ve selected a &6job&f!'
+    '2':
+      type: MSG
+      occasion: 0
+      message: '&6Now that you''ve selected a job, go back to Carl.'
+  ID: 2

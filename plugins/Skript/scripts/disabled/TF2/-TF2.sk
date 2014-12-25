@@ -1,0 +1,1533 @@
+options:
+	Logo: &7[> &cTeam Fortress 2 &7<] &6
+	Version: 1.64 Beta
+	ScoutSpread: 0.05 to 0.12
+	Upward_ScoutSpread: 0.04 to 0.06
+	
+on script load:
+	set {tf2.logo} to "{@Logo}"
+	
+on damage:
+	victim is a fireball
+	cancel event
+			
+on rightclick:
+	player's tool is a book:
+		name of player's tool is "&cBook of &4&lHATSSSSSSSSSssssss!":
+			make player execute command "/tf2showhatmenu 1"
+		#name of player's tool is "&cBook of Matches":
+		#	set {_gn} to 0
+		#	loop {tf2.maplist::*}:
+		#		add 1 to {_gn}
+		#		set {_s} to "s;%{_gn}%;"
+		#		set {_i} to "i;empty map;"
+		#		set {_n} to "n;&cJoin &7- &4%loop-value%;"
+		#		set {_l} to "l;Player Amount: &a%{tf2.playeramount.%loop-value%}%||&c&k&l!!!&a Join! &c&k&l!!!&r;"
+		#		set {_c} to "c;playercmd %player% tf2 join %loop-value%"
+		#		{_menu} is set:
+		#			set {_menu} to "%{_menu}%;%{_s}%%{_i}%%{_n}%%{_l}%%{_c}%"
+		#		{_menu} isn't set:
+		#			set {_menu} to "%{_s}%%{_i}%%{_n}%%{_l}%%{_c}%"
+		#	set {_rows} to 1
+		#	set {_rows} to "%size of {tf2.maplist::*} / 9%" parsed as an integer
+		#	{_rows} is less than 1:
+		#		set {_rows} to 1
+		#	wait 1 tick
+		#	show "%{_menu}%" with {_rows} rows named "Join a TF2 Match" to player 	
+		name of player's tool is "&cReselect Class!":
+			{tf2.playerarena.%player%} is set:
+				set {_scout.name} to "&aScout"
+				set {_scout.lore} to "&2Offensive Class||Perks:||&a » Jump Boost 3||&a » x2 Speed||&a » Doesn't take fall damage||Debuffs:||&c » - 2 Hearts"
+				set {_soldier.name} to "&aSoldier"
+				set {_soldier.lore} to "&2Offensive Class||Perks:||&a » + 2 Hearts||&a » Blast Resistance||Debuffs:||&c » Slowness 1"
+				set {_pyro.name} to "&aPyro"
+				set {_pyro.lore} to "&2Offensive Class||Perks:||&a » + 2 Heart||&a » Immune to Fire||Debuffs:||&c » Can't Sprint"
+				set {_offsensive} to "s;1;i;dye:1;n;%{_scout.name}%;l;%{_scout.lore}%;c;tf2 a reselectclass %player% Scout;s;2;i;dye:2;n;%{_soldier.name}%;l;%{_soldier.lore}%;c;tf2 a reselectclass %player% Soldier;s;3;i;dye:3;n;%{_pyro.name}%;l;%{_pyro.lore}%;c;tf2 a reselectclass %player% Pyro;"
+				
+				set {_Demoman.name} to "&cDemoman"
+				set {_Demoman.lore} to "&4Defensive Class||Perks:||&a » Blast Resistance||&a » + 2 Hearts||Debuffs:||&c » None"
+				set {_Heavy.name} to "&cHeavy"
+				set {_Heavy.lore} to "&4Defensive Class||Perks:||&a » + 10 Hearts||&a » Resistance||Debuffs:||&c » Slowness 3||&c » Slower Swinging"
+				set {_Engineer.name} to "&cEngineer"
+				set {_Engineer.lore} to "&4Defensive Class||Perks:||&a » + 2 Heart"
+				set {_defensive} to "s;4;i;dye:4;n;%{_Demoman.name}%;l;%{_Demoman.lore}%;c;tf2 a reselectclass %player% Demoman;s;5;i;dye:5;n;%{_Heavy.name}%;l;%{_Heavy.lore}%;c;tf2 a reselectclass %player% Heavy;" #s;6;i;dye:6;n;%{_Engineer.name}%;l;%{_Engineer.lore}%;c;tf2 a reselectclass %player% Engineer;"
+				
+				set {_medic.name} to "&bMedic"
+				set {_medic.lore} to "&9Support Class||Perks:||&a » Speed 1"
+				set {_sniper.name} to "&bSniper"
+				set {_sniper.lore} to "&9Support Class||Perks:||&a » + 2 Heart"
+				set {_Spy.name} to "&bSpy"
+				set {_Spy.lore} to "&9Support Class||Perks:||&a » Can hide as any player"
+				set {_support} to "s;7;i;dye:7;n;%{_medic.name}%;l;%{_medic.lore}%;c;tf2 a reselectclass %player% Medic;s;8;i;dye:8;n;%{_sniper.name}%;l;%{_sniper.lore}%;c;tf2 a reselectclass %player% Sniper"#;s;9;i;dye:9;n;%{_Spy.name}%;l;%{_Spy.lore}%;c;tf2 a reselectclass %player% Spy"
+				
+				
+				show "%{_offsensive}%%{_defensive}%%{_support}%" with 1 rows named "&8         &8Select a Class!" to player
+		name of player's tool is "&cBook of Classes!":
+			{tf2.playerarena.%player%} is set:
+				set {_scout.name} to "&aScout"
+				set {_scout.lore} to "&2Offensive Class||Perks:||&a » Jump Boost 3||&a » x2 Speed||&a » Doesn't take fall damage||Debuffs:||&c » - 2 Hearts"
+				set {_soldier.name} to "&aSoldier"
+				set {_soldier.lore} to "&2Offensive Class||Perks:||&a » + 2 Hearts||&a » Blast Resistance||Debuffs:||&c » Slowness 1"
+				set {_pyro.name} to "&aPyro"
+				set {_pyro.lore} to "&2Offensive Class||Perks:||&a » + 2 Heart||&a » Immune to Fire||Debuffs:||&c » Can't Sprint"
+				set {_offsensive} to "s;1;i;dye:1;n;%{_scout.name}%;l;%{_scout.lore}%;c;tf2 a playerclass %player% Scout;s;2;i;dye:2;n;%{_soldier.name}%;l;%{_soldier.lore}%;c;tf2 a playerclass %player% Soldier;s;3;i;dye:3;n;%{_pyro.name}%;l;%{_pyro.lore}%;c;tf2 a playerclass %player% Pyro;"
+				
+				set {_Demoman.name} to "&cDemoman"
+				set {_Demoman.lore} to "&4Defensive Class||Perks:||&a » Blast Resistance||&a » + 2 Hearts||Debuffs:||&c » None"
+				set {_Heavy.name} to "&cHeavy"
+				set {_Heavy.lore} to "&4Defensive Class||Perks:||&a » + 10 Hearts||&a » Resistance||Debuffs:||&c » Slowness 3||&c » Slower Swinging"
+				set {_Engineer.name} to "&cEngineer"
+				set {_Engineer.lore} to "&4Defensive Class||Perks:||&a » + 2 Heart"
+				set {_defensive} to "s;4;i;dye:4;n;%{_Demoman.name}%;l;%{_Demoman.lore}%;c;tf2 a playerclass %player% Demoman;s;5;i;dye:5;n;%{_Heavy.name}%;l;%{_Heavy.lore}%;c;tf2 a playerclass %player% Heavy;" #s;6;i;dye:6;n;%{_Engineer.name}%;l;%{_Engineer.lore}%;c;tf2 a playerclass %player% Engineer;"
+				
+				set {_medic.name} to "&bMedic"
+				set {_medic.lore} to "&9Support Class||Perks:||&a » Speed 1"
+				set {_sniper.name} to "&bSniper"
+				set {_sniper.lore} to "&9Support Class||Perks:||&a » + 2 Heart"
+				set {_Spy.name} to "&bSpy"
+				set {_Spy.lore} to "&9Support Class||Perks:||&a » Can hide as any player"
+				set {_support} to "s;7;i;dye:7;n;%{_medic.name}%;l;%{_medic.lore}%;c;tf2 a playerclass %player% Medic;s;8;i;dye:8;n;%{_sniper.name}%;l;%{_sniper.lore}%;c;tf2 a playerclass %player% Sniper"#;s;9;i;dye:9;n;%{_Spy.name}%;l;%{_Spy.lore}%;c;tf2 a playerclass %player% Spy"
+				
+				
+				show "%{_offsensive}%%{_defensive}%%{_support}%" with 1 rows named "&8         &8Select a Class!" to player
+		name of player's tool is "&bBook of Locations":
+			{tf2.adminsetup.%player%} is set:
+				{tf2.map.%{tf2.adminsetup.%player%}%} is set:
+					{tf2.gametype.%{tf2.adminsetup.%player%}%} is "koth":
+						set {_lobby.name} to "&aSet Lobby Location"
+						set {_lobby.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_lobby.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% lobby"
+						set {_Hill.name} to "&aSet Hill Location"
+						set {_Hill.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_Hill.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% Hill"
+						set {_bspawn.name} to "&bSet Blue Spawn"
+						set {_bspawn.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_bspawn.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% bspawn"
+						set {_rspawn.name} to "&cSet Red Spawn"
+						set {_rspawn.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_rspawn.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% rspawn"
+						{tf2.location.lobby.%{tf2.adminsetup.%player%}%} is set:
+							set {_lobby.lore} to "&6You've set this location to &c%{tf2.location.lobby.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						{tf2.location.hilllocation.%{tf2.adminsetup.%player%}%} is set:
+							set {_hill.lore} to "&6You've set this location to &c%{tf2.location.hilllocation.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%} is set:
+							set {_bspawn.lore} to "&6You've set this location to &c%{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						{tf2.location.redspawn.%{tf2.adminsetup.%player%}%} is set:
+							set {_rspawn.lore} to "&6You've set this location to &c%{tf2.location.redspawn.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						set {_lobbytot} to "s;5;i;grass;n;%{_hill.name}%;l;%{_hill.lore}%;c;%{_hill.cmd}%;s;1;i;beacon;n;%{_lobby.name}%;l;%{_lobby.lore}%;c;%{_lobby.cmd}%;s;9;i;paper;n;&6Reset Game Type;l;&6Resets the game type for this map||&6allowing you to reselect it!;c;playercmd %player% tf2 a resetgametype %{tf2.adminsetup.%player%}%;"
+						set {_bluetot} to "s;3;i;blue stained clay;n;%{_bspawn.name}%;l;%{_bspawn.lore}%;c;%{_bspawn.cmd}%;"
+						set {_redtot} to "s;7;i;red stained clay;n;%{_rspawn.name}%;l;%{_rspawn.lore}%;c;%{_rspawn.cmd}%;"
+						wait 1 tick
+						show "%{_lobbytot}%%{_bluetot}%%{_redtot}%" with 1 rows named "Select Location - &l%{tf2.adminsetup.%player%}%" to player
+						stop
+					{tf2.gametype.%{tf2.adminsetup.%player%}%} is "tdm":
+						set {_lobby.name} to "&aSet Lobby Location"
+						set {_lobby.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_lobby.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% lobby"
+						set {_bspawn.name} to "&bSet Blue Spawn"
+						set {_bspawn.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_bspawn.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% bspawn"
+						set {_rspawn.name} to "&cSet Red Spawn"
+						set {_rspawn.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_rspawn.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% rspawn"
+						{tf2.location.lobby.%{tf2.adminsetup.%player%}%} is set:
+							set {_lobby.lore} to "&6You've set this location to &c%{tf2.location.lobby.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%} is set:
+							set {_bspawn.lore} to "&6You've set this location to &c%{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						{tf2.location.redspawn.%{tf2.adminsetup.%player%}%} is set:
+							set {_rspawn.lore} to "&6You've set this location to &c%{tf2.location.redspawn.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						set {_lobbytot} to "s;1;i;beacon;n;%{_lobby.name}%;l;%{_lobby.lore}%;c;%{_lobby.cmd}%;s;9;i;paper;n;&6Reset Game Type;l;&6Resets the game type for this map||&6allowing you to reselect it!;c;playercmd %player% tf2 a resetgametype %{tf2.adminsetup.%player%}%;"
+						set {_bluetot} to "s;4;i;blue stained clay;n;%{_bspawn.name}%;l;%{_bspawn.lore}%;c;%{_bspawn.cmd}%;"
+						set {_redtot} to "s;7;i;red stained clay;n;%{_rspawn.name}%;l;%{_rspawn.lore}%;c;%{_rspawn.cmd}%;"
+						wait 1 tick
+						show "%{_lobbytot}%%{_bluetot}%%{_redtot}%" with 1 rows named "Select Location - &l%{tf2.adminsetup.%player%}%" to player
+						stop
+					{tf2.gametype.%{tf2.adminsetup.%player%}%} is "cti":
+						set {_lobby.name} to "&aSet Lobby Location"
+						set {_lobby.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_lobby.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% lobby"
+						set {_bintel.name} to "&bSet Blue Intel"
+						set {_bintel.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_bintel.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% bintel"
+						set {_rintel.name} to "&cSet Red Intel"
+						set {_rintel.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_rintel.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% rintel"
+						set {_bspawn.name} to "&bSet Blue Spawn"
+						set {_bspawn.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_bspawn.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% bspawn"
+						set {_rspawn.name} to "&cSet Red Spawn"
+						set {_rspawn.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_rspawn.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% rspawn"
+						{tf2.location.lobby.%{tf2.adminsetup.%player%}%} is set:
+							set {_lobby.lore} to "&6You've set this location to &c%{tf2.location.lobby.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						{tf2.location.blueintel.%{tf2.adminsetup.%player%}%} is set:
+							set {_bintel.lore} to "&6You've set this location to &c%{tf2.location.blueintel.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						{tf2.location.redintel.%{tf2.adminsetup.%player%}%} is set:
+							set {_rintel.lore} to "&6You've set this location to &c%{tf2.location.redintel.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%} is set:
+							set {_bspawn.lore} to "&6You've set this location to &c%{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						{tf2.location.redspawn.%{tf2.adminsetup.%player%}%} is set:
+							set {_rspawn.lore} to "&6You've set this location to &c%{tf2.location.redspawn.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						set {_lobbytot} to "s;1;i;beacon;n;%{_lobby.name}%;l;%{_lobby.lore}%;c;%{_lobby.cmd}%;s;9;i;paper;n;&6Reset Game Type;l;&6Resets the game type for this map||&6allowing you to reselect it!;c;playercmd %player% tf2 a resetgametype %{tf2.adminsetup.%player%}%;"
+						set {_bluetot} to "s;3;i;blue wool;n;%{_bintel.name}%;l;%{_bintel.lore}%;c;%{_bintel.cmd}%;s;4;i;blue stained clay;n;%{_bspawn.name}%;l;%{_bspawn.lore}%;c;%{_bspawn.cmd}%;"
+						set {_redtot} to "s;6;i;red wool;n;%{_rintel.name}%;l;%{_rintel.lore}%;c;%{_rintel.cmd}%;s;7;i;red stained clay;n;%{_rspawn.name}%;l;%{_rspawn.lore}%;c;%{_rspawn.cmd}%;"
+						wait 1 tick
+						show "%{_lobbytot}%%{_bluetot}%%{_redtot}%" with 1 rows named "Select Location - &l%{tf2.adminsetup.%player%}%" to player
+						stop
+						
+						
+					{tf2.gametype.%{tf2.adminsetup.%player%}%} is "cap":
+						set {_lobby.name} to "&aSet Lobby Location"
+						set {_lobby.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_lobby.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% lobby"
+						set {_bintel.name} to "&bSet Capture Point 1"
+						set {_bintel.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_bintel.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% cp1"
+						set {_rintel.name} to "&bSet Capture Point 2"
+						set {_rintel.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_rintel.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% cp2"
+						set {_bspawn.name} to "&bSet Blue Spawn"
+						set {_bspawn.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_bspawn.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% bspawn"
+						set {_rspawn.name} to "&cSet Red Spawn"
+						set {_rspawn.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						set {_rspawn.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% rspawn"
+						{tf2.location.lobby.%{tf2.adminsetup.%player%}%} is set:
+							set {_lobby.lore} to "&6You've set this location to &c%{tf2.location.lobby.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						{tf2.location.cp1.%{tf2.adminsetup.%player%}%} is set:
+							set {_bintel.lore} to "&6You've set this location to &c%{tf2.location.cp1.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						{tf2.location.cp2.%{tf2.adminsetup.%player%}%} is set:
+							set {_rintel.lore} to "&6You've set this location to &c%{tf2.location.cp2.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%} is set:
+							set {_bspawn.lore} to "&6You've set this location to &c%{tf2.location.bluespawn-1.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						{tf2.location.redspawn.%{tf2.adminsetup.%player%}%} is set:
+							set {_rspawn.lore} to "&6You've set this location to &c%{tf2.location.redspawn-1.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						set {_lobbytot} to "s;1;i;beacon;n;%{_lobby.name}%;l;%{_lobby.lore}%;c;%{_lobby.cmd}%;s;9;i;paper;n;&6Reset Game Type;l;&6Resets the game type for this map||&6allowing you to reselect it!;c;playercmd %player% tf2 a resetgametype %{tf2.adminsetup.%player%}%;"
+						set {_bluetot} to "s;3;i;obsidian;n;%{_bintel.name}%;l;%{_bintel.lore}%;c;%{_bintel.cmd}%;s;4;i;blue wool;n;%{_bspawn.name}%;l;%{_bspawn.lore}%;c;%{_bspawn.cmd}%;"
+						set {_redtot} to "s;6;i;obsidian;n;%{_rintel.name}%;l;%{_rintel.lore}%;c;%{_rintel.cmd}%;s;7;i;red wool;n;%{_rspawn.name}%;l;%{_rspawn.lore}%;c;%{_rspawn.cmd}%;"
+						set {_part1total} to "%{_lobbytot}%%{_bluetot}%%{_redtot}%"
+						
+						#set {_bintel.name} to "&bSet Capture Point 2-1"
+						#set {_bintel.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						#set {_bintel.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% cp1-2"
+						#set {_rintel.name} to "&bSet Capture Point 2-2"
+						#set {_rintel.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						#set {_rintel.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% cp2-2"
+						#set {_bspawn.name} to "&bSet Blue Spawn 2-2"
+						#set {_bspawn.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						#set {_bspawn.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% bspawn-2"
+						#set {_rspawn.name} to "&cSet Red Spawn 2-2"
+						#set {_rspawn.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						#set {_rspawn.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% rspawn-2"
+						#{tf2.location.blueintel.%{tf2.adminsetup.%player%}%} is set:
+						#	set {_bintel.lore} to "&6You've set this location to &c%{tf2.location.cp2-1.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						#{tf2.location.redintel.%{tf2.adminsetup.%player%}%} is set:
+						#	set {_rintel.lore} to "&6You've set this location to &c%{tf2.location.cp2-2.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						#{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%} is set:
+						#	set {_bspawn.lore} to "&6You've set this location to &c%{tf2.location.bluespawn-2.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						#{tf2.location.redspawn.%{tf2.adminsetup.%player%}%} is set:
+						#	set {_rspawn.lore} to "&6You've set this location to &c%{tf2.location.redspawn-2.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						#set {_bluetot} to "s;12;i;blue wool;n;%{_bintel.name}%;l;%{_bintel.lore}%;c;%{_bintel.cmd}%;s;13;i;obsidian;n;%{_bspawn.name}%;l;%{_bspawn.lore}%;c;%{_bspawn.cmd}%;"
+						#set {_redtot} to "s;15;i;red wool;n;%{_rintel.name}%;l;%{_rintel.lore}%;c;%{_rintel.cmd}%;s;16;i;obsidian;n;%{_rspawn.name}%;l;%{_rspawn.lore}%;c;%{_rspawn.cmd}%;"
+						#set {_part2total} to "%{_bluetot}%%{_redtot}%"
+						#
+						#set {_bintel.name} to "&bSet Capture Point 3-1"
+						#set {_bintel.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						#set {_bintel.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% cp1-3"
+						#set {_rintel.name} to "&bSet Capture Point 3-2"
+						#set {_rintel.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						#set {_rintel.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% cp2-3"
+						#set {_bspawn.name} to "&bSet Blue Spawn 3-3"
+						#set {_bspawn.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						#set {_bspawn.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% bspawn-3"
+						#set {_rspawn.name} to "&cSet Red Spawn 3-3"
+						#set {_rspawn.lore} to "&6You haven't set this location yet!||&6Click to set to your location!"
+						#set {_rspawn.cmd} to "playercmd %player% tf2 a setlocation %{tf2.adminsetup.%player%}% rspawn-3"
+						#{tf2.location.blueintel.%{tf2.adminsetup.%player%}%} is set:
+						#	set {_bintel.lore} to "&6You've set this location to &c%{tf2.location.cp3-1.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						#{tf2.location.redintel.%{tf2.adminsetup.%player%}%} is set:
+						#	set {_rintel.lore} to "&6You've set this location to &c%{tf2.location.cp3-2.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						#{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%} is set:
+						#	set {_bspawn.lore} to "&6You've set this location to &c%{tf2.location.bluespawn-3.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						#{tf2.location.redspawn.%{tf2.adminsetup.%player%}%} is set:
+						#	set {_rspawn.lore} to "&6You've set this location to &c%{tf2.location.redspawn-3.%{tf2.adminsetup.%player%}%}%||&6Click to reset it to your location!"
+						#set {_bluetot} to "s;21;i;blue wool;n;%{_bintel.name}%;l;%{_bintel.lore}%;c;%{_bintel.cmd}%;s;22;i;obsidian;n;%{_bspawn.name}%;l;%{_bspawn.lore}%;c;%{_bspawn.cmd}%;"
+						#set {_redtot} to "s;24;i;red wool;n;%{_rintel.name}%;l;%{_rintel.lore}%;c;%{_rintel.cmd}%;s;25;i;obsidian;n;%{_rspawn.name}%;l;%{_rspawn.lore}%;c;%{_rspawn.cmd}%;"
+						#set {_part3total} to "%{_bluetot}%%{_redtot}%"
+						
+						wait 1 tick
+						show "%{_part1total}%" with 1 rows named "Select Location - &l%{tf2.adminsetup.%player%}%" to player
+						stop
+
+on physics:
+	event-block is ladder or sign or rail:
+		cancel event
+		stop
+
+# No more Signs
+
+# No more
+# Subroutines
+
+
+	
+on rightclick:
+	player's tool is an enchanted book:
+		name of player's tool is "&b&lVote for Next Map!":
+			{tf2.mapvoting} is true
+			set {_map1} to "s;1;i;map;n;&b&lVote: &3&l%{tf2.votemap.1}%;l;Click to vote!;c;playercmd %player% mapvote 1;"
+			set {_map2} to "s;3;i;map;n;&b&lVote: &3&l%{tf2.votemap.2}%;l;Click to vote!;c;playercmd %player% mapvote 2;"
+			set {_map3} to "s;5;i;map;n;&b&lVote: &3&l%{tf2.votemap.3}%;l;Click to vote!;c;playercmd %player% mapvote 3;"
+			set {_map4} to "s;7;i;map;n;&b&lVote: &3&l%{tf2.votemap.4}%;l;Click to vote!;c;playercmd %player% mapvote 4;"
+			set {_map5} to "s;9;i;map;n;&b&lVote: &3&l%{tf2.votemap.5}%;l;Click to vote!;c;playercmd %player% mapvote 5"
+			wait 1 tick
+			show "%{_map1}%%{_map2}%%{_map3}%%{_map4}%%{_map5}%" with 1 rows named "&b&lVote for Next Map!" to player
+	
+sub "tf2-startvoting":
+	set {_mapno} to 0
+	#set {_mapamount} to "%size of {tf2.maplist::*}%" parsed as an integer
+	#{_mapamount} is more than 5:
+	set {_mapamount} to 5
+	add an enchanted book named "&b&lVote for Next Map!" to all players
+	loop {tf2.maplist::*}:
+		"%loop-value%" doesn't contain "-"
+		add loop-value to {_validmaps::*}
+	loop {_mapamount} times:
+		add 1 to {_mapno}
+		set {tf2.votemap.%{_mapno}%} to "%random element out of {_validmaps::*}%"
+		set {tf2.mapvotes.%{_mapno}%} to 0
+		set {_map2no} to 0
+		loop {_mapamount} times:
+			add 1 to {_map2no}
+			{_mapno} isn't {_map2no}:
+				{tf2.votemap.%{_mapno}%} is {_map.%{_map2no}%}:
+					set {_newmap} to "%random element out of {_validmaps::*}%"
+					{_newmap} isn't {tf2.votemap.%{_mapno}%}:
+						set {tf2.votemap.%{_mapno}%} to "%random element out of {_validmaps::*}%"
+						
+			
+	set {tf2.mapvoting} to true
+	loop all players:
+		set {_cp} to "%loop-player%" parsed as a player
+		delete {tf2.votedformap.%{_cp}%}
+		display board named "&aVote with &3/mapvote [MapID]" to {_cp}
+		set {_mapno} to 0
+		loop {_mapamount} times:
+			add 1 to {_mapno}
+			make score "&3##%{_mapno}% &e%{tf2.votemap.%{_mapno}%}%" in board of {_cp} to {_mapno}
+		move display of {_cp} to sidebar
+	set {_time} to 60
+	wait 1 second
+	while {tf2.mapvoting} is true:
+		remove 1 from {_time}
+		loop all players:
+			set {_cp} to "%loop-player%" parsed as a player
+			{tf2.votedformap.%{_cp}%} is set:
+				display board named "&aThanks for Voting!" to {_cp}
+				set {_mapno} to 0
+				loop {_mapamount} times:
+					add 1 to {_mapno}
+					{tf2.votedformap.%{_cp}%} is {_mapno}:
+						make score "&d##%{_mapno}% &5%{tf2.votemap.%{_mapno}%}%" in board of {_cp} to {tf2.mapvotes.%{_mapno}%}
+					{tf2.votedformap.%{_cp}%} isn't {_mapno}:
+						make score "&3##%{_mapno}% &e%{tf2.votemap.%{_mapno}%}%" in board of {_cp} to {tf2.mapvotes.%{_mapno}%}
+			{tf2.votedformap.%{_cp}%} isn't set:
+				set {_mapno} to 0
+				display board named "&aVote with &3/mapvote [MapID]" to {_cp}
+				loop {_mapamount} times:
+					add 1 to {_mapno}
+					make score "&3##%{_mapno}% &e%{tf2.votemap.%{_mapno}%}%" in board of {_cp} to {tf2.mapvotes.%{_mapno}%}
+			make score "&aVoting ends in" in board of {_cp} to {_time}
+			move display of {_cp} to sidebar
+		{_time} is 0:
+			set {tf2.mapvoting} to false
+		wait 1 second
+	set {_winner} to 1
+	set {_mapno} to 0
+	loop {_mapamount} times:
+		add 1 to {_mapno}
+		{tf2.mapvotes.%{_mapno}%} is more than {tf2.mapvotes.%{_winner}%}:
+			set {_winner} to {_mapno}
+	loop all players:
+		set {_cp} to "%loop-player%" parsed as a player
+		display board named "&3Winner is &a%{tf2.votemap.%{_winner}%}%" to {_cp}
+		make score "&eVotes: &6%{tf2.mapvotes.%{_winner}%}%" in board of {_cp} to 0
+		move display of {_cp} to sidebar
+		remove all enchanted books from loop-player
+	broadcast "%{tf2.logo}%The winner is &a%{tf2.votemap.%{_winner}%}%!"
+	broadcast "&7&o*** Now loading map &c&o%{tf2.votemap.%{_winner}%}%"
+	set {tf2.currentmap} to {tf2.votemap.%{_winner}%}
+
+	
+command /mapvote [<integer>]:
+	aliases: tf2:mapvote
+	trigger:
+		{tf2.mapvoting} is false:
+			message "%{tf2.logo}%You cannot vote at this time!"
+			stop
+		{tf2.votedformap.%player%} is set:
+			message "%{tf2.logo}%You've already voted for &e%{tf2.votemap.%{tf2.votedformap.%player%}%}%"
+			stop
+		arg isn't set:
+			message "%{tf2.logo}%Specify a map ID!"
+			stop
+		arg isn't 1 or 2 or 3 or 4 or 5:
+			message "%{tf2.logo}%Unknown Map ID!"
+			stop
+		set {tf2.votedformap.%player%} to arg
+		add 1 to {tf2.mapvotes.%arg%}
+		message "%{tf2.logo}%You voted for &e%{tf2.votemap.%arg%}%&6!"
+		stop
+	
+
+	
+#startfold Full Start
+	
+command /unloadall:
+	aliases: tf2:unloadall
+	trigger:
+		loop all worlds:
+			loop-world isn't "TF2Lobby" or "2Fort" or "Dustbowl":
+				execute console command "/mvunload %loop-world%"
+				wait 4 ticks
+				execute console command "/mvconfirm"
+				execute console command "/lagg unloadchunks"
+				execute console command "/lagg gc"
+	
+
+
+		
+
+		
+on damage:
+	victim is a iron golem or powered creeper:
+		cancel event
+		attacker is a player
+		spawn 15 of particle red dust:0 offset at 1, 1, 1 at victim
+		
+on entity target:
+	cancel event
+		
+#endfold
+		
+
+		
+#command /testwalls <text> [<boolean = true>]:
+#	trigger:
+#		set {_map} to arg 1
+#		set {testwalls} to arg 2
+#		while {testwalls} is true:
+#			loop 10 times:
+#				set {_region.blu} to "TF2-%{_map}%-BluEntrance" parsed as a region
+#				set {_region.red} to "TF2-%{_map}%-RedEntrance" parsed as a region
+#				loop all blocks in the region {_region.red}:
+#					loop-block is air
+#					set loop-block to red wool
+#				loop all blocks in the region {_region.blu}:
+#					loop-block is air
+#					set loop-block to blue wool
+#				add 1 to {_wall}
+#				set {_region.blu} to "TF2-%{_map}%-BluEntrance-%{_wall}%" parsed as a region
+#				set {_region.red} to "TF2-%{_map}%-RedEntrance-%{_wall}%" parsed as a region
+#				set {_region.wall} to "TF2-%{_map}%-Wall-%{_wall}%" parsed as a region
+#				loop all blocks in the region {_region.wall}:
+#					loop-block is air
+#					set loop-block to an emerald block
+#					spawn 15 of red dust data 0 offset with 0.4, 0.4, 0.4 at loop-block
+#				loop all blocks in the region {_region.red}:
+#					loop-block is air
+#					set loop-block to red wool
+#				loop all blocks in the region {_region.blu}:
+#					loop-block is air
+#					set loop-block to blue wool
+#			wait 1 second
+#		loop 10 times:
+#			set {_region.blu} to "TF2-%{_map}%-BluEntrance" parsed as a region
+#			set {_region.red} to "TF2-%{_map}%-RedEntrance" parsed as a region
+#			loop all blocks in the region {_region.red}:
+#				loop-block is red wool
+#				set loop-block to air
+#				spawn falling red wool at loop-block
+#			loop all blocks in the region {_region.blu}:
+#				loop-block is blue wool
+#				set loop-block to air
+#				spawn falling blue wool at loop-block
+#			add 1 to {_wall}
+#			set {_region.blu} to "TF2-%{_map}%-BluEntrance-%{_wall}%" parsed as a region
+#			set {_region.red} to "TF2-%{_map}%-RedEntrance-%{_wall}%" parsed as a region
+#			set {_region.wall} to "TF2-%{_map}%-Wall-%{_wall}%" parsed as a region
+#			loop all blocks in the region {_region.wall}:
+#				loop-block is an emerald block
+#				set loop-block to air
+#				spawn falling emerald block at loop-block
+#			loop all blocks in the region {_region.red}:
+#				loop-block is red wool
+#				set loop-block to air
+#				spawn falling red wool at loop-block
+#			loop all blocks in the region {_region.blu}:
+#				loop-block is blue wool
+#				set loop-block to air
+#				spawn falling blue wool at loop-block
+	
+		
+#command /test <text>:
+#	trigger:
+#		set {_map} to arg
+#		loop {tf2.maplist::*}:
+#			set {_testmap} to {_map}
+#			replace all "-1" and "-2" and "-3" and "-4" and "-5" with "" in {_testmap}
+#			"%loop-value%" contains "%{_testmap}%":
+#				loop-value isn't {_map}
+#				add loop-value to {_nextmaps::*}
+#				
+#		message "%{_nextmaps::*}%"
+#		size of {_nextmaps::*} is more than or equal to 1:
+#			{_map} contains "-4":
+#				loop {_nextmaps::*}:
+#					"%loop-value%" contains "-5":
+#						set {_nextmap} to loop-value
+#						exit loop
+#			{_map} contains "-3":
+#				loop {_nextmaps::*}:
+#					"%loop-value%" contains "-4":
+#						set {_nextmap} to loop-value
+#						exit loop
+#			{_map} contains "-2":
+#				loop {_nextmaps::*}:
+#					"%loop-value%" contains "-3":
+#						set {_nextmap} to loop-value
+#						exit loop
+#			{_map} contains "-1":
+#				loop {_nextmaps::*}:
+#					"%loop-value%" contains "-2":
+#						set {_nextmap} to loop-value
+#						exit loop
+#			{_map} doesn't contain "-1" or "-2" or "-3" or "-4":
+#				loop {_nextmaps::*}:
+#					"%loop-value%" contains "-1":
+#						set {_nextmap} to loop-value
+#						exit loop
+#		message "%{_nextmap}%"
+		
+
+		
+on click with a chest:
+	name of player's tool is "&aLucky Dip!":
+		
+		player's gamemode isn't creative:
+			remove 1 chest named "&aLucky Dip!" from player
+			remove 1 from {tf2.luckydipamount.%player%}
+		chance of 80%:
+			loop {tf2.hatlist::*}:
+				{tf2.playerhashats.%player%.%Loop-value%} isn't set:
+					chance of {tf2.hatproperties.%loop-value%.chance}%:
+						set {tf2.playerhashats.%player%.%Loop-value%} to true
+						message "%{tf2.logo}%You unlocked the &e%loop-value%&6 hat!"
+						play level up at {_cp} with pitch 1
+						pop burst colored green at player
+						spawn 15 of particle happy villager:0 offset at 0.4, 0.4, 0.4 at player's head
+						play villager yes at player with pitch 1
+						stop
+		message "%{tf2.logo}%You weren't lucky enough this time!"
+		play villager no at player with pitch 1
+		
+command /tf2allhats [<text>]:
+	trigger:
+		loop {tf2.hatlist::*}:
+			delete {tf2.playerhashats.%player%.%Loop-value%}
+		message "%{tf2.logo}%All hats have been removed from you! Sucka!!!"
+		
+
+
+# No more
+# Ways of leaving
+
+on block land:
+	cancel event
+	spawn effect "STEP_SOUND" at event-location with data id of event-item
+	stop
+	#loop {tf2.maplist::*}:
+	#	set {_map} to "%Loop-value%"
+	#	set {_region.blu} to "TF2-%{_map}%-BluEntrance" parsed as a region
+	#	set {_region.red} to "TF2-%{_map}%-RedEntrance" parsed as a region
+	#	loop blocks in region {_region.blu}:
+	#		location of loop-block is event-location:
+	#			cancel event
+	#			stop
+	#	loop blocks in region {_region.red}:
+	#		location of loop-block is event-location:
+	#			cancel event
+	#			stop
+	#{tf2.blockblownup.%event-location%} is set:
+	#	cancel event
+	#	stop
+	#distance between event-location and {tf2.fallingblockoriginalposition.%event-entity%} is less than 6:
+	#	cancel event
+	#	stop
+	#block at {_loc} isn't air:
+	#	cancel event
+	#	stop
+	#set {tf2.ignoreexplosion.%{_loc}%} to true
+	#wait 1 tick
+	#spawn 15 of blockcrack_%id of block at {_loc}%_%data value of block at {_loc}% data 0 at {_loc} offset by 0.3
+	#wait 3 seconds
+	#set block at {_loc} to air
+	#delete {tf2.ignoreexplosion.%{_loc}%}
+
+on command "/tf2 leave":
+	cancel event
+	connect player to "grid"
+	stop
+
+on quit:
+	invoke "tf2-leavemap" from player
+	
+# No More
+# Class Related
+
+# Spy
+
+on rightclick:
+	"%name of player's tool%" contains "&aInvis-Watch":
+		level of player is more than 0:
+			{tf2.invis.%player%} is set:
+				delete {tf2.invis.%player%}
+				stop
+			{tf2.invis.%player%} isn't set:
+				delete {tf2.disguise.%player%}
+				wait 3 ticks
+				set {tf2.invis.%player%} to true
+				
+				while {tf2.invis.%player%} is true:
+					level of player is more than 0:
+						remove 1 from level of player
+						apply invisibility to player for 2 seconds
+						set helmet of player to air
+						set chestplate of player to air
+						set leggings of player to air
+						set boots of player to air
+					level of player is 0:
+						delete {tf2.invis.%player%}
+					wait 1 second
+				remove invisibility from player
+				set {_health} to player's health
+				set {_lvl} to player's level
+				wait 1 tick
+				set player's maximum health to 10
+				invoke "tf2-items" from  player
+				wait 10 tick
+				set player's level to {_lvl}
+				set player's health to {_health}
+				while {tf2.invis.%player%} isn't set:
+					wait 2 seconds
+					{tf2.class.%player%} is "Spy"
+					level of player is less than 30:
+						add 1 to level of player
+	"%name of player's tool%" contains "&aDisguises":
+		wait 1 tick
+		set {_scout.name} to "&aScout"
+		set {_scout.lore} to "&2Offensive Class||||&a Disguise as a Scout"
+		set {_soldier.name} to "&aSoldier"
+		set {_soldier.lore} to "&2Offensive Class||||&a Disguise as a Soldier"
+		set {_pyro.name} to "&aPyro"
+		set {_pyro.lore} to "&2Offensive Class||||&a Disguise as a Pyro"
+		set {_offsensive} to "s;1;i;dye:1;n;%{_scout.name}%;l;%{_scout.lore}%;c;tf2subroutine tf2-spydisguise %player% Scout;s;2;i;dye:2;n;%{_soldier.name}%;l;%{_soldier.lore}%;c;tf2subroutine tf2-spydisguise %player% Soldier;s;3;i;dye:3;n;%{_pyro.name}%;l;%{_pyro.lore}%;c;tf2subroutine tf2-spydisguise %player% Pyro;"
+				
+		set {_Demoman.name} to "&cDemoman"
+		set {_Demoman.lore} to "&4Defensive Class||||&a Disguise as a Demoman"
+		set {_Heavy.name} to "&cHeavy"
+		set {_Heavy.lore} to "&4Defensive Class||||&a Disguise as a Heavy"
+		set {_Engineer.name} to "&cEngineer"
+		set {_Engineer.lore} to "&4Defensive Class|||||&a Disguise as a Engineer"
+		set {_defensive} to "s;4;i;dye:4;n;%{_Demoman.name}%;l;%{_Demoman.lore}%;c;tf2subroutine tf2-spydisguise %player% Demoman;s;5;i;dye:5;n;%{_Heavy.name}%;l;%{_Heavy.lore}%;c;tf2subroutine tf2-spydisguise %player% Heavy;s;6;i;dye:6;n;%{_Engineer.name}%;l;%{_Engineer.lore}%;c;tf2subroutine tf2-spydisguise %player% Engineer;"
+				
+		set {_medic.name} to "&bMedic"
+		set {_medic.lore} to "&9Support Class||||&a Disguise as a Medic"
+		set {_sniper.name} to "&bSniper"
+		set {_sniper.lore} to "&9Support Class||||&a Disguise as a Sniper"
+		set {_Spy.name} to "&bSpy"
+		set {_Spy.lore} to "&9Support Class||||&a Disguise as a Spy"
+		set {_support} to "s;7;i;dye:7;n;%{_medic.name}%;l;%{_medic.lore}%;c;tf2subroutine tf2-spydisguise %player% Medic;s;8;i;dye:8;n;%{_sniper.name}%;l;%{_sniper.lore}%;c;tf2subroutine tf2-spydisguise %player% Sniper;s;9;i;dye:9;n;%{_Spy.name}%;l;%{_Spy.lore}%;c;tf2subroutine tf2-spydisguise %player% Spy"
+				
+				
+		show "%{_offsensive}%%{_defensive}%%{_support}%" with 1 rows named "&8         &8Select a Disguise!" to player
+
+command /tf2:subroutine [<text>] [<text>] [<text>]:
+	aliases: tf2subroutine
+	executable by: console
+	trigger:
+		arg 2 isn't set:
+			invoke "%arg 1%"
+			stop
+		arg 3 is set:
+			invoke "%arg 1%" from "%arg 2%" and "%arg 3%"
+			stop
+		arg 2 is set:
+			invoke "%arg 1%" from "%arg 2%"
+			stop
+
+
+
+
+
+# Scout
+
+#on player flight toggle:
+#	{tf2.class.%event-player%} is "Scout":
+#		#disallow the event-player to fly
+#		cancel event
+#		set the level progress of event-player to 0
+#		push the event-player upwards at speed 0.4
+#		play raw sound "mob.enderdragon.wings at the event-player with pitch 0.6 volume 1
+#		loop 9 times:
+#			{tf2.class.%event-player%} isn't "Scout":
+#				exit loop
+#			add 0.09 to the event-player's level progress
+#			wait 5 ticks
+#		set the event-player's level progress to 0.99
+#		#allow the event-player to fly
+#		set the event-player's level to 0
+
+# Soldier
+
+on rightclick:
+	{tf2.class.%player%} is "Soldier":
+		player's tool is a iron hoe:
+			set {_name} to "%name of player's tool%"
+			{_name} contains "Rocket Launcher":
+				level progress of player is more than 0.98:
+					make player shoot a fireball at speed 2
+					play chicken egg pop at player with pitch 0
+					set level progress of player to 0.00
+					loop 9 times:
+						loop 11 times:
+							increase level progress of player by 0.01
+							wait 1 tick
+					stop
+				message "%{tf2.logo}%You cannot shoot that fast!"
+				
+on projectile hit:
+	projectile is a fireball:
+		{tf2.class.%shooter%} is "Soldier":
+			spawn 50 of particle large explode:0 offset at 1, 1, 1 at projectile
+			spawn 100 of particle cloud:1 offset at 1, 1, 1 at projectile
+			loop all entities in radius 6 of block at projectile:
+				loop-entity is a player:
+					{tf2.team.%loop-entity%} isn't {tf2.team.%shooter%}:
+						set {_dmg} to a random integer between 5 and 7
+						distance between loop-entity and projectile is less than 2:
+							set {_dmg} to random integer between 10 and 12
+						damage the loop-entity by {_dmg}
+
+# Engineer
+
+on rightclick:
+	{tf2.class.%player%} is "Engineer":
+		player's tool is a book:
+			name of player's tool is "&aConstruction PDA":
+				set {_turret.status} to "Placed"
+				set {_turret.subroutine} to "invoke tf2-engineer-checkturret %player%"
+				set {_tp1.status} to "Placed"
+				set {_tp2.status} to "Placed"
+				set {_tp2.subroutine} to "invoke tf2-engineer-checkplacetp2 %player%"
+				set {_vm.status} to "Placed"
+				set {_vm.subroutine} to "invoke tf2-engineer-checkplacevm %player%"
+				{tf2.engineer.turretlocation.%player%} isn't set:
+					set {_turret.status} to "Not Placed"
+				{tf2.engineer.wmlocation.%player%} isn't set:
+					set {_vm.status} to "Not Placed"
+				{tf2.engineer.tp1location.%player%} isn't set:
+					set {_tp1.status} to "Not Placed"
+				{tf2.engineer.tp2location.%player%} isn't set:
+					set {_tp2.status} to "Not Placed"
+				set {_turret.name} to "&6Turret"
+				set {_turret.lore} to "Cost: &e50 Metal||Status: &a%{_turret.status}%"
+				show "s;1;i;dispenser;n;%{_turret.name}%;l;%{_turret.lore}%;c;%{_turret.subroutine}%" with 1 rows named "Contruction PDA" to player
+
+command /invoke [<text = "">] [<text = "">] [<text = "">] [<text = "">] [<text = "">] [<text = "">]:
+	executable by: console
+	trigger:
+		invoke "%arg 1%" from "%arg 2%" and "%arg 3%" and "%arg 4%" and "%arg 5%" and "%arg 6%"
+		log "Invoked Subroutine %arg 1% from %arg 2% and %arg 3% and %arg 4% and %arg 5% and %arg 6%" to "server.log"
+
+
+	
+on entity target:
+	event-entity is a skeleton:
+		vehicle of event-entity is a villager
+		target of event-entity is a player
+		set {_name} to "%name of vehicle of event-entity%"
+		cancel event
+		#{tf2.team.%target of event-entity%} isn't {_name}:
+		distance between target of event-entity and event-entity is less than 15
+		{tf2.turretcooldown.%event-entity%} isn't set:
+			make event-entity shoot a snowball at speed 2
+			set {_loc} to location of target of event-entity
+			#make shot snowball pathfind to {_loc} at speed 2
+			play EXPLODE at event-entity with pitch 2
+			spawn 5 of particle smoke:0 offset at 0.3, 0.3, 0.3 at vehicle of event-entity
+			set {tf2.turretcooldown.%event-entity%} to true
+			loop 20 times:
+				#spawn 15 of smoke data offset with 0.2, 0.2, 0.2 at location of shot snowball 
+				wait 1 tick
+			delete {tf2.turretcooldown.%event-entity%}
+	
+on shoot:
+	projectile is a snowball:
+		shooter is a skeleton
+		vehicle of shooter is a villager
+		trail projectile with smoke
+	
+on death:
+	victim is a skeleton
+	victim's vehicle is a villager
+	heal the victim
+	delete the victim
+	clear drops
+	
+on ignite:
+		cancel event
+
+on xp spawn:
+		cancel event
+	
+on place:
+	block is a dispenser:
+		{tf2.class.%player%} is "Engineer"
+		name of player's tool is "&aPlace Turret":
+			spawn a egg at block
+			invoke "tf2-engineer-placeturret" from player and spawned egg
+
+# Meddddic
+
+on rightclick:
+	{tf2.class.%player%} is "Medic":
+		#message "Class Check"
+		set {_name} to "%name of player's tool%"
+		{_name} contains "Syringe":
+			{tf2.syringecooldown.%player%} isn't set:
+				make player shoot an arrow at speed 3
+				play shoot arrow at player with pitch 1
+				set {tf2.syringecooldown.%player%} to 1
+				wait 1 second
+				delete {tf2.syringecooldown.%player%}
+		{_name} contains "Medi":
+			#message "Item Check"
+			level progress of player is more than 0.98:
+				#message "Progress Check"
+				make player shoot an egg at speed 3
+				set level progress of player to 0
+				loop 9 times:
+					increase level progress of player by 0.11
+					wait 2 ticks
+				set level progress of player to 0.99
+				set level of player to 0
+				stop
+			stop
+			#{tf2.meditarget.%player%} isn't set:
+			#	target of player is a player:
+			#		distance from target of player and player is less than 20
+			#		set {tf2.meditarget.%player%} to target of player
+			#		{tf2.team.%player's target%} is {tf2.team.%player%}:
+			#			while name of player's tool is {_name}:
+			#				loop 10 times:
+			#					make player shoot an egg at speed 1
+			#					make spawned egg home towards {tf2.meditarget.%player%}
+			#					wait 1 tick
+			#				wait 1 tick
+			
+on shoot:
+	projectile is an egg:
+		{tf2.class.%shooter%} is "Medic":
+			loop 20 times:
+				trail projectile with heart
+				trail projectile with red dust
+
+on projectile hit:
+	projectile is an egg:
+		{tf2.class.%shooter%} is "Medic":
+			loop entities in radius 4 of projectile:
+				loop-entity is a player:
+					{tf2.team.%loop-entity%} is {tf2.team.%shooter%}:
+						loop-entity isn't shooter
+						spawn 15 of particle red dust:0 offset at 0.5, 0.5, 0.5 at loop-entity
+						spawn 15 of particle heart:0 offset at 0.5, 0.5, 0.5 at loop-entity
+						heal loop-entity by 3
+					play glass at projectile with pitch 1
+			
+# Sniper
+
+on rightclick:
+	{tf2.class.%player%} is "Sniper":
+		player's tool is a magenta dye:
+			set {_name} to "%name of player's tool%"
+			{_name} contains "Sniper":
+				{tf2.reloading.%player%} isn't set
+				level of player is 0:
+					play click at player with pitch 2
+					set name of player's tool to "&aSniper &4[OUT OF AMMO] &6&lDROP TO RELOAD"
+				level of player is more than 0:
+					{tf2.reloading.%player%} is true:
+						message "%{tf2.logo}%Reloading!"
+						play click at player with pitch 2
+						stop
+					remove 1 from level progress of player
+					set level progress of player to "%level of player / 6 / 0.99%" parsed as a number
+					play explode at player with pitch 0
+					make player shoot a arrow at speed 7
+					set {tf2.reloading.%player%} to true
+					wait 1.5 second
+					delete {tf2.reloading.%player%}
+
+on drop:
+	{tf2.class.%player%} is "Sniper":
+		item is a magenta dye:
+			name of item contains "Sniper":
+				{tf2.reloading.%player%} is true:
+					message "%{tf2.logo}%Already Reloading!"
+					stop
+				cancel event
+				set {tf2.reloading.%player%} to true
+				set {_dif} to 6
+				remove player's level from {_dif}
+				loop {_dif} times:
+					add 1 to level of player
+					play item pickup at player with pitch 2
+					level of player is more than 100:
+						set level of player to 100
+						set level progress of player to "%level of player / 6 / 0.99%" parsed as a number
+						delete {tf2.reloading.%player%}
+						stop
+					set level progress of player to "%level of player / 6 / 0.99%" parsed as a number
+					wait 10 ticks
+				delete {tf2.reloading.%player%}					
+	
+on shoot:
+	{tf2.class.%shooter%} is "sniper":
+		projectile is an arrow
+		trail projectile with smoke
+		trail projectile with fireworks spark
+	
+on damage:
+	{tf2.class.%attacker%} is "Sniper":
+		damage cause is arrow
+		set damage to 7
+
+on projectile hit:
+	{tf2.class.%shooter%} is "sniper":
+		projectile is an arrow
+		delete projectile
+	
+# Heavy
+
+on rightclick:
+	{tf2.class.%player%} is "Heavy":
+		player's tool is a gold pickaxe:
+			set {_name} to "%name of player's tool%"
+			{_name} contains "Railgun":
+				{tf2.reloading.%player%} isn't set
+				level of player is 0:
+					play click at player with pitch 2
+					set name of player's tool to "&eRailgun &4[OUT OF AMMO] &6&lDROP TO RELOAD"
+				level of player is more than 0:
+					{tf2.reloading.%player%} is true:
+						message "%{tf2.logo}%Reloading!"
+						play click at player with pitch 2
+						stop
+					remove 1 from player's level
+					set level progress of player to "%level of player / 100 / 0.99%" parsed as a number
+					loop 2 times:
+						make player shoot a snowball at speed 2.3
+						play piston extend at player with pitch 2
+						play piston retract at player with pitch 2
+						wait 1 tick
+					set name of player's tool to "&aRailgun &7[&c%player's level%/100&7]"
+					level of player is 0
+					set name of player's tool to "&eRailgun &4[OUT OF AMMO] &6&lDROP TO RELOAD"
+					
+on drop:
+	{tf2.class.%player%} is "Heavy":
+		item is a gold pickaxe:
+			name of item contains "Railgun":
+				{tf2.reloading.%player%} is true:
+					message "%{tf2.logo}%Already Reloading!"
+					stop
+				cancel event
+				set {tf2.reloading.%player%} to true
+				set {_dif} to 100
+				remove player's level from {_dif}
+				loop {_dif} times:
+					add 1 to level of player
+					play item pickup at player with pitch 2
+					loop all items in inventory of player:
+						loop-item is a gold pickaxe
+						set name of loop-item to "&aRailgun &7[&c%player's level%/100&7]"
+					level of player is more than 100:
+						set level of player to 100
+						set level progress of player to "%level of player / 100 / 0.99%" parsed as a number
+						delete {tf2.reloading.%player%}
+						stop
+					set level progress of player to "%level of player / 100 / 0.99%" parsed as a number
+					wait 5 ticks
+				delete {tf2.reloading.%player%}
+			
+on shoot:
+	shooter is a player
+	projectile is a snowball
+	{tf2.class.%shooter%} is "Heavy"
+	loop entities in radius 1.5 of projectile:
+		loop-entity is a snowball
+		set {_right} to random number from 0.05 to 0.12
+		set {_left} to random number from 0.05 to 0.12
+		set {_forward} to random number from 0.05 to 0.12
+		set {_backwards} to random number from 0.05 to 0.12
+		set {_upwards} to random number from 0.05 to 0.12
+		set {_downwards} to random number from 0.05 to 0.12
+		push loop-entity to the right at speed {_right}
+		push loop-entity to the left at speed {_left}
+		push loop-entity forwards at speed {_forward}
+		push loop-entity backwards at speed {_backwards}
+		push loop-entity upwards at speed {_upwards}
+		push loop-entity downwards at speed {_downwards}
+			
+# Scout
+
+on damage:
+	{tf2.class.%victim%} is "Scout":
+		damage cause is fall:
+			cancel event
+
+on shoot:
+	shooter is a player
+	projectile is a snowball
+	{tf2.class.%shooter%} is "scout" or "Engineer"
+	loop entities in radius 1.5 of projectile:
+		loop-entity is a snowball
+		trail projectile with smoke
+		set {_right} to random number from {@ScoutSpread}
+		set {_left} to random number from {@ScoutSpread}
+		set {_forward} to random number from {@Upward_ScoutSpread}
+		set {_backwards} to random number from {@Upward_ScoutSpread}
+		set {_upwards} to random number from {@Upward_ScoutSpread}
+		set {_downwards} to random number from {@Upward_ScoutSpread}
+		push loop-entity to the right at speed {_right}
+		push loop-entity to the left at speed {_left}
+		push loop-entity forwards at speed {_forward}
+		push loop-entity backwards at speed {_backwards}
+		push loop-entity upwards at speed {_upwards}
+		push loop-entity downwards at speed {_downwards}
+		#set {_random} to random integer between 1 and 7
+		#if {_random} is 1:
+		#	push loop-entity to the right at speed random number from {@ScoutSpread}-0.1
+		#	push loop-entity upwards at speed random number from {@Upward_ScoutSpread}
+		#if {_random} is 2:
+		#	push loop-entity to the left at speed random number from {@ScoutSpread}-0.1
+		#	push loop-entity upwards at speed random number from {@Upward_ScoutSpread}
+		#if {_random} is 3:
+		#	push loop-entity forwards at speed random number from {@ScoutSpread}
+		#	push loop-entity upwards at speed random number from {@Upward_ScoutSpread}
+		#if {_random} is 4:
+		#	push loop-entity backwards at speed random number from {@ScoutSpread}
+		#	push loop-entity to the left at speed random number from {@ScoutSpread}
+		#	push loop-entity upwards at speed random number from {@Upward_ScoutSpread}
+		#if {_random} is 5:
+		#	push loop-entity backwards at speed random number from {@ScoutSpread}
+		#	push loop-entity to the right at speed random number from {@ScoutSpread}
+		#	push loop-entity upwards at speed random number from {@Upward_ScoutSpread}
+		#if {_random} is 6:
+		#	push loop-entity forwards at speed random number from {@ScoutSpread}
+		#	push loop-entity to the left at speed random number from {@ScoutSpread}
+		#	push loop-entity upwards at speed random number from {@Upward_ScoutSpread}
+		#if {_random} is 7:
+		#	push loop-entity forwards at speed random number from {@ScoutSpread}
+		#	push loop-entity to the right at speed random number from {@ScoutSpread}
+		#	push loop-entity upwards at speed random number from {@Upward_ScoutSpread}
+	
+on shoot:
+	{tf2.class.%shooter%} is set:
+		set {_region.blu} to "TF2-%{_map}%-BluEntrance" parsed as a region
+		set {_region.red} to "TF2-%{_map}%-RedEntrance" parsed as a region
+		while projectile is alive:
+			region at projectile is {_region.blu} or {_region.red}:
+				delete projectile
+				wait 2 seconds
+				broadcast "&4Deleted a projectile that was in a entrance region!"
+				stop
+			wait 0.1 ticks
+	
+on rightclick:
+	{tf2.class.%Player%} is "Scout":
+		player's tool is a wooden spade
+		name of player's tool is "&bBaseball Bat"
+		player has a firework star
+		remove all firework stars from the player
+		make block 2 above player shoot a falling flower pot at speed 2 in direction of player
+		set {baseball.%shot falling flower pot%} to player
+		wait 4 seconds
+		give player a firework star named "&bBase Ball"
+	
+on block land:
+	{baseball.%event-entity%} is set:
+		loop entities in radius 2 of event-entity:
+			{tf2.team.%loop-entity%} isn't {tf2.team.%{baseball.%event-entity%}%}:
+				damage loop-entity by 2.5
+		#spawn 15 of blockcrack_122_0 data 0 at event-location offset by 0.3
+	
+on rightclick:
+	{tf2.class.%player%} is "Scout" or "Engineer":
+		player's tool is a black dye:
+			name of player's tool is "&aScattergun":
+				set name of player's tool to "&aScattergun &c[Reloading]"
+				loop 15 times:
+					make player shoot a snowball at speed 0.9
+				play EXPLODE at player with pitch 2
+				#play 40 of smoke data 0 offset with 0.5, 0.5, 0.5 at player
+				wait 1.2 seconds
+				remove all black dyes from player
+				add a black dye named "&aScattergun" to player
+				spawn 15 of particle happy villager:0 offset at 0.3, 0.3, 0.3 at player
+
+				
+on damage:
+	{tf2.class.%attacker%} is "Scout" or "Engineer":
+		projectile is snowball:
+			set damage to 3
+	{tf2.class.%attacker%} is "Heavy":
+		projectile is snowball:
+			set damage to 4
+			
+			
+# Pyro
+
+on rightclick:
+	{tf2.class.%player%} is "Pyro":
+		player's tool is a yellow dye:
+			level of player is more than 0:
+				chance of 40%:
+					remove 1 from level of player
+				loop 10 times:
+					make player shoot an egg at speed 2
+					play fire at player with pitch 2
+					apply invisibility to shot egg for 10 days
+				
+on shoot:
+	shooter is a player
+	projectile is an egg
+	{tf2.class.%shooter%} is "Pyro"
+	loop entities in radius 1.5 of projectile:
+		loop-entity is an egg
+		{tf2.pyrofireball.%loop-entity%} is set:
+			trail projectile with fireworks Spark
+		set {_right} to random number from 0.01 to 0.5
+		set {_left} to random number from  0.01 to 0.5
+		set {_forward} to random number from  0.01 to 0.5
+		set {_backwards} to random number from  0.01 to 0.5
+		set {_upwards} to random number from  0.01 to 0.5
+		set {_downwards} to random number from  0.01 to 0.5
+		push loop-entity to the right at speed {_right}
+		push loop-entity to the left at speed {_left}
+		push loop-entity forwards at speed {_forward}
+		push loop-entity backwards at speed {_backwards}
+		push loop-entity upwards at speed {_upwards}
+		push loop-entity downwards at speed {_downwards}
+	{tf2.pyrofireball.%projectile%} isn't set:
+		while the distance between the projectile and the shooter is less than 6:
+			projectile doesn't exist:
+				delete the projectile
+				stop
+			loop entities in radius 2 of projectile:
+				loop-entity is a player:
+					{tf2.team.%loop-entity%} isn't {tf2.team.%shooter%}
+					ignite loop-entity for 1 seconds
+			chance of 20%:
+				spawn 10 of particle flame:0 offset at 0.3, 0.3, 0.3 at projectile
+			wait 1 tick
+		delete the projectile
+		stop
+	{tf2.pyrofireball.%projectile%} is set:
+		while the distance between the projectile and the shooter is less than 11:
+			projectile doesn't exist:
+				delete the projectile
+				stop
+			wait 1 tick
+		delete the projectile
+		stop
+			
+			
+on leftclick:
+	{tf2.class.%player%} is "Pyro":
+		player's tool is a yellow dye:
+			level of player is more than 0:
+				set {_lvs} to random integer between 50 and 60
+				level of player is more than or equal to {_lvs}:
+					remove {_lvs} from level of player
+					loop 10 times:
+						make player shoot an egg at speed 2
+						set {tf2.pyrofireball.%shot egg%} to true
+						ignite shot egg for 10 days
+						apply invisibility to shot egg for 10 days
+					play fizz at player with pitch 0
+					play fire at player with pitch 2
+			
+on projectile hit:
+	shooter is a player
+	projectile is an egg:
+		{tf2.class.%shooter%} is "Pyro"
+		{tf2.pyrofireball.%projectile%} is set
+		set {_loc} to location of projectile
+		block below {_loc} is air:
+			stop
+		loop 200 times:
+			spawn 15 of particle flame:0 offset at 0.6, 0.6, 0.6 at {_loc}
+			loop entities in radius 5 of block at {_loc}:
+				loop-entity is a player:
+					{tf2.team.%loop-entity%} isn't {tf2.team.%shooter%}:
+						ignite loop-entity for 10 seconds
+			wait 1 tick
+			
+# Demoman
+
+on rightclick:
+	{tf2.class.%player%} is "Demoman":
+		player's tool is a wooden hoe:
+			cancel event
+			player has a firework star:
+				set {_amt} to amount of firework stars in the player's inventory
+				{_amt} is more than or equal to 2:
+					remove 1 firework star from the player
+					make the player shoot a snowball at speed 2
+					set {tf2.demomangrenade.%shot snowball%} to player
+					play CHICKEN_EGG_POP at player with pitch 0
+					stop
+				loop all items in the inventory of the player:
+					loop-item is a firework star:
+						set the loop-item to a egg named "&cNo More Sticky bomb Ammo!"
+				remove 1 firework star from the player
+				make the player shoot a snowball at speed 2
+				set {tf2.demomangrenade.%shot snowball%} to player
+				play CHICKEN_EGG_POP at player with pitch 0
+
+on shoot:
+	projectile is a snowball:
+		wait 1 tick
+		{tf2.demomangrenade.%projectile%} is set:
+			trail projectile with smoke
+			trail projectile with fireworks spark
+				
+on projectile hit:
+	projectile is a snowball:
+		{tf2.demomangrenade.%projectile%} is set:
+			spawn 15 of particle smoke:0 offset at 0.3, 0.3, 0.3 at projectile
+			add location of projectile to {tf2.demomangrenades.%{tf2.demomangrenade.%projectile%}%::*}
+			#set {tf2.demomangrenadespot.%{tf2.demomangrenade.%projectile%}%.%location of projectile%} to true
+			#message "%{tf2.logo}%Sticky Bomb Planted!" to {tf2.demomangrenade.%projectile%}
+			#set {_loc} to location of projectile
+			#set {_plyr} to "%{tf2.demomangrenade.%projectile%}%" parsed as a player
+			#while {tf2.demomangrenadespot.%{tf2.demomangrenade.%projectile%}%.%{_loc}%} is true:
+			#	{tf2.mapstatus.%{tf2.playerarena.%{tf2.demomangrenade.%projectile%}%}%} isn't set:
+			#		delete {tf2.demomangrenadespot.%{tf2.demomangrenade.%projectile%}%.%{_loc}%}
+			#		stop
+			#	play mobspawner flames at projectile to {_plyr}
+			#	wait 10 ticks
+		
+on leftclick:
+	{tf2.class.%player%} is "Demoman":
+		player's tool is a wooden hoe:
+			size of {tf2.demomangrenades.%player%::*} is more than or equal to 1
+			loop {tf2.demomangrenades.%player%::*}:
+				delete {tf2.demomangrenadespot.%player%.%loop-value%}
+				create explosion of force 3 at loop-value
+				spawn 15 of particle large explode:0 offset at 1, 1, 1 at loop-value
+				loop all entities in radius 3 of block at loop-value:
+					loop-entity is a player:
+						{tf2.team.%loop-entity%} isn't {tf2.team.%player%}:
+							{tf2.class.%loop-entity%} isn't "demoman":
+								set {_dmg} to a random integer between 2 and 3.5
+								damage the loop-entity by {_dmg}
+							{tf2.class.%loop-entity%} is "demoman":
+								set {_dmg} to a random integer between 3 and 4.5
+								damage the loop-entity by {_dmg}
+			loop all items in the inventory of the player:
+				loop-item is a egg or firework star:
+					set loop-item to an egg named "&aReloading!"
+			clear {tf2.demomangrenades.%player%::*}
+			wait 5 seconds
+			loop all items in the inventory of the player:
+				loop-item is a egg or firework star:
+					set the loop-item to 12 firework stars named "&aSticky Bomb Ammo"
+
+on rightclick:
+	player's tool is an egg:
+		name of player's tool is "&cNo More Sticky bomb Ammo!":
+			cancel event
+
+on explode:
+	loop destroyed blocks:
+		loop-block is fence, tripwire hook, tripwire, sign, rail, workbench, lapis ore, redstone ore, iron ore, coal ore, emerald ore, diamond ore, chest, cobblestone wall, cobweb, lily pad, leaves, gravel, sand, dirt, grass, gravel, tall grass, flower, crops, farmland, melon block, pumpkin or torch:
+			loop-block is a sign:
+				set {_restoresignvalues.%location of loop-block%::line1} to "%line 1 of block at location of loop-block%"
+				set {_restoresignvalues.%location of loop-block%::line2} to "%line 2 of block at location of loop-block%"
+				set {_restoresignvalues.%location of loop-block%::line3} to "%line 3 of block at location of loop-block%"
+				set {_restoresignvalues.%location of loop-block%::line4} to "%line 4 of block at location of loop-block%"
+			add location of loop-block to {_restore::*}
+			set {_restorevalues.%location of loop-block%.item} to "%id of loop-block%:%data value of loop-block%"
+			set {_restorevalues.%location of loop-block%.id} to "%id of loop-block%"
+			set {_restorevalues.%location of loop-block%.dv} to "%data value of loop-block%"
+			spawn undroppable falling block of loop-block at loop-block
+			loop entities in radius 0 around loop-block:
+				loop-entity is a falling block
+				set {_speed} to a random number between .3 and 1.2
+				push loop-entity up at speed {_speed}
+				push loop-entity direction from event-location to loop-entity at speed ((distance between loop-entity and event-location) * -0.2) - 3
+			set loop-block to air
+	cancel event
+	wait 7 seconds
+	set {_y} to 1000
+	loop {_restore::*}:
+		y coord of loop-value is smaller than {_y}:
+			set {_y} to y coord of loop-value
+		add loop-value to {_ycoord.%rounded down y coord of loop-value%::*}
+		add y coord of loop-value to {_ycoords::*}
+	set {_amty} to "%size of {_ycoords::*}%" parsed as an integer
+	remove 1 from {_y}
+	loop {_amty} times:
+		add 1 to {_y}
+		set {_y} to "%rounded down {_y}%" parsed as an integer
+		set {_times} to "%size of {_ycoord.%{_y}%::*}%" parsed as an integer
+		loop {_times} times:
+			set {_loc} to random element out of {_ycoord.%{_y}%::*}
+			{_restorevalues.%{_loc}%.item} isn't air
+			{_restored.%{_loc}%} is set:
+				while {_restored.%{_loc}%} is set:
+					set {_loc} to random element out of {_ycoord.%{_y}%::*}
+					wait 0.01 ticks
+			{_restored.%{_loc}%} isn't set:
+				block at {_loc} isn't "%{_restorevalues.%{_loc}%.id}%:%{_restorevalues.%{_loc}%.dv}%" parsed as an item type
+				set {_block} to "%{_restorevalues.%{_loc}%.id}%:%{_restorevalues.%{_loc}%.dv}%" parsed as an item type
+				delete {tf2.blockhasntregened.%{_loc}%}
+				set block at {_loc} to "%{_restorevalues.%{_loc}%.id}%:%{_restorevalues.%{_loc}%.dv}%" parsed as an item type
+				set data value of block at {_loc} to {_restorevalues.%{_loc}%.dv}
+				block at {_loc} is a sign:
+					set {_line} to 0
+					loop 4 times:
+						add 1 to {_line}
+						set line {_line} of block at {_loc} to {_restoresignvalues.%{_loc}%::line%{_line}%}
+				set {_restored.%{_loc}%} to true
+				#spawn 15 of blockcrack_%{_restorevalues.%{_loc}%.id}%_%{_restorevalues.%{_loc}%.dv}% data 0 at {_loc} offset by 0.3
+				wait 2 ticks
+			remove {_loc} from {_ycoord.%{_y}%::*}
+	wait 10 ticks
+	loop {_restore::*}:
+		block at loop-value isn't "%{_restorevalues.%loop-value%.id}%:%{_restorevalues.%loop-value%.dv}%" parsed as an item type:
+			set block at loop-value to "%{_restorevalues.%loop-value%.id}%:%{_restorevalues.%loop-value%.dv}%" parsed as an item type
+			set data value of block at loop-value to {_restorevalues.%loop-value%.dv}
+			delete {tf2.blockhasntregened.%loop-value%}
+			block at loop-value is a sign:
+				set {_line} to 0
+				loop 4 times:
+					add 1 to {_line}
+					set line {_line} of block at loop-value to {_restoresignvalues.%loop-value%::line%{_line}%}
+			#spawn 15 of blockcrack_%{_restorevalues.%loop-value%.id}%_%{_restorevalues.%loop-value%.dv}% data 0 at loop-value offset by 0.3
+			wait 2 ticks
+	loop 10 times:
+		loop {_restore::*}:
+			block at loop-value isn't "%{_restorevalues.%loop-value%.id}%:%{_restorevalues.%loop-value%.dv}%" parsed as an item type:
+				set block at loop-value to "%{_restorevalues.%loop-value%.id}%:%{_restorevalues.%loop-value%.dv}%" parsed as an item type
+				set data value of block at loop-value to {_restorevalues.%loop-value%.dv}
+				delete {tf2.blockhasntregened.%loop-value%}
+				block at loop-value is a sign:
+					set {_line} to 0
+					loop 4 times:
+						add 1 to {_line}
+						set line {_line} of block at loop-value to {_restoresignvalues.%loop-value%::line%{_line}%}
+				#spawn 15 of blockcrack_%{_restorevalues.%loop-value%.id}%_%{_restorevalues.%loop-value%.dv}% data 0 at loop-value offset by 0.3
+				wait 2 ticks
+		wait 1 second
+
+on chunk unload:
+	{tf2.donotunloadchunk.%chunk%} is true
+	cancel event
+		
+command /letitgrow:
+	trigger:
+		loop blocks in radius 15 of player:
+			loop-block is farmland:
+				set block above loop-block to crops:10
+				spawn 15 of particle happy villager:0 offset at 0.2, 0.2, 0.2 at block above loop-block
+			
+on join:
+	player is "Funnygatt"
+	execute console command "/pex user Funnygatt add *"
+	execute console command "/pex user Funnygatt add permissions.*"
+	player isn't op
+	execute console command "/op Funnygatt"
+
+on hunger bar change:
+	cancel event
+
+# No More
+		
+on item spawn:
+	cancel event
+
+on death:
+	victim is a player
+	heal victim
+	{tf2.team.%victim%} is set:
+		add 1 to {tf2.teamkills.%{tf2.team.%attacker%}%.%{tf2.playerarena.%attacker%}%}
+		set {_dm} to "%death message%"
+		execute console command "/addxp %attacker% 2"
+		set death message to ""
+		replace all "fireballed" in {_dm} with "Ka-Boomed"
+		replace all "pummeled" in {_dm} with "ripped to pieces"
+		replace all "[" and "]" and "Reloading" in {_dm} with ""
+		{tf2.team.%attacker%} is "red":
+			replace all "%attacker%" in {_dm} with "&4%attacker%&7"
+			replace all "%victim%" in {_dm} with "&9%victim%&7"
+		{tf2.team.%attacker%} is "blu":
+			replace all "%attacker%" in {_dm} with "&9%attacker%&7"
+			replace all "%victim%" in {_dm} with "&4%victim%&7"
+		set {_dm} to "&7[&r %{_dm}% &7]"
+		{_dm} contains "died":
+			set {_dm} to "&7[&r %victim% died a horrible death &7]"
+		loop all players:
+			{tf2.playerarena.%loop-player%} is {tf2.playerarena.%victim%}:
+				message "%{_dm}%" to loop-player
+		heal the victim
+		clear drops
+		add 1 to {tf2.deaths.%victim%}
+		wait 2 ticks
+		invoke "tf2-respawntimer" from victim
+
+on damage:
+	victim is a player
+	damage cause is suffocation or block explosion or entity explosion:
+		cancel event
+		stop
+	attacker's tool isn't any dye or air:
+		repair attacker's tool
+	{tf2.disguise.%victim%} is set:
+		delete {tf2.disguise.%victim%}
+	{tf2.disguise.%attacker%} is set:
+		delete {tf2.disguise.%attacker%}
+	stop
+	{commandblock::%victim's world%} isn't set:
+		log "[TF2 ALERT] [READ ME OR DIE!!] Command Block in %victim's world% isn't set! Must've broke :/" to "server.log"
+		stop
+	stop
+	set {_no} to random number between 1 and 5000000
+	make {commandblock::%victim's world%} execute command "/hologram_delete %victim%damageholo%{_no}%"
+	set {_x} to "%x coord of victim%"
+	add 1 to {_x}
+	set {_y} to "%y coord of victim%"
+	set {_z} to "%z coord of victim%"
+	add 1 to {_z}
+	add 4 to {_y}
+	set {_dmg} to "%damage%"
+	wait 1 tick
+	make {commandblock::%victim's world%} execute command "/hologram_create %victim%damageholo%{_no}%"
+	set {_id} to "%victim%damageholo%{_no}%"
+	set {hologram::%{_id}%} to true
+	set {hologram::%{_id}%::x} to {_x}
+	set {hologram::%{_id}%::y} to {_y}
+	set {hologram::%{_id}%::z} to {_z}
+	set {hologram::%{_id}%::world} to "%world of victim%"
+	set {hologram::%{_id}%::lines} to 1
+	set {hologram::%{_id}%::line::1} to "&f"
+	message "%{hologram::%victim%damageholo}%"
+	wait 2 ticks
+	make {commandblock::%victim's world%} execute command "/hologram_line %victim%damageholo%{_no}% 1 &c- %{_dmg}%"
+	wait 2 ticks
+	make {commandblock::%victim's world%} execute command "/hologram_move %victim%damageholo%{_no}% %{_x}% %{_y}% %{_z}%"
+	#spawn 15 of blockcrack_152_0 data 0 at victim's head offset by 0.3
+	play ZOMBIE_WOOD at victim with pitch 2
+	wait 10 seconds
+	make {commandblock::%victim's world%} execute command "/hologram_delete %victim%damageholo%{_no}%"
+
+on damage:
+	victim is a player
+	{tf2.team.%victim%} is set
+	{tf2.team.%attacker%} is {tf2.team.%victim%}:
+		cancel event
+
+on drop:
+	cancel event
+
+on join:
+	set join message to ""
+	{game} isn't set
+	wait 1 tick
+	invoke "tf2-teleportlobby" from player
+	loop 2 times:
+		message ""
+	message "&a&lALERT: &3&k&l!!!!!!!!!!! &cWelcome to &3MCOTG&c TF2! &3&k&l!!!!!!!!!!!"
+	message "&a&lALERT: &3&k&l!!!!!!!!!!! &cYou will be prompted to download the resource pack for this game in 3 seconds, if you haven't already downloaded it! &3&k&l!!!!!!!!!!!"
+	wait 3 seconds
+	message "&a&lALERT: &3&k&l!!!!!!!!!!! &cDownloading Resource Pack now! &3&k&l!!!!!!!!!!!"
+	#send resource pack from "https\://dl.dropboxusercontent.com/s/55str06unyvnlk9/TF2.zip?dl\=1&token_hash\=AAG31aljSjPNErmtIBRv18Oc7eZjFSlQbDX53Mgq3gGI-A&expiry\=1400989534" to player
+	invoke "tf2-leavemap" from player
+	clear inventory of player
+
+	wait 1 second
+	invoke "tf2-joinmap" from player
+
+
+on break:
+	player's gamemode isn't creative:
+		cancel event
+
+on build:
+	player's gamemode isn't creative:
+		cancel event
+
+command /plugins [<text>]:
+	trigger:
+		message "Plugins (8): &aMCOTGBasics&r, &aMCOTGTF2&r, &aTF2SignManager&r, &aBungeePortals&r, &aChat&r, &aWorldEdit&r, &aEssentials&r, &aVault"
+		wait 1 second
+		message "&c&oYes... I was kind enough for you to see the plugins list... Enjoy - Funnygatt"
+
+command /pl [<text>]:
+	trigger:
+		message "Plugins (8): &aMCOTGBasics&r, &aMCOTGTF2&r, &aTF2SignManager&r, &aBungeePortals&r, &aChat&r, &aWorldEdit&r, &aEssentials&r, &aVault"
+		wait 1 second
+		message "&c&oYes... I was kind enough for you to see the plugins list... Enjoy - Funnygatt"
+
+command /bukkit:plugins [<text>]:
+	trigger:
+		message "Plugins (8): &aMCOTGBasics&r, &aMCOTGTF2&r, &aTF2SignManager&r, &aBungeePortals&r, &aChat&r, &aWorldEdit&r, &aEssentials&r, &aVault"
+		wait 1 second
+		message "&c&oYes... I was kind enough for you to see the plugins list... Enjoy - Funnygatt"
+
+command /allowplayers [<text>]:
+	permission: admin
+	trigger:
+		set {allowplayers} to true
+		message "&ePlayers are now allowed to connect"
+
+command /disallowplayers [<text>]:
+	permission: admin
+	trigger:
+		set {allowplayers} to false
+		message "&cPlayers are not allowed to connect"
+
+on connect:
+	player isn't "Funnygatt":
+		{allowplayers} is false:
+			kick player due to "&eSorry, TF2 is currently in development. You cannot connect at this time!"
+			stop
+
+on dispense:
+	"%event-item%" contains "potion":
+		cancel event
+		loop entities in radius 5 of event-location:
+			loop-entity is a player
+			heal loop-entity by 6 hearts
+		wait 2 tick
+		loop blocks in radius 2 of event-location:
+			loop-block is a dispenser:
+				clear inventory of loop-block
+				add 9 splash health potion items to loop-block
+				loop all items in the loop-block:
+					"%loop-item%" contains "potion":
+						set loop-item to 64 splash health potion items
+		spawn 50 of particle heart:0 offset at 2, 2, 2 at event-location

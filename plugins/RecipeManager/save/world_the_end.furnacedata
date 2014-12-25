@@ -1,0 +1,41 @@
+id: cb60c6fe-78f2-4424-bf9e-d1075af26360
+coords:
+  -899,70,-1432:
+    ==: RM_FurnaceData
+  -817,63,-1311:
+    ==: RM_FurnaceData
+  -815,63,-1309:
+    ==: RM_FurnaceData
+  -817,63,-1314:
+    ==: RM_FurnaceData
+  -883,65,-1475:
+    ==: RM_FurnaceData
+  -942,74,-1391:
+    ==: RM_FurnaceData
+  -867,63,-1372:
+    ==: RM_FurnaceData
+  -942,74,-1384:
+    ==: RM_FurnaceData
+  -947,70,-1463:
+    ==: RM_FurnaceData
+  -897,70,-1431:
+    ==: RM_FurnaceData
+  -829,71,-1530:
+    ==: RM_FurnaceData
+  -867,63,-1369:
+    ==: RM_FurnaceData
+  -878,65,-1472:
+    ==: RM_FurnaceData
+  -855,70,-1489:
+    ==: RM_FurnaceData
+  -869,63,-1374:
+    ==: RM_FurnaceData
+  -882,65,-1555:
+    ==: RM_FurnaceData
+  -834,53,-1480:
+    ==: RM_FurnaceData
+    fuel:
+      type: COAL
+      amount: 2
+  -882,65,-1475:
+    ==: RM_FurnaceData

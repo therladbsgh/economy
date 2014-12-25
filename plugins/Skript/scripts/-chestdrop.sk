@@ -1,0 +1,11 @@
+#
+# these triggers fix some drops.
+#
+
+on break of treasurechest_diamond2:
+	chance of 100%:
+		drop 3 diamond
+
+on break of treasurechest_gold2:
+	chance of 100%:
+		drop 3 gold ingot

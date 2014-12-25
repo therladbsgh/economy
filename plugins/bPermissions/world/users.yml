@@ -1,0 +1,21 @@
+users:
+  shlove1214:
+    permissions: []
+    groups:
+    - admin
+  talk to this guy:
+    permissions: []
+    groups:
+    - user
+  bob:
+    permissions: []
+    groups:
+    - user
+  superboop:
+    permissions: []
+    groups:
+    - excavator
+  right click me:
+    permissions: []
+    groups:
+    - user

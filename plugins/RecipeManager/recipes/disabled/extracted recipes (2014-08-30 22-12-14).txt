@@ -1,0 +1,1683 @@
+// You can uncomment one of the following lines to apply a flag to the entire file:
+//@remove   // remove these recipes from the server.
+//@restrict // prevents recipes from being used with a notification, you can also set a custom message.
+//@override // overwrites recipe to allow result change and adding flags to it.
+//---------------------------------------------------
+// Craft recipes
+
+craft
+wood:* + wood:* + wood:*
+air + stick:0 + air
+air + stick:0 + air
+= wood_pickaxe:0:1
+
+craft
+cobblestone:* + cobblestone:* + cobblestone:*
+air + stick:0 + air
+air + stick:0 + air
+= stone_pickaxe:0:1
+
+craft
+iron_ingot:0 + iron_ingot:0 + iron_ingot:0
+air + stick:0 + air
+air + stick:0 + air
+= iron_pickaxe:0:1
+
+craft
+diamond:0 + diamond:0 + diamond:0
+air + stick:0 + air
+air + stick:0 + air
+= diamond_pickaxe:0:1
+
+craft
+gold_ingot:0 + gold_ingot:0 + gold_ingot:0
+air + stick:0 + air
+air + stick:0 + air
+= gold_pickaxe:0:1
+
+craft
+air + stick:0 + string:0
+stick:0 + air + string:0
+air + stick:0 + string:0
+= bow:0:1
+
+craft
+gold_ingot:0 + gold_ingot:0 + gold_ingot:0
+gold_ingot:0 + gold_ingot:0 + gold_ingot:0
+gold_ingot:0 + gold_ingot:0 + gold_ingot:0
+= gold_block:0:1
+
+craft
+iron_ingot:0 + iron_ingot:0 + iron_ingot:0
+iron_ingot:0 + iron_ingot:0 + iron_ingot:0
+iron_ingot:0 + iron_ingot:0 + iron_ingot:0
+= iron_block:0:1
+
+craft
+diamond:0 + diamond:0 + diamond:0
+diamond:0 + diamond:0 + diamond:0
+diamond:0 + diamond:0 + diamond:0
+= diamond_block:0:1
+
+craft
+emerald:0 + emerald:0 + emerald:0
+emerald:0 + emerald:0 + emerald:0
+emerald:0 + emerald:0 + emerald:0
+= emerald_block:0:1
+
+craft
+ink_sack:4 + ink_sack:4 + ink_sack:4
+ink_sack:4 + ink_sack:4 + ink_sack:4
+ink_sack:4 + ink_sack:4 + ink_sack:4
+= lapis_block:0:1
+
+craft
+redstone:0 + redstone:0 + redstone:0
+redstone:0 + redstone:0 + redstone:0
+redstone:0 + redstone:0 + redstone:0
+= redstone_block:0:1
+
+craft
+coal:0 + coal:0 + coal:0
+coal:0 + coal:0 + coal:0
+coal:0 + coal:0 + coal:0
+= coal_block:0:1
+
+craft
+wheat:0 + wheat:0 + wheat:0
+wheat:0 + wheat:0 + wheat:0
+wheat:0 + wheat:0 + wheat:0
+= hay_block:0:1
+
+craft
+gold_nugget:0 + gold_nugget:0 + gold_nugget:0
+gold_nugget:0 + gold_nugget:0 + gold_nugget:0
+gold_nugget:0 + gold_nugget:0 + gold_nugget:0
+= gold_ingot:0:1
+
+craft
+melon:0 + melon:0 + melon:0
+melon:0 + melon:0 + melon:0
+melon:0 + melon:0 + melon:0
+= melon_block:0:1
+
+craft
+wood:* + wood:* + wood:*
+wood:* + air + wood:*
+wood:* + wood:* + wood:*
+= chest:0:1
+
+craft
+obsidian:* + obsidian:* + obsidian:*
+obsidian:* + eye_of_ender:0 + obsidian:*
+obsidian:* + obsidian:* + obsidian:*
+= ender_chest:0:1
+
+craft
+cobblestone:* + cobblestone:* + cobblestone:*
+cobblestone:* + air + cobblestone:*
+cobblestone:* + cobblestone:* + cobblestone:*
+= furnace:0:1
+
+craft
+air + redstone:0 + air
+redstone:0 + glowstone:* + redstone:0
+air + redstone:0 + air
+= redstone_lamp_off:0:1
+
+craft
+glass:* + glass:* + glass:*
+glass:* + nether_star:0 + glass:*
+obsidian:* + obsidian:* + obsidian:*
+= beacon:0:1
+
+craft
+leather:0 + air + leather:0
+leather:0 + leather:0 + leather:0
+leather:0 + leather:0 + leather:0
+= leather_chestplate:0:1
+
+craft
+leather:0 + leather:0 + leather:0
+leather:0 + air + leather:0
+leather:0 + air + leather:0
+= leather_leggings:0:1
+
+craft
+fire:* + air + fire:*
+fire:* + fire:* + fire:*
+fire:* + fire:* + fire:*
+= chainmail_chestplate:0:1
+
+craft
+fire:* + fire:* + fire:*
+fire:* + air + fire:*
+fire:* + air + fire:*
+= chainmail_leggings:0:1
+
+craft
+iron_ingot:0 + air + iron_ingot:0
+iron_ingot:0 + iron_ingot:0 + iron_ingot:0
+iron_ingot:0 + iron_ingot:0 + iron_ingot:0
+= iron_chestplate:0:1
+
+craft
+iron_ingot:0 + iron_ingot:0 + iron_ingot:0
+iron_ingot:0 + air + iron_ingot:0
+iron_ingot:0 + air + iron_ingot:0
+= iron_leggings:0:1
+
+craft
+diamond:0 + air + diamond:0
+diamond:0 + diamond:0 + diamond:0
+diamond:0 + diamond:0 + diamond:0
+= diamond_chestplate:0:1
+
+craft
+diamond:0 + diamond:0 + diamond:0
+diamond:0 + air + diamond:0
+diamond:0 + air + diamond:0
+= diamond_leggings:0:1
+
+craft
+gold_ingot:0 + air + gold_ingot:0
+gold_ingot:0 + gold_ingot:0 + gold_ingot:0
+gold_ingot:0 + gold_ingot:0 + gold_ingot:0
+= gold_chestplate:0:1
+
+craft
+gold_ingot:0 + gold_ingot:0 + gold_ingot:0
+gold_ingot:0 + air + gold_ingot:0
+gold_ingot:0 + air + gold_ingot:0
+= gold_leggings:0:1
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:0 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:15:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:0 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:15:8
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:1 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:14:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:1 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:14:8
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:2 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:13:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:2 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:13:8
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:3 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:12:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:3 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:12:8
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:4 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:11:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:4 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:11:8
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:5 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:10:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:5 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:10:8
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:6 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:9:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:6 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:9:8
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:7 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:8:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:7 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:8:8
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:8 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:7:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:8 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:7:8
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:9 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:6:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:9 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:6:8
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:10 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:5:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:10 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:5:8
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:11 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:4:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:11 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:4:8
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:12 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:3:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:12 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:3:8
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:13 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:2:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:13 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:2:8
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:14 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:1:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:14 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:1:8
+
+craft
+hard_clay:0 + hard_clay:0 + hard_clay:0
+hard_clay:0 + ink_sack:15 + hard_clay:0
+hard_clay:0 + hard_clay:0 + hard_clay:0
+= stained_clay:0:8
+
+craft
+glass:0 + glass:0 + glass:0
+glass:0 + ink_sack:15 + glass:0
+glass:0 + glass:0 + glass:0
+= stained_glass:0:8
+
+craft
+wood:* + wood:* + wood:*
+wood:* + diamond:0 + wood:*
+wood:* + wood:* + wood:*
+= jukebox:0:1
+
+craft
+string:0 + string:0 + air
+string:0 + slime_ball:0 + air
+air + air + string:0
+= leash:0:2
+
+craft
+wood:* + wood:* + wood:*
+wood:* + redstone:0 + wood:*
+wood:* + wood:* + wood:*
+= note_block:0:1
+
+craft
+wood:* + wood:* + wood:*
+book:0 + book:0 + book:0
+wood:* + wood:* + wood:*
+= bookshelf:0:1
+
+craft
+sulphur:0 + sand:* + sulphur:0
+sand:* + sulphur:0 + sand:*
+sulphur:0 + sand:* + sulphur:0
+= tnt:0:1
+
+craft
+stick:0 + air + stick:0
+stick:0 + stick:0 + stick:0
+stick:0 + air + stick:0
+= ladder:0:3
+
+craft
+wood:* + wood:* + wood:*
+wood:* + wood:* + wood:*
+air + stick:0 + air
+= sign:0:3
+
+craft
+milk_bucket:0 + milk_bucket:0 + milk_bucket:0
+sugar:0 + egg:0 + sugar:0
+wheat:0 + wheat:0 + wheat:0
+= cake:0:1
+
+craft
+iron_ingot:0 + air + iron_ingot:0
+iron_ingot:0 + stick:0 + iron_ingot:0
+iron_ingot:0 + air + iron_ingot:0
+= rails:0:16
+
+craft
+gold_ingot:0 + air + gold_ingot:0
+gold_ingot:0 + stick:0 + gold_ingot:0
+gold_ingot:0 + redstone:0 + gold_ingot:0
+= powered_rail:0:6
+
+craft
+iron_ingot:0 + stick:0 + iron_ingot:0
+iron_ingot:0 + redstone_torch_on:* + iron_ingot:0
+iron_ingot:0 + stick:0 + iron_ingot:0
+= activator_rail:0:6
+
+craft
+iron_ingot:0 + air + iron_ingot:0
+iron_ingot:0 + stone_plate:* + iron_ingot:0
+iron_ingot:0 + redstone:0 + iron_ingot:0
+= detector_rail:0:6
+
+craft
+iron_ingot:0 + air + iron_ingot:0
+iron_ingot:0 + air + iron_ingot:0
+iron_ingot:0 + iron_ingot:0 + iron_ingot:0
+= cauldron_item:0:1
+
+craft
+wood:0 + air + air
+wood:0 + wood:0 + air
+wood:0 + wood:0 + wood:0
+= wood_stairs:0:4
+
+craft
+wood:2 + air + air
+wood:2 + wood:2 + air
+wood:2 + wood:2 + wood:2
+= birch_wood_stairs:0:4
+
+craft
+wood:1 + air + air
+wood:1 + wood:1 + air
+wood:1 + wood:1 + wood:1
+= spruce_wood_stairs:0:4
+
+craft
+wood:3 + air + air
+wood:3 + wood:3 + air
+wood:3 + wood:3 + wood:3
+= jungle_wood_stairs:0:4
+
+craft
+wood:4 + air + air
+wood:4 + wood:4 + air
+wood:4 + wood:4 + wood:4
+= acacia_stairs:0:4
+
+craft
+wood:5 + air + air
+wood:5 + wood:5 + air
+wood:5 + wood:5 + wood:5
+= dark_oak_stairs:0:4
+
+craft
+air + air + stick:0
+air + stick:0 + string:0
+stick:0 + air + string:0
+= fishing_rod:0:1
+
+craft
+cobblestone:* + air + air
+cobblestone:* + cobblestone:* + air
+cobblestone:* + cobblestone:* + cobblestone:*
+= cobblestone_stairs:0:4
+
+craft
+brick:* + air + air
+brick:* + brick:* + air
+brick:* + brick:* + brick:*
+= brick_stairs:0:4
+
+craft
+smooth_brick:* + air + air
+smooth_brick:* + smooth_brick:* + air
+smooth_brick:* + smooth_brick:* + smooth_brick:*
+= smooth_stairs:0:4
+
+craft
+nether_brick:* + air + air
+nether_brick:* + nether_brick:* + air
+nether_brick:* + nether_brick:* + nether_brick:*
+= nether_brick_stairs:0:4
+
+craft
+sandstone:* + air + air
+sandstone:* + sandstone:* + air
+sandstone:* + sandstone:* + sandstone:*
+= sandstone_stairs:0:4
+
+craft
+quartz_block:* + air + air
+quartz_block:* + quartz_block:* + air
+quartz_block:* + quartz_block:* + quartz_block:*
+= quartz_stairs:0:4
+
+craft
+stick:0 + stick:0 + stick:0
+stick:0 + wool:* + stick:0
+stick:0 + stick:0 + stick:0
+= painting:0:1
+
+craft
+stick:0 + stick:0 + stick:0
+stick:0 + leather:0 + stick:0
+stick:0 + stick:0 + stick:0
+= item_frame:0:1
+
+craft
+gold_ingot:0 + gold_ingot:0 + gold_ingot:0
+gold_ingot:0 + apple:0 + gold_ingot:0
+gold_ingot:0 + gold_ingot:0 + gold_ingot:0
+= golden_apple:0:1
+
+craft
+gold_block:* + gold_block:* + gold_block:*
+gold_block:* + apple:0 + gold_block:*
+gold_block:* + gold_block:* + gold_block:*
+= golden_apple:1:1
+
+craft
+gold_nugget:0 + gold_nugget:0 + gold_nugget:0
+gold_nugget:0 + carrot_item:0 + gold_nugget:0
+gold_nugget:0 + gold_nugget:0 + gold_nugget:0
+= golden_carrot:0:1
+
+craft
+gold_nugget:0 + gold_nugget:0 + gold_nugget:0
+gold_nugget:0 + melon:0 + gold_nugget:0
+gold_nugget:0 + gold_nugget:0 + gold_nugget:0
+= speckled_melon:0:1
+
+craft
+air + redstone_torch_on:* + air
+redstone_torch_on:* + quartz:0 + redstone_torch_on:*
+stone:* + stone:* + stone:*
+= redstone_comparator:0:1
+
+craft
+air + gold_ingot:0 + air
+gold_ingot:0 + redstone:0 + gold_ingot:0
+air + gold_ingot:0 + air
+= watch:0:1
+
+craft
+air + iron_ingot:0 + air
+iron_ingot:0 + redstone:0 + iron_ingot:0
+air + iron_ingot:0 + air
+= compass:0:1
+
+craft
+paper:0 + paper:0 + paper:0
+paper:0 + compass:0 + paper:0
+paper:0 + paper:0 + paper:0
+= empty_map:0:1
+
+craft
+cobblestone:* + cobblestone:* + cobblestone:*
+cobblestone:* + bow:0 + cobblestone:*
+cobblestone:* + redstone:0 + cobblestone:*
+= dispenser:0:1
+
+craft
+cobblestone:* + cobblestone:* + cobblestone:*
+cobblestone:* + air + cobblestone:*
+cobblestone:* + redstone:0 + cobblestone:*
+= dropper:0:1
+
+craft
+wood:* + wood:* + wood:*
+cobblestone:* + iron_ingot:0 + cobblestone:*
+cobblestone:* + redstone:0 + cobblestone:*
+= piston_base:0:1
+
+craft
+air + book:0 + air
+diamond:0 + obsidian:* + diamond:0
+obsidian:* + obsidian:* + obsidian:*
+= enchantment_table:0:1
+
+craft
+iron_block:* + iron_block:* + iron_block:*
+air + iron_ingot:0 + air
+iron_ingot:0 + iron_ingot:0 + iron_ingot:0
+= anvil:0:1
+
+craft
+glass:* + glass:* + glass:*
+quartz:0 + quartz:0 + quartz:0
+wood_step:* + wood_step:* + wood_step:*
+= daylight_detector:0:1
+
+craft
+iron_ingot:0 + air + iron_ingot:0
+iron_ingot:0 + chest:* + iron_ingot:0
+air + iron_ingot:0 + air
+= hopper:0:1
+
+craft
+wood:* + wood:*
+wood:* + stick:0
+air + stick:0
+= wood_axe:0:1
+
+craft
+wood:* + wood:*
+air + stick:0
+air + stick:0
+= wood_hoe:0:1
+
+craft
+cobblestone:* + cobblestone:*
+cobblestone:* + stick:0
+air + stick:0
+= stone_axe:0:1
+
+craft
+cobblestone:* + cobblestone:*
+air + stick:0
+air + stick:0
+= stone_hoe:0:1
+
+craft
+iron_ingot:0 + iron_ingot:0
+iron_ingot:0 + stick:0
+air + stick:0
+= iron_axe:0:1
+
+craft
+iron_ingot:0 + iron_ingot:0
+air + stick:0
+air + stick:0
+= iron_hoe:0:1
+
+craft
+diamond:0 + diamond:0
+diamond:0 + stick:0
+air + stick:0
+= diamond_axe:0:1
+
+craft
+diamond:0 + diamond:0
+air + stick:0
+air + stick:0
+= diamond_hoe:0:1
+
+craft
+gold_ingot:0 + gold_ingot:0
+gold_ingot:0 + stick:0
+air + stick:0
+= gold_axe:0:1
+
+craft
+gold_ingot:0 + gold_ingot:0
+air + stick:0
+air + stick:0
+= gold_hoe:0:1
+
+craft
+iron_ingot:0 + iron_ingot:0 + iron_ingot:0
+iron_ingot:0 + iron_ingot:0 + iron_ingot:0
+= iron_fence:0:16
+
+craft
+glass:* + glass:* + glass:*
+glass:* + glass:* + glass:*
+= thin_glass:0:16
+
+craft
+leather:0 + leather:0 + leather:0
+leather:0 + air + leather:0
+= leather_helmet:0:1
+
+craft
+leather:0 + air + leather:0
+leather:0 + air + leather:0
+= leather_boots:0:1
+
+craft
+fire:* + fire:* + fire:*
+fire:* + air + fire:*
+= chainmail_helmet:0:1
+
+craft
+fire:* + air + fire:*
+fire:* + air + fire:*
+= chainmail_boots:0:1
+
+craft
+iron_ingot:0 + iron_ingot:0 + iron_ingot:0
+iron_ingot:0 + air + iron_ingot:0
+= iron_helmet:0:1
+
+craft
+iron_ingot:0 + air + iron_ingot:0
+iron_ingot:0 + air + iron_ingot:0
+= iron_boots:0:1
+
+craft
+diamond:0 + diamond:0 + diamond:0
+diamond:0 + air + diamond:0
+= diamond_helmet:0:1
+
+craft
+diamond:0 + air + diamond:0
+diamond:0 + air + diamond:0
+= diamond_boots:0:1
+
+craft
+gold_ingot:0 + gold_ingot:0 + gold_ingot:0
+gold_ingot:0 + air + gold_ingot:0
+= gold_helmet:0:1
+
+craft
+gold_ingot:0 + air + gold_ingot:0
+gold_ingot:0 + air + gold_ingot:0
+= gold_boots:0:1
+
+craft
+stained_glass:0 + stained_glass:0 + stained_glass:0
+stained_glass:0 + stained_glass:0 + stained_glass:0
+= stained_glass_pane:0:16
+
+craft
+stained_glass:1 + stained_glass:1 + stained_glass:1
+stained_glass:1 + stained_glass:1 + stained_glass:1
+= stained_glass_pane:1:16
+
+craft
+stained_glass:2 + stained_glass:2 + stained_glass:2
+stained_glass:2 + stained_glass:2 + stained_glass:2
+= stained_glass_pane:2:16
+
+craft
+stained_glass:3 + stained_glass:3 + stained_glass:3
+stained_glass:3 + stained_glass:3 + stained_glass:3
+= stained_glass_pane:3:16
+
+craft
+stained_glass:4 + stained_glass:4 + stained_glass:4
+stained_glass:4 + stained_glass:4 + stained_glass:4
+= stained_glass_pane:4:16
+
+craft
+stained_glass:5 + stained_glass:5 + stained_glass:5
+stained_glass:5 + stained_glass:5 + stained_glass:5
+= stained_glass_pane:5:16
+
+craft
+stained_glass:6 + stained_glass:6 + stained_glass:6
+stained_glass:6 + stained_glass:6 + stained_glass:6
+= stained_glass_pane:6:16
+
+craft
+stained_glass:7 + stained_glass:7 + stained_glass:7
+stained_glass:7 + stained_glass:7 + stained_glass:7
+= stained_glass_pane:7:16
+
+craft
+stained_glass:8 + stained_glass:8 + stained_glass:8
+stained_glass:8 + stained_glass:8 + stained_glass:8
+= stained_glass_pane:8:16
+
+craft
+stained_glass:9 + stained_glass:9 + stained_glass:9
+stained_glass:9 + stained_glass:9 + stained_glass:9
+= stained_glass_pane:9:16
+
+craft
+stained_glass:10 + stained_glass:10 + stained_glass:10
+stained_glass:10 + stained_glass:10 + stained_glass:10
+= stained_glass_pane:10:16
+
+craft
+stained_glass:11 + stained_glass:11 + stained_glass:11
+stained_glass:11 + stained_glass:11 + stained_glass:11
+= stained_glass_pane:11:16
+
+craft
+stained_glass:12 + stained_glass:12 + stained_glass:12
+stained_glass:12 + stained_glass:12 + stained_glass:12
+= stained_glass_pane:12:16
+
+craft
+stained_glass:13 + stained_glass:13 + stained_glass:13
+stained_glass:13 + stained_glass:13 + stained_glass:13
+= stained_glass_pane:13:16
+
+craft
+stained_glass:14 + stained_glass:14 + stained_glass:14
+stained_glass:14 + stained_glass:14 + stained_glass:14
+= stained_glass_pane:14:16
+
+craft
+stained_glass:15 + stained_glass:15 + stained_glass:15
+stained_glass:15 + stained_glass:15 + stained_glass:15
+= stained_glass_pane:15:16
+
+craft
+stick:0 + stick:0 + stick:0
+stick:0 + stick:0 + stick:0
+= fence:0:2
+
+craft
+cobblestone:* + cobblestone:* + cobblestone:*
+cobblestone:* + cobblestone:* + cobblestone:*
+= cobble_wall:0:6
+
+craft
+mossy_cobblestone:* + mossy_cobblestone:* + mossy_cobblestone:*
+mossy_cobblestone:* + mossy_cobblestone:* + mossy_cobblestone:*
+= cobble_wall:1:6
+
+craft
+nether_brick:* + nether_brick:* + nether_brick:*
+nether_brick:* + nether_brick:* + nether_brick:*
+= nether_fence:0:6
+
+craft
+stick:0 + wood:* + stick:0
+stick:0 + wood:* + stick:0
+= fence_gate:0:1
+
+craft
+wood:* + wood:*
+wood:* + wood:*
+wood:* + wood:*
+= wood_door:0:1
+
+craft
+wood:* + wood:* + wood:*
+wood:* + wood:* + wood:*
+= trap_door:0:2
+
+craft
+iron_ingot:0 + iron_ingot:0
+iron_ingot:0 + iron_ingot:0
+iron_ingot:0 + iron_ingot:0
+= iron_door:0:1
+
+craft
+wood:* + air + wood:*
+air + wood:* + air
+= bowl:0:4
+
+craft
+glass:* + air + glass:*
+air + glass:* + air
+= glass_bottle:0:3
+
+craft
+iron_ingot:0 + air + iron_ingot:0
+iron_ingot:0 + iron_ingot:0 + iron_ingot:0
+= minecart:0:1
+
+craft
+air + blaze_rod:0 + air
+cobblestone:* + cobblestone:* + cobblestone:*
+= brewing_stand_item:0:1
+
+craft
+wood:* + air + wood:*
+wood:* + wood:* + wood:*
+= boat:0:1
+
+craft
+iron_ingot:0 + air + iron_ingot:0
+air + iron_ingot:0 + air
+= bucket:0:1
+
+craft
+clay_brick:0 + air + clay_brick:0
+air + clay_brick:0 + air
+= flower_pot_item:0:1
+
+craft
+redstone_torch_on:* + redstone:0 + redstone_torch_on:*
+stone:* + stone:* + stone:*
+= diode:0:1
+
+craft
+wool:* + wool:* + wool:*
+wood:* + wood:* + wood:*
+= bed:0:1
+
+craft
+air + iron_ingot:0
+iron_ingot:0 + air
+= shears:0:1
+
+craft
+wood:* + wood:*
+wood:* + wood:*
+= workbench:0:1
+
+craft
+sand:0 + sand:0
+sand:0 + sand:0
+= sandstone:0:1
+
+craft
+sandstone:* + sandstone:*
+sandstone:* + sandstone:*
+= sandstone:2:4
+
+craft
+stone:* + stone:*
+stone:* + stone:*
+= smooth_brick:0:4
+
+craft
+nether_brick_item:0 + nether_brick_item:0
+nether_brick_item:0 + nether_brick_item:0
+= nether_brick:0:1
+
+craft
+snow_ball:0 + snow_ball:0
+snow_ball:0 + snow_ball:0
+= snow_block:0:1
+
+craft
+clay_ball:0 + clay_ball:0
+clay_ball:0 + clay_ball:0
+= clay:0:1
+
+craft
+clay_brick:0 + clay_brick:0
+clay_brick:0 + clay_brick:0
+= brick:0:1
+
+craft
+glowstone_dust:0 + glowstone_dust:0
+glowstone_dust:0 + glowstone_dust:0
+= glowstone:0:1
+
+craft
+quartz:0 + quartz:0
+quartz:0 + quartz:0
+= quartz_block:0:1
+
+craft
+string:0 + string:0
+string:0 + string:0
+= wool:0:1
+
+craft
+fishing_rod:0 + air
+air + carrot_item:0
+= carrot_stick:0:1
+
+craft
+wood:*
+stick:0
+stick:0
+= wood_spade:0:1
+
+craft
+cobblestone:*
+stick:0
+stick:0
+= stone_spade:0:1
+
+craft
+iron_ingot:0
+stick:0
+stick:0
+= iron_spade:0:1
+
+craft
+diamond:0
+stick:0
+stick:0
+= diamond_spade:0:1
+
+craft
+gold_ingot:0
+stick:0
+stick:0
+= gold_spade:0:1
+
+craft
+wood:*
+wood:*
+stick:0
+= wood_sword:0:1
+
+craft
+cobblestone:*
+cobblestone:*
+stick:0
+= stone_sword:0:1
+
+craft
+iron_ingot:0
+iron_ingot:0
+stick:0
+= iron_sword:0:1
+
+craft
+diamond:0
+diamond:0
+stick:0
+= diamond_sword:0:1
+
+craft
+gold_ingot:0
+gold_ingot:0
+stick:0
+= gold_sword:0:1
+
+craft
+flint:0
+stick:0
+feather:0
+= arrow:0:4
+
+craft
+wheat:0 + ink_sack:3 + wheat:0
+= cookie:0:8
+
+craft
+sugar_cane:0 + sugar_cane:0 + sugar_cane:0
+= paper:0:3
+
+craft
+snow_block:* + snow_block:* + snow_block:*
+= snow:0:6
+
+craft
+cobblestone:* + cobblestone:* + cobblestone:*
+= step:3:6
+
+craft
+stone:* + stone:* + stone:*
+= step:0:6
+
+craft
+sandstone:* + sandstone:* + sandstone:*
+= step:1:6
+
+craft
+brick:* + brick:* + brick:*
+= step:4:6
+
+craft
+smooth_brick:* + smooth_brick:* + smooth_brick:*
+= step:5:6
+
+craft
+nether_brick:* + nether_brick:* + nether_brick:*
+= step:6:6
+
+craft
+quartz_block:* + quartz_block:* + quartz_block:*
+= step:7:6
+
+craft
+wood:0 + wood:0 + wood:0
+= wood_step:0:6
+
+craft
+wood:2 + wood:2 + wood:2
+= wood_step:2:6
+
+craft
+wood:1 + wood:1 + wood:1
+= wood_step:1:6
+
+craft
+wood:3 + wood:3 + wood:3
+= wood_step:3:6
+
+craft
+wood:4 + wood:4 + wood:4
+= wood_step:4:6
+
+craft
+wood:5 + wood:5 + wood:5
+= wood_step:5:6
+
+craft
+wheat:0 + wheat:0 + wheat:0
+= bread:0:1
+
+craft
+iron_ingot:0
+stick:0
+wood:*
+= tripwire_hook:0:2
+
+craft
+chest:* + tripwire_hook:*
+= trapped_chest:0:1
+
+craft
+step:1
+step:1
+= sandstone:1:1
+
+craft
+step:7
+step:7
+= quartz_block:1:1
+
+craft
+quartz_block:0
+quartz_block:0
+= quartz_block:2:2
+
+craft
+wool:0 + wool:0
+= carpet:0:3
+
+craft
+wool:1 + wool:1
+= carpet:1:3
+
+craft
+wool:2 + wool:2
+= carpet:2:3
+
+craft
+wool:3 + wool:3
+= carpet:3:3
+
+craft
+wool:4 + wool:4
+= carpet:4:3
+
+craft
+wool:5 + wool:5
+= carpet:5:3
+
+craft
+wool:6 + wool:6
+= carpet:6:3
+
+craft
+wool:7 + wool:7
+= carpet:7:3
+
+craft
+wool:8 + wool:8
+= carpet:8:3
+
+craft
+wool:9 + wool:9
+= carpet:9:3
+
+craft
+wool:10 + wool:10
+= carpet:10:3
+
+craft
+wool:11 + wool:11
+= carpet:11:3
+
+craft
+wool:12 + wool:12
+= carpet:12:3
+
+craft
+wool:13 + wool:13
+= carpet:13:3
+
+craft
+wool:14 + wool:14
+= carpet:14:3
+
+craft
+wool:15 + wool:15
+= carpet:15:3
+
+craft
+wood:*
+wood:*
+= stick:0:4
+
+craft
+coal:0
+stick:0
+= torch:0:4
+
+craft
+coal:1
+stick:0
+= torch:0:4
+
+craft
+pumpkin:*
+torch:*
+= jack_o_lantern:0:1
+
+craft
+chest:*
+minecart:0
+= storage_minecart:0:1
+
+craft
+furnace:*
+minecart:0
+= powered_minecart:0:1
+
+craft
+tnt:*
+minecart:0
+= explosive_minecart:0:1
+
+craft
+hopper:*
+minecart:0
+= hopper_minecart:0:1
+
+craft
+stick:0
+cobblestone:*
+= lever:0:1
+
+craft
+redstone:0
+stick:0
+= redstone_torch_on:0:1
+
+craft
+stone:* + stone:*
+= stone_plate:0:1
+
+craft
+wood:* + wood:*
+= wood_plate:0:1
+
+craft
+iron_ingot:0 + iron_ingot:0
+= iron_plate:0:1
+
+craft
+gold_ingot:0 + gold_ingot:0
+= gold_plate:0:1
+
+craft
+slime_ball:0
+piston_base:*
+= piston_sticky_base:0:1
+
+craft
+gold_block:*
+= gold_ingot:0:9
+
+craft
+iron_block:*
+= iron_ingot:0:9
+
+craft
+diamond_block:*
+= diamond:0:9
+
+craft
+emerald_block:*
+= emerald:0:9
+
+craft
+lapis_block:*
+= ink_sack:4:9
+
+craft
+redstone_block:*
+= redstone:0:9
+
+craft
+coal_block:*
+= coal:0:9
+
+craft
+hay_block:*
+= wheat:0:9
+
+craft
+gold_ingot:0
+= gold_nugget:0:9
+
+craft
+melon:0
+= melon_seeds:0:1
+
+craft
+pumpkin:*
+= pumpkin_seeds:0:4
+
+craft
+sugar_cane:0
+= sugar:0:1
+
+craft
+log:0
+= wood:0:4
+
+craft
+log:1
+= wood:1:4
+
+craft
+log:2
+= wood:2:4
+
+craft
+log:3
+= wood:3:4
+
+craft
+log_2:0
+= wood:4:4
+
+craft
+log_2:1
+= wood:5:4
+
+craft
+stone:*
+= stone_button:0:1
+
+craft
+wood:*
+= wood_button:0:1
+
+//---------------------------------------------------
+// Combine recipes
+
+combine
+book_and_quill:0
+= written_book:-1:0
+
+combine
+ink_sack:4 + ink_sack:1 + ink_sack:1 + ink_sack:15
+= ink_sack:13:4
+
+combine
+paper:0 + paper:0 + paper:0 + leather:0
+= book:0:1
+
+combine
+brown_mushroom:0 + red_mushroom:0 + bowl:0
+= mushroom_soup:0:1
+
+combine
+pumpkin:0 + sugar:0 + egg:0
+= pumpkin_pie:0:1
+
+combine
+spider_eye:0 + brown_mushroom:0 + sugar:0
+= fermented_spider_eye:0:1
+
+combine
+ink_sack:0 + ink_sack:15 + ink_sack:15
+= ink_sack:7:3
+
+combine
+ink_sack:4 + ink_sack:1 + ink_sack:9
+= ink_sack:13:3
+
+combine
+book:0 + ink_sack:0 + feather:0
+= book_and_quill:0:1
+
+combine
+sulphur:0 + blaze_powder:0 + coal:0
+= fireball:0:3
+
+combine
+sulphur:0 + blaze_powder:0 + coal:1
+= fireball:0:3
+
+combine
+blaze_powder:0 + slime_ball:0
+= magma_cream:0:1
+
+combine
+ink_sack:0 + wool:0
+= wool:15:1
+
+combine
+ink_sack:1 + wool:0
+= wool:14:1
+
+combine
+ink_sack:2 + wool:0
+= wool:13:1
+
+combine
+ink_sack:3 + wool:0
+= wool:12:1
+
+combine
+ink_sack:4 + wool:0
+= wool:11:1
+
+combine
+ink_sack:5 + wool:0
+= wool:10:1
+
+combine
+ink_sack:6 + wool:0
+= wool:9:1
+
+combine
+ink_sack:7 + wool:0
+= wool:8:1
+
+combine
+ink_sack:8 + wool:0
+= wool:7:1
+
+combine
+ink_sack:9 + wool:0
+= wool:6:1
+
+combine
+ink_sack:10 + wool:0
+= wool:5:1
+
+combine
+ink_sack:11 + wool:0
+= wool:4:1
+
+combine
+ink_sack:12 + wool:0
+= wool:3:1
+
+combine
+ink_sack:13 + wool:0
+= wool:2:1
+
+combine
+ink_sack:14 + wool:0
+= wool:1:1
+
+combine
+ink_sack:15 + wool:0
+= wool:0:1
+
+combine
+ink_sack:1 + ink_sack:15
+= ink_sack:9:2
+
+combine
+ink_sack:1 + ink_sack:11
+= ink_sack:14:2
+
+combine
+ink_sack:2 + ink_sack:15
+= ink_sack:10:2
+
+combine
+ink_sack:0 + ink_sack:15
+= ink_sack:8:2
+
+combine
+ink_sack:8 + ink_sack:15
+= ink_sack:7:2
+
+combine
+ink_sack:4 + ink_sack:15
+= ink_sack:12:2
+
+combine
+ink_sack:4 + ink_sack:2
+= ink_sack:6:2
+
+combine
+ink_sack:4 + ink_sack:1
+= ink_sack:5:2
+
+combine
+ink_sack:5 + ink_sack:9
+= ink_sack:13:2
+
+combine
+iron_ingot:0 + flint:0
+= flint_and_steel:0:1
+
+combine
+ender_pearl:0 + blaze_powder:0
+= eye_of_ender:0:1
+
+combine
+blaze_rod:0
+= blaze_powder:0:2
+
+combine
+yellow_flower:0
+= ink_sack:11:1
+
+combine
+red_rose:0
+= ink_sack:1:1
+
+combine
+bone:0
+= ink_sack:15:3
+
+combine
+red_rose:1
+= ink_sack:12:1
+
+combine
+red_rose:2
+= ink_sack:13:1
+
+combine
+red_rose:3
+= ink_sack:7:1
+
+combine
+red_rose:4
+= ink_sack:1:1
+
+combine
+red_rose:5
+= ink_sack:14:1
+
+combine
+red_rose:6
+= ink_sack:7:1
+
+combine
+red_rose:7
+= ink_sack:9:1
+
+combine
+red_rose:8
+= ink_sack:7:1
+
+combine
+double_plant:0
+= ink_sack:11:2
+
+combine
+double_plant:1
+= ink_sack:13:2
+
+combine
+double_plant:4
+= ink_sack:1:2
+
+combine
+double_plant:5
+= ink_sack:9:2
+
+//---------------------------------------------------
+// Smelt recipes
+
+smelt
+raw_chicken
+= cooked_chicken:0:1
+
+smelt
+coal_ore
+= coal:0:1
+
+smelt
+potato_item
+= baked_potato:0:1
+
+smelt
+log
+= coal:1:1
+
+smelt
+raw_fish
+= cooked_fish:0:1
+
+smelt
+sand
+= glass:0:1
+
+smelt
+cactus
+= ink_sack:2:1
+
+smelt
+emerald_ore
+= emerald:0:1
+
+smelt
+raw_beef
+= cooked_beef:0:1
+
+smelt
+netherrack
+= nether_brick_item:0:1
+
+smelt
+iron_ore
+= iron_ingot:0:1
+
+smelt
+clay
+= hard_clay:0:1
+
+smelt
+lapis_ore
+= ink_sack:4:1
+
+smelt
+pork
+= grilled_pork:0:1
+
+smelt
+clay_ball
+= clay_brick:0:1
+
+smelt
+log_2
+= coal:1:1
+
+smelt
+gold_ore
+= gold_ingot:0:1
+
+smelt
+diamond_ore
+= diamond:0:1
+
+smelt
+cobblestone
+= stone:0:1
+
+smelt
+redstone_ore
+= redstone:0:1
+
+smelt
+quartz_ore
+= quartz:0:1
+
+smelt
+raw_fish
+= cooked_fish:1:1
+

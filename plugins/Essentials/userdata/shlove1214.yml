@@ -1,0 +1,36 @@
+uuid: 09c3f1eb-ce3c-4f62-b81d-1087fe7c9a11
+timestamps:
+  login: 1416070553956
+  logout: 1416075315966
+  lastteleport: 1416075283470
+ipAddress: 112.119.206.215
+logoutlocation:
+  world: world
+  x: 69.56868573494455
+  y: 110.0
+  z: -171.79366294906086
+  yaw: -289.54736
+  pitch: 16.500008
+lastlocation:
+  world: world
+  x: 72.35541927949737
+  y: 105.0
+  z: -166.0706604859877
+  yaw: -344.15637
+  pitch: 27.3
+afk: false
+ban:
+  reason: '§4Banned:
+
+    §rethnic cleansing'
+  timeout: 0
+homes:
+  home:
+    world: world
+    x: 148.30149388237623
+    y: 98.0
+    z: -290.59464703954376
+    yaw: -134.86496
+    pitch: 23.250015
+godmode: false
+money: '514681.8799999999'

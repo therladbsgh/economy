@@ -1,0 +1,15 @@
+#
+# This file sets the scoreboard to show money to the player.
+#
+
+on join:
+	display board named "&6Statistics" to player
+	make score "&3Money" in board of player to money of player
+	make score of "&3Cents" in board of player to money of player mod 1
+	move display of player to sidebar
+
+every 1 seconds:
+	loop players:
+		make score of "&3Money" in board of loop-player to money of loop-player
+		make score of "&3Cents" in board of loop-player to (money of loop-player mod 1)*100
+		

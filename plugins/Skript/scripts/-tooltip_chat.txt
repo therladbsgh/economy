@@ -1,0 +1,5 @@
+command /rulesa:
+	trigger:
+		message "rule##1: no ASD!"
+		message "rule##2: just asd"
+		send json of "§eMods allowed" tooltip "§eMods allowed on this server; <mod> <mod> <mod>" to player

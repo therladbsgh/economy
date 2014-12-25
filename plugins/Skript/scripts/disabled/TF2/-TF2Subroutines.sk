@@ -1,0 +1,1097 @@
+options:
+	Logo: &7<] &6Team Fortress 2 &7[> &6
+	Version: 1.64 Beta
+
+# Subroutines
+
+sub "tf2-updatehat":
+	set {_cp} to "%parameter 1%" parsed as a player
+	{tf2.hat.%{_cp}%} is air or "0":
+		set {_cp}'s helmet to air
+		stop
+	set {_cp}'s helmet to "%{tf2.hatproperties.%{tf2.hat.%{_cp}%}%.item}%" parsed as an item type 
+	set name of {_cp}'s helmet to "&6%{tf2.hat.%{_cp}%}%"
+sub "tf2-joinmap":
+	set {_map} to "MCOTGTF2"
+	set {_plyr} to "%parameter 1%" parsed as a player
+	{tf2.playerarena.%{_plyr}%} is set:
+		message "%{tf2.logo}%You're already in a game!" to {_plyr}
+		stop
+	set {tf2.playerpreviousloc.%{_plyr}%} to location of {_plyr}
+	set {tf2.playerarena.%{_plyr}%} to {_map}
+	teleport {_plyr} to {tf2.mainlobby}
+	add 1 to {tf2.playeramount.%{_map}%}
+	message "&6███████████████████████████████████" to {_plyr}
+	message "" to {_plyr}
+	message "%{tf2.logo}%Welcome to &cTeam Fortress 2&6. Please note, that &cTF2&6 is still in development and may change daily!" to {_plyr}
+	message "" to {_plyr}
+	message "&6███████████████████████████████████" to {_plyr}
+	add {_plyr} to {tf2.playerlist.%{_map}%::*}
+	clear the inventory of {_plyr}
+	give book named "&cBook of Classes!" with lore "&4Select your class for the game!" to {_plyr}
+	give book named "&cBook of &4&lHATSSSSSSSSSssssss!" with lore "&4Select a hat!" to {_plyr}
+	{tf2.luckydipamount.%{_plyr}%} is less than 0:
+		set {tf2.luckydipamount.%{_plyr}%} to 0
+	loop {tf2.luckydipamount.%{_plyr}%} times:
+		add a chest named "&aLucky Dip!" to {_plyr}
+	delete {tf2.class.%{_plyr}%}
+	{tf2.mapstatus} is "started":
+		message "%{tf2.logo}%Once you select your class, your team will be assigned to you!" to {_plyr}
+		{tf2.gametype.%{tf2.currentmap}%} is "KoTH"
+		{_plyr} set scoreboard
+		stop
+	invoke "tf2-attemptstart"
+	clear boss bar of {_plyr}
+		
+
+sub "tf2-attemptstart":
+	set {_map} to "MCOTGTF2"
+	{tf2.mapstatus} isn't set
+	amount of players is more than or equal to 2
+	invoke "tf2-start" from {_map}
+
+sub "tf2-start":
+	set {_map} to "%parameter 1%"
+	set {tf2.mapstatus} to "starting"
+	broadcast "%{tf2.logo}%Enjoy playing Mini Games in the Lobby for around 2 minutes! Need to let the server calm down!"
+	loop 120 times:
+		{tf2.mapstatus} isn't "starting":
+			stop
+		amount of players is less than 2:
+			delete {tf2.mapstatus}
+			broadcast "%{tf2.logo}%Stopped the Start Up. Not enough players!"
+			stop
+		wait 1 second
+	broadcast "%{tf2.logo}%&a%{_map}% &6will be starting in &c1 minute&6!"
+	broadcast "&6 Vote for the map that'll be played with by right clicking the &bEnchanted Book&6 in your inventory!"
+	invoke "tf2-startvoting"
+	set {_time} to 60
+	loop 60 times:
+		remove 1 from {_time}
+		{tf2.playeramount.%{_map}%} is less than 2:
+			loop all players:
+				set {_cp} to "%loop-player%" parsed as a player
+				message "%{tf2.logo}%Startup stopped, not enough players!" to {_cp}
+				invoke "tf2-leavemap" from {_cp}
+				invoke "tf2-joinmap" from {_cp} and {_map}
+			delete {tf2.mapstatus}
+			#set {tf2.mapvoting} to false
+			stop
+		wait 1 second
+	set {tf2.mapvoting} to false
+	wait 1 second
+	set {_map} to {tf2.currentmap}
+	wait 9 seconds
+	invoke "tf2-fullstart" from {_map}
+
+sub "tf2-fullstart":
+	wait 2 ticks
+	set {_map} to {tf2.currentmap}
+	invoke "tf2-assignteam-map" from {_map}
+	loop all worlds:
+		loop-world isn't "TF2Lobby" or "2Fort" or "Dustbowl" or "KoTH":
+			execute console command "/mvunload %loop-world%"
+			wait 4 ticks
+			execute console command "/mvconfirm"
+	{tf2.gametype.%{_map}%} is "KoTH":
+		invoke "tf2-kothstart" from {_map}
+		stop
+	loop all players:
+		set {_cp} to "%loop-player%" parsed as a player
+		{tf2.class.%{_cp}%} isn't set:
+			set {tf2.class.%{_cp}%} to "Scout"
+			message "%{tf2.logo}%Your class was auto assigned to &aScout&6 since you didn't select one!" to {_cp}
+		set {tf2.playerarena.%{_cp}%} to {_map}
+		wait 1 tick
+		clear boss bar of {_cp}
+		set boss bar of {_cp} to "&4Match starting! Please wait!"
+		clear inventory of {_cp}
+		invoke "tf2-items" from "%{_cp}%"
+		display board named "&6&lMCOTG &4&lTF2" to {_cp}
+		make score "&a&lTeam" in board of {_cp} to -1
+		{tf2.team.%{_cp}%} is "red":
+			make score "&4&lRed Team" in board of {_cp} to -2
+			teleport {_cp} to {tf2.location.redspawn.%{_map}%}
+		{tf2.team.%{_cp}%} is "blu":
+			make score "&9&lBlu Team" in board of {_cp} to -2
+			teleport {_cp} to {tf2.location.bluespawn.%{_map}%}
+		make score "&a" in board of {_cp} to -3
+		make score "&a&lClass" in board of {_cp} to -4
+		make score "&l%{tf2.class.%{_cp}%}%" in board of {_cp} to -5
+		move display of {_cp} to sidebar
+		set {tf2.deaths.%{_cp}%} to 0
+		wait 1 tick
+	set {tf2.gametime.%{_map}%.minutes} to 9
+	set {tf2.gametime.%{_map}%.seconds} to 60
+		
+	set {tf2.teamkills.red.%{_map}%} to 0
+	set {tf2.teamkills.blu.%{_map}%} to 0
+	
+	set {tf2.capturepoint.1.%{_map}%.percent} to 100
+	set {tf2.capturepoint.2.%{_map}%.percent} to 100
+	
+	set {tf2.mapstatus} to "started"
+	
+	{tf2.gametype.%{_map}%} is "CTI":
+		invoke "tf2-intelspawn" from {_Map}
+	{tf2.gametype.%{_map}%} is "TDM":
+		loop all players:
+			set {_cp} to "%loop-player%" parsed as a player
+			make score "&bBlu Kills" in board of {_cp} to {tf2.teamkills.blu.%{_map}%}
+			make score "&cRed Kills" in board of {_cp} to {tf2.teamkills.red.%{_map}%}
+			move display of {_cp} to sidebar
+			wait 1 tick
+	{tf2.gametype.%{_map}%} is "CAP":
+		loop all players:
+			set {_cp} to "%loop-player%" parsed as a player
+			make score "&3Point 1" in board of {_cp} to {tf2.capturepoint.1.%{_map}%.percent}
+			make score "&3Point 2" in board of {_cp} to {tf2.capturepoint.2.%{_map}%.percent}
+			move display of {_cp} to sidebar
+			wait 1 tick
+		set {_cappoint1} to {tf2.location.cp1.%{_map}%}
+		set {_cappoint2} to {tf2.location.cp2.%{_map}%}
+		loop blocks in radius 5 of block at {_cappoint1}:
+			loop-block is blue wool:
+				set loop-block to red wool
+		loop blocks in radius 5 of block at {_cappoint2}:
+			loop-block is blue wool:
+				set loop-block to red wool
+	set {_ticks} to 0
+	set {_time} to 30
+	loop 30 times:
+		set {_wall} to 0
+		loop 10 times:
+			set {_region.blu} to "TF2-%{_map}%-BluEntrance" parsed as a region
+			set {_region.red} to "TF2-%{_map}%-RedEntrance" parsed as a region
+			loop all blocks in the region {_region.red}:
+				loop-block is air
+				set loop-block to nether quartz ore
+			loop all blocks in the region {_region.blu}:
+				loop-block is air
+				set loop-block to nether quartz ore
+			add 1 to {_wall}
+			set {_region.blu} to "TF2-%{_map}%-BluEntrance-%{_wall}%" parsed as a region
+			set {_region.red} to "TF2-%{_map}%-RedEntrance-%{_wall}%" parsed as a region
+			loop all blocks in the region {_region.red}:
+				loop-block is air
+				set loop-block to nether quartz ore
+			loop all blocks in the region {_region.blu}:
+				loop-block is air
+				set loop-block to nether quartz ore
+		loop all players:
+			play raw sound "GameStarting%{_time}%" at loop-player with pitch 1 volume 10
+		remove 1 from {_time}
+		wait 1 second
+	{tf2.gametype.%{_map}%} isn't "Cap":
+		set {_region.blu} to "TF2-%{_map}%-BluEntrance" parsed as a region
+		set {_region.red} to "TF2-%{_map}%-RedEntrance" parsed as a region
+		loop all blocks in the region {_region.red}:
+			loop-block is nether quartz ore
+			set loop-block to air
+			wait 1 tick
+			spawn falling nether quartz ore at loop-block
+		loop all blocks in the region {_region.blu}:
+			loop-block is nether quartz ore
+			set loop-block to air
+			wait 1 tick
+			spawn falling nether quartz ore at loop-block
+		loop 10 times:
+			set {_region.blu} to "TF2-%{_map}%-BluEntrance" parsed as a region
+			set {_region.red} to "TF2-%{_map}%-RedEntrance" parsed as a region
+			loop all blocks in the region {_region.red}:
+				loop-block is nether quartz ore
+				set loop-block to air
+				spawn falling nether quartz ore at loop-block
+			loop all blocks in the region {_region.blu}:
+				loop-block is nether quartz ore
+				set loop-block to air
+				spawn falling nether quartz ore at loop-block
+			add 1 to {_wall}
+			set {_region.blu} to "TF2-%{_map}%-BluEntrance-%{_wall}%" parsed as a region
+			set {_region.red} to "TF2-%{_map}%-RedEntrance-%{_wall}%" parsed as a region
+			loop all blocks in the region {_region.red}:
+				loop-block is nether quartz ore
+				set loop-block to air
+				spawn falling nether quartz ore at loop-block
+			loop all blocks in the region {_region.blu}:
+				loop-block is nether quartz ore
+				set loop-block to air
+				spawn falling nether quartz ore at loop-block
+	{tf2.gametype.%{_map}%} is "cap":
+		set {_region.blu} to "TF2-%{_map}%-BluEntrance" parsed as a region
+		set {_region.red} to "TF2-%{_map}%-RedEntrance" parsed as a region
+		loop all blocks in the region {_region.red}:
+			loop-block is nether quartz ore
+			set loop-block to air
+			wait 1 tick
+			spawn falling nether quartz ore at loop-block
+		loop 10 times:
+			set {_region.red} to "TF2-%{_map}%-RedEntrance" parsed as a region
+			loop all blocks in the region {_region.red}:
+				loop-block is nether quartz ore
+				set loop-block to air
+				spawn falling nether quartz ore at loop-block
+			add 1 to {_wall}
+			set {_region.red} to "TF2-%{_map}%-RedEntrance-%{_wall}%" parsed as a region
+			loop all blocks in the region {_region.red}:
+				loop-block is nether quartz ore
+				set loop-block to air
+				spawn falling nether quartz ore at loop-block
+		broadcast "%{tf2.logo}%The &4Red Team&6 has been released!"
+		set {tf2.capturepoint} to 1
+	loop all players:
+		invoke "tf2-items" from loop-player
+	set {_secs} to 0
+	
+	loop all worlds:
+		delete all iron golems in loop-world
+	
+	set {_region.blu} to "TF2-%{_map}%-BluEntrance" parsed as a region
+	set {_region.red} to "TF2-%{_map}%-RedEntrance" parsed as a region
+	loop all blocks in the region {_region.red}:
+		loop-block is air
+		block below loop-block isn't air or bedrock
+		block above loop-block is air
+		block 2 above loop-block is air
+		block 2 below loop-block isn't air or bedrock:
+			set block 2 below loop-block to air
+		block 3 below loop-block isn't bedrock:
+			set block 3 below loop-block to bedrock
+		#make loop-block shoot an arrow at speed 0 down
+		#set {_arrow} to shot arrow
+		spawn an iron golem at block 2 below loop-block
+		set {_first} to spawned iron golem
+		set {_prev} to spawned iron golem
+		make {_first} ride {_arrow}
+		apply invisibility to {_prev} for 10 days
+		apply slowness 100 to {_prev} for 1000 days
+		loop 4 times:
+			spawn a iron golem at {_prev}
+			make spawned iron golem ride {_prev}
+			set {_prev} to spawned iron golem
+			apply slowness 100 to {_prev} for 100 days
+			apply invisibility to {_prev} for 10 days
+	loop all blocks in the region {_region.blu}:
+		loop-block is air
+		block below loop-block isn't air or bedrock
+		block 2 below loop-block isn't air or bedrock:
+			set block 2 below loop-block to air
+		block 3 below loop-block isn't bedrock:
+			set block 3 below loop-block to bedrock
+		#make loop-block shoot an arrow at speed 0 down
+		#set {_arrow} to shot arrow
+		spawn an iron golem at block 2 below loop-block
+		set {_first} to spawned iron golem
+		set {_prev} to spawned iron golem
+		make {_first} ride {_arrow}
+		apply invisibility to {_prev} for 10 days
+		apply slowness 10000 to {_prev} for 1000 days
+		loop 4 times:
+			spawn a iron golem at {_prev}
+			make spawned iron golem ride {_prev}
+			set {_prev} to spawned iron golem
+			apply slowness 100 to {_prev} for 100 days
+			apply invisibility to {_prev} for 10 days
+	delete {_region.blu}
+	delete {_region.red}
+	set {_wall} to 1
+	loop 10 times:
+		add 1 to {_wall}
+		set {_region.blu} to "TF2-%{_map}%-BluEntrance-%{_wall}%" parsed as a region
+		set {_region.red} to "TF2-%{_map}%-RedEntrance-%{_wall}%" parsed as a region
+		loop all blocks in the region {_region.red}:
+			loop-block is air
+			block below loop-block isn't air or bedrock
+			block 2 below loop-block isn't air or bedrock:
+				set block 2 below loop-block to air
+			block 3 below loop-block isn't bedrock:
+				set block 3 below loop-block to bedrock
+			#make loop-block shoot an arrow at speed 0 down
+			#set {_arrow} to shot arrow
+			spawn an iron golem at block 2 below loop-block
+			set {_first} to spawned iron golem
+			set {_prev} to spawned iron golem
+			make {_first} ride {_arrow}
+			apply invisibility to {_prev} for 10 days
+			apply slowness 10000 to {_prev} for 1000 days
+			loop 4 times:
+				spawn a iron golem at {_prev}
+				make spawned iron golem ride {_prev}
+				add spawned iron golem to {_ents::*}
+				set {_prev} to spawned iron golem
+				apply slowness 100 to {_prev} for 100 days
+				apply invisibility to {_prev} for 10 days
+		loop all blocks in the region {_region.blu}:
+			loop-block is air
+			block below loop-block isn't air or bedrock
+			block 2 below loop-block isn't air or bedrock:
+				set block 2 below loop-block to air
+			block 3 below loop-block isn't bedrock:
+				set block 3 below loop-block to bedrock
+			#make loop-block shoot an arrow at speed 0 down
+			#set {_arrow} to shot arrow
+			spawn an iron golem at block 2 below loop-block
+			set {_first} to spawned iron golem
+			set {_prev} to spawned iron golem
+			make {_first} ride {_arrow}
+			apply invisibility to {_prev} for 10 days
+			apply slowness 10000 to {_prev} for 1000 days
+			loop 4 times:
+				spawn a iron golem at {_prev}
+				make spawned iron golem ride {_prev}
+				add spawned iron golem to {_ents::*}
+				set {_prev} to spawned iron golem
+				apply slowness 100 to {_prev} for 100 days
+				apply invisibility to {_prev} for 10 days
+	while {tf2.mapstatus} is "started":
+		add 1 to {_ticks}
+		{_ticks} is 2 or 4 or 6 or 8 or 10 or 12 or 14 or 16 or 18 or 20:
+			add 1 to {_secs}
+		{tf2.gametype.%{_map}%} is "cap":
+		
+			{tf2.capturepoint} is 1:
+				set {_capturestatus} to {tf2.capturepoint.%{tf2.capturepoint}%.%{_map}%.percent}
+				set {_blockno} to 0
+				set {_woolcount} to 0
+				loop blocks in radius 6 of {_loc}:
+					loop-block is blue wool or red wool:
+						add 1 to {_woolcount}
+				set {_woolcheck} to 0
+				set {_woolno} to 0
+				loop {_woolcount} times:
+					add 1 to {_woolno}
+					set {_int} to "%100 / {_woolcount}%" parsed as a number
+					add {_int} to {_woolcheck}
+					set {_woolblockcheck.%{_woolno}%} to rounded down {_woolcheck}
+					#message "%{_woolno}% = %{_woolblockcheck.%{_woolno}%}%"
+				
+				set {_bordercount} to 0
+				loop blocks in radius 6 of {_loc}:
+					"%loop-block%" contains "slab item":
+						add 1 to {_bordercount}
+				set {_bordercheck} to 0
+				set {_borderno} to 0
+				loop {_bordercount} times:
+					add 1 to {_borderno}
+					set {_int} to "%100 / {_bordercount}%" parsed as a number
+					add {_int} to {_bordercheck}
+					set {_borderblockcheck.%{_borderno}%} to rounded down {_bordercheck}
+					#message "%{_borderno}% = %{_borderblockcheck.%{_borderno}%}%"
+				
+				set {_blockno} to 0
+				loop all entities in radius 4 of block at {_loc}:
+					loop-entity is a player:
+						{tf2.team.%loop-entity%} is "blu":
+							{tf2.class.%loop-entity%} is "scout":
+								remove 1 from {_capturestatus}
+							remove 1 from {_capturestatus}
+						{tf2.team.%loop-entity%} is "red":
+							add 1 to {_capturestatus}
+						{_capturestatus} is more than 100:
+							set {_capturestatus} to 100
+						{_capturestatus} is less than 0:
+							set {_capturestatus} to 0
+							broadcast "%{tf2.logo}%Capture Point %{tf2.capturepoint}% has been taken!"
+							add 1 to {tf2.capturepoint}
+							{tf2.capturepoint} is more than 2:
+								broadcast "%{tf2.logo}%All Capture Points have been taken!"
+								invoke "tf2-stopmatch" from {_map}
+								stop
+				loop blocks in radius 6 of {_loc}:
+					loop-block isn't air:
+						"%Loop-block%" contains "double stone":
+							add 1 to {_blockno}
+							{_capturestatus} is more than {_borderblockcheck.%{_blockno}%}:
+								spawn 15 of particle happy villager:0 offset at 0.3, 0.3, 0.3 at block above loop-block
+							{_capturestatus} is less than {_borderblockcheck.%{_blockno}%}:
+								spawn 15 of particle red dust:0 offset at 0.3, 0.3, 0.3 at block above loop-block
+				set {_blockno} to 0
+				loop blocks in radius 6 of {_loc}:
+					loop-block isn't air:
+						loop-block is red wool or blue wool:
+							add 1 to {_blockno}
+							{_capturestatus} is more than or equal to {_woolblockcheck.%{_blockno}%}:
+								loop-block is blue wool
+								set loop-block to red wool
+								#play 50 of blockcrack_%id of loop-block%_%data value of loop-block% data 0 at loop-block offset by 0.3
+								play dig wool at loop-block with pitch 0
+							{_capturestatus} is less than or equal to {_woolblockcheck.%{_blockno}%}:
+								loop-block is red wool
+								set loop-block to blue wool
+								#play 50 of blockcrack_%id of loop-block%_%data value of loop-block% data 0 at loop-block offset by 0.3
+								play dig wool at loop-block with pitch 0
+		{tf2.gametype.%{_map}%} is "CAP":
+			{tf2.gametime.%{_map}%.seconds} is 45:
+				{tf2.gametime.%{_map}%.minutes} is 9
+				broadcast "%{tf2.logo}%The &bBlu Team&6 will be released in &a5 Seconds!"
+			{tf2.gametime.%{_map}%.seconds} is 30:
+				{tf2.gametime.%{_map}%.minutes} is 9
+				loop all blocks in the region {_region.blu}:
+					loop-block is nether quartz ore
+					set loop-block to air
+					wait 1 tick
+					spawn falling nether quartz ore at loop-block
+				loop 10 times:
+					set {_region.blu} to "TF2-%{_map}%-BluEntrance" parsed as a region
+					loop all blocks in the region {_region.blu}:
+						loop-block is nether quartz ore
+						set loop-block to air
+						spawn falling nether quartz ore at loop-block
+					add 1 to {_wall}
+					set {_region.blu} to "TF2-%{_map}%-BluEntrance-%{_wall}%" parsed as a region
+					loop all blocks in the region {_region.blu}:
+						loop-block is nether quartz ore
+						set loop-block to air
+						spawn falling nether quartz ore at loop-block
+				broadcast "%{tf2.logo}%The &bBlu Team&6 has been released!"
+		set {_wall} to 1
+		{_ticks} is 2 or 4 or 6 or 8 or 10 or 12 or 14 or 16 or 18 or 20:										
+			loop all players:
+				invoke "tf2-update-everything" from loop-player
+		{_ticks} is 2 or 4 or 6 or 8 or 10 or 12 or 14 or 16 or 18 or 20:
+			remove 1 from {tf2.gametime.%{_map}%.seconds}
+		{_ticks} is 20:
+			set {_ticks} to 0
+		{tf2.gametime.%{_map}%.minutes} is 2:
+			{tf2.gametime.%{_map}%.seconds} is 0:
+				loop all players:
+					play raw sound "Ends2Min" at loop-player with pitch 1 volume 10
+		{tf2.gametime.%{_map}%.seconds} is less than 60:
+			{tf2.gametime.%{_map}%.minutes} is 0:
+				loop all players:
+					play raw sound "Ends%{tf2.gametime.%{_map}%.seconds}%Secs" at loop-player with pitch 1 volume 10
+		{tf2.gametime.%{_map}%.seconds} is 0:
+			{tf2.gametime.%{_map}%.minutes} is 0:
+				invoke "tf2-stopmatch" from {_map}
+				stop
+			set {tf2.gametime.%{_map}%.seconds} to 59
+			remove 1 from {tf2.gametime.%{_map}%.minutes}
+		wait 10 ticks
+
+sub "tf2-update-everything":
+	set {_cp} to "%parameter 1%" parsed as a player
+	set {_map} to {tf2.currentmap}
+	set {_region.blu} to "TF2-%{_map}%-BluEntrance" parsed as a region
+	set {_region.red} to "TF2-%{_map}%-RedEntrance" parsed as a region
+	set {tf2.playerarena.%{_cp}%} to {tf2.currentmap}
+	#set prefix of {_cp} to "&7[&a%{tf2.playerarena.%{_cp}%}%&7] &r"
+	{tf2.team.%{_cp}%} is "red":
+		loop all blocks in the region {_region.red}:
+			loop-block is air
+			make {_cp} see loop-block as loop-block
+		loop all blocks in the region {_region.blu}:
+			loop-block is air
+			make {_cp} see loop-block as nether quartz ore
+			play mobspawner flames at loop-block to {_cp}
+	{tf2.team.%{_cp}%} is "blu":
+		loop all blocks in the region {_region.red}:
+			loop-block is air
+			make {_cp} see loop-block as nether quartz ore
+			play mobspawner flames at loop-block to {_cp}
+		loop all blocks in the region {_region.blu}:
+			make {_cp} see loop-block as loop-block
+	delete {_region.blu}
+	delete {_region.red}
+	set {_wall} to 0
+	loop 10 times:
+		add 1 to {_wall}
+		set {_region.blu} to "TF2-%{_map}%-BluEntrance-%{_wall}%" parsed as a region
+		set {_region.red} to "TF2-%{_map}%-RedEntrance-%{_wall}%" parsed as a region
+		set {_region.wall} to "TF2-%{_map}%-Wall-%{_wall}%" parsed as a region
+		loop all blocks in the region {_region.wall}:
+			loop-block is air:
+				make {_cp} see loop-block as nether quartz ore
+				play mobspawner flames at loop-block to {_cp}
+				spawn 15 of particle red dust:0 offset at 0.5, 0.5, 0.5 at loop-block
+		{tf2.team.%{_cp}%} is "red":
+			loop all blocks in the region {_region.red}:
+				loop-block is air
+				make {_cp} see loop-block as loop-block
+			loop all blocks in the region {_region.blu}:
+				loop-block is air
+				make {_cp} see loop-block as nether quartz ore
+				play mobspawner flames at loop-block to {_cp}
+		{tf2.team.%{_cp}%} is "blu":
+			loop all blocks in the region {_region.red}:
+				loop-block is air
+				make {_cp} see loop-block as nether quartz ore
+				play mobspawner flames at loop-block to {_cp}
+			loop all blocks in the region {_region.blu}:
+				make {_cp} see loop-block as loop-block
+				spawn falling block of sponge at loop-block
+	{tf2.gametype.%{_map}%} isn't "KoTH":
+		{tf2.gametype.%{_map}%} is "TDM":
+			make score "&bBlu Kills" in board of {_cp} to {tf2.teamkills.blu.%{_map}%}
+			make score "&cRed Kills" in board of {_cp} to {tf2.teamkills.red.%{_map}%}
+		{tf2.gametype.%{_map}%} is "CAP":
+			make score "&3Point 1" in board of {_cp} to {tf2.capturepoint.1.%{_map}%.percent}
+			make score "&3Point 2" in board of {_cp} to {tf2.capturepoint.2.%{_map}%.percent}
+	set {_mins} to "0%{tf2.gametime.%{_map}%.minutes}%"
+	set {_secs} to "0%{tf2.gametime.%{_map}%.seconds}%"
+	{tf2.gametime.%{_map}%.seconds} is more than 9:
+		set {_secs} to "%{tf2.gametime.%{_map}%.seconds}%"
+		set boss bar of {_cp} to "&6Time Left: &a%{_mins}%:%{_secs}%"
+	{tf2.gametime.%{_map}%.seconds} is less than 10:
+		set {_secs} to "%{tf2.gametime.%{_map}%.seconds}%"
+		set boss bar of {_cp} to "&6Time Left: &a%{_mins}%:0%{_secs}%"
+
+sub "tf2-stopmatch":
+	set {_map} to "%parameter 1%"
+	#{tf2.gametype.%{_map}%} is "CTI":
+	#	invoke "tf2-intelspawn" from {_Map}
+	set {tf2.gametime.%{_map}%.minutes} to 0
+	set {tf2.gametime.%{_map}%.seconds} to 0
+	{tf2.gametype.%{_map}%} is "KoTH":
+		set {_blu.kills} to {tf2.bluhillscore}
+		set {_red.kills} to  {tf2.redhillscore}
+		{_red.kills} is more than {_blu.kills}:
+			set {_win} to "&cRed"
+			set {_winner} to "red"
+			set {_windif} to difference between {_red.kills} and {_blu.kills}
+		{_red.kills} is less than {_blu.kills}:
+			set {_win} to "&bBlu"
+			set {_winner} to "blue"
+			set {_windif} to difference between {_red.kills} and {_blu.kills}
+		{_red.kills} is equal to {_blu.kills}:
+			set {_win} to "&ait's a Tie!"
+			set {_winner} to "tie"
+	{tf2.gametype.%{_map}%} is "TDM":
+		set {_blu.kills} to {tf2.teamkills.blu.%{_map}%}
+		set {_red.kills} to  {tf2.teamkills.red.%{_map}%}
+		{_red.kills} is more than {_blu.kills}:
+			set {_win} to "&cRed"
+			set {_winner} to "red"
+			set {_windif} to difference between {_red.kills} and {_blu.kills}
+		{_red.kills} is less than {_blu.kills}:
+			set {_win} to "&bBlu"
+			set {_winner} to "blue"
+			set {_windif} to difference between {_red.kills} and {_blu.kills}
+		{_red.kills} is equal to {_blu.kills}:
+			set {_win} to "&ait's a Tie!"
+			set {_winner} to "tie"
+	set {tf2.mapstatus} to "ending"
+	loop all players:
+		set {_cp} to "%loop-player%" parsed as a player
+		message "%{tf2.logo}%The match has ended! The winner for this match is... %{_win}%" to {_cp}
+		clear inventory of {_cp}
+		execute console command "/heal %{_cp}%"
+		#disallow {_cp} to fly
+	loop blocks in radius 40 of block at {tf2.location.bluespawn.%{_map}%}:
+		loop-block is air:
+			chance of 0.5%:
+				add location of loop-block to {_fireworks.blue::*}
+				add location of loop-block to {_fireworks.tie::*}
+	loop blocks in radius 40 of block at {tf2.location.redspawn.%{_map}%}:
+		loop-block is air:
+			chance of 0.5%:
+				add location of loop-block to {_fireworks.red::*}
+				add location of loop-block to {_fireworks.tie::*}
+	loop 10 times:
+		{_winner} is "red":
+			loop {_fireworks.red::*}:
+				chance of 15%:
+					pop ball_large colored red at loop-value
+		{_winner} is "blue":
+			loop {_fireworks.blue::*}:
+				chance of 15%:
+					pop ball_large colored blue at loop-value
+		{_winner} is "tie":
+			loop {_fireworks.tie::*}:
+				chance of 15%:
+					pop ball_large colored light green at loop-value
+		wait 1 second
+	loop all players:
+		set {_cp} to "%loop-player%" parsed as a player
+		message "%{tf2.logo}%Prepare for teleportation!" to {_cp}
+		invoke "tf2-leavemap" from {_cp}
+		invoke "tf2-stayedtillend" from {_cp}
+		invoke "tf2-engineer-destroy-all" from {_cp}
+		delete {tf2.disguise.%{_cp}%}
+	loop {tf2.maplist::*}:
+		set {tf2.playeramount.%loop-value%} to 0
+		delete {tf2.mapstatus.%loop-value%}
+	set {tf2.playeramount.MCOTGTF2} to 0
+	delete {tf2.mapstatus}
+	wait 1 second
+	loop {tf2.maplist::*}:
+		set {_testmap} to {_map}
+		replace all "-1" and "-2" and "-3" and "-4" and "-5" with "" in {_testmap}
+		"%loop-value%" contains "%{_testmap}%":
+			loop-value isn't {_map}
+			add loop-value to {_nextmaps::*}
+			
+	size of {_nextmaps::*} is more than or equal to 1:
+		{_map} contains "-4":
+			loop {_nextmaps::*}:
+				"%loop-value%" contains "-5":
+					set {_nextmap} to loop-value
+					exit loop
+		{_map} contains "-3":
+			loop {_nextmaps::*}:
+				"%loop-value%" contains "-4":
+					set {_nextmap} to loop-value
+					exit loop
+		{_map} contains "-2":
+			loop {_nextmaps::*}:
+				"%loop-value%" contains "-3":
+					set {_nextmap} to loop-value
+					exit loop
+		{_map} contains "-1":
+			loop {_nextmaps::*}:
+				"%loop-value%" contains "-2":
+					set {_nextmap} to loop-value
+					exit loop
+		{_map} doesn't contain "-1" or "-2" or "-3" or "-4":
+			loop {_nextmaps::*}:
+				"%loop-value%" contains "-1":
+					set {_nextmap} to loop-value
+					exit loop
+	loop all players:
+		invoke "tf2-joinmap" from loop-player
+		delete {tf2.disguise.%loop-player%}
+		delete {Tf2.team.%loop-player%}
+	wait 2 seconds
+	{_nextmap} is set:
+		set {tf2.currentmap} to {_nextmap}
+		invoke "tf2-fullstart" from {_nextmap}
+		stop
+	{_nextmap} isn't set:
+		loop 10 times:
+			invoke "tf2-attemptstart" from "MCOTGTF2"
+			wait 1 second
+
+sub "tf2-stayedtillend":
+	set {_cp} to "%parameter 1%" parsed as a player
+	loop {db.level::%{_cp}%} times:
+		chance of 70%:
+			add 1 to {_rankbonus}
+	{_rankbonus} is more than 50:
+		set {_rankbonus} to 50
+	set {_basechance} to 30
+	add {_rankbonus} to {_basechance}
+	chance of {_basechance}%:
+		add a chest named "&aLucky Dip!" to {_cp}
+		play level up at {_cp} with pitch 1
+		add 1 to {tf2.luckydipamount.%{_cp}%}
+
+sub "tf2-intelspawn":
+	set {_map} to "%parameter 1%"
+	spawn a ender pearl at the block 1 blocks above {tf2.location.blueintel.%{_map}%}
+	drop a diamond named "&9&lBlue Intel" at {tf2.location.blueintel.%{_map}%}
+	loop entities in radius 2 of {tf2.location.blueintel.%{_map}%}:
+		loop-entity is a dropped item
+		make the loop-entity ride the spawned ender pearl
+	spawn a ender pearl at the block 1 blocks above {tf2.location.redintel.%{_map}%}
+	drop a redstone dust named "&4&lRed Intel" at {tf2.location.redintel.%{_map}%}
+	loop entities in radius 2 of {tf2.location.redintel.%{_map}%}:
+		loop-entity is a dropped item
+		make the loop-entity ride the spawned ender pearl
+
+sub "tf2-respawntimer":
+	set {_cp} to "%parameter 1%" parsed as a player
+	set {_map} to {tf2.playerarena.%{_cp}%} 
+	teleport {_cp} to {tf2.location.lobby.%{_map}%}
+	set level progress of {_cp} to 0
+	set level of {_cp} to 0
+	clear inventory of {_cp}
+	set {_timer} to 0
+	{tf2.deaths.%{_cp}%} is divisible by 1:
+		add 2 to {_timer}
+	{tf2.deaths.%{_cp}%} is divisible by 2:
+		add 3 to {_timer}
+	{tf2.deaths.%{_cp}%} is divisible by 3:
+		add 4 to {_timer}
+	{tf2.deaths.%{_cp}%} is divisible by 4:
+		add 5 to {_timer}
+	{tf2.deaths.%{_cp}%} is divisible by 5:
+		add 6 to {_timer}
+	set level of {_cp} to {_timer}
+	apply invisibility to {_cp} for 100 minutes
+	wait 1 second
+	while {_timer} is more than 0:
+		make score "&lRespawn in:" in board of {_cp} to {_timer}
+		message "%{tf2.logo}%&3Respawning in: &d%{_timer}% Seconds" to {_cp}
+		set level of {_cp} to {_timer}
+		remove 1 from {_timer}
+		{_timer} is 0:
+			wait 1 second
+			exit loop
+		wait 1 second
+	remove invisibility from {_cp}
+	nullify score "&lRespawn in:" in board of {_cp}
+	invoke "tf2-items" from {_cp}
+	{tf2.team.%{_cp}%} is "red":
+		teleport {_cp} to {tf2.location.redspawn.%{_map}%}
+	{tf2.team.%{_cp}%} is "blu":
+		teleport {_cp} to {tf2.location.bluespawn.%{_map}%}
+
+sub "tf2-items":
+	set {_cp} to "%parameter 1%" parsed as a player
+	set {_map} to {tf2.playerarena.%{_cp}%} 
+	{tf2.class.%{_cp}%} is set
+	{tf2.reclass.%{_cp}%} is set:
+		nullify score "&l%{tf2.class.%{_cp}%}%" in board of {_cp}
+		set {tf2.class.%{_cp}%} to {tf2.reclass.%{_cp}%}
+		delete {tf2.reclass.%{_cp}%}
+	clear the inventory of {_cp}
+	{tf2.class.%{_cp}%} is "Engineer":
+		message "%{tf2.logo}%The &eEngineer&6 class is a WIP and won't be available for a while! Your class has been set to &eScout" to {_cp}
+		set {tf2.class.%{_cp}%} to "Scout"
+	#{tf2.class.%{_cp}%} is "Spy":
+	#	message "%{tf2.logo}%The &eSpy&6 class is a WIP and won't be available for a while! Your class has been set to &eScout" to {_cp}
+	#	set {tf2.class.%{_cp}%} to "Scout"
+	set {_dv} to 0
+	set slot 8 of {_cp}'s inventory to a book named "&cReselect Class!" 
+	invoke "tf2-engineer-destroy-all" from {_cp}
+	set {_cls} to {tf2.class.%{_cp}%}
+	#disallow {_cp} to fly
+	set the gamemode of {_cp} to adventure
+	execute console command "/heal %{_cp}%"
+	set level of {_cp} to 0
+	set level progress of {_cp} to 0.99
+	apply health boost 5 to {_cp} for 10 days
+	set the hunger bar of {_cp} to 5
+	equip {_cp} with all leather armor
+	{tf2.team.%{_cp}%} is "red":
+		dye {_cp}'s helmet red
+		dye {_cp}'s chestplate red
+		dye {_cp}'s leggings red
+		dye {_cp}'s boots red
+	{tf2.team.%{_cp}%} is "blu":
+		dye {_cp}'s helmet blue
+		dye {_cp}'s chestplate blue
+		dye {_cp}'s leggings blue
+		dye {_cp}'s boots blue
+	set helmet of {_cp} to air
+	{_cls} is "Spy":
+		add a golden shovel named "&aPistol" to {_cp}
+		add a orange dye named "&aDisguises" to {_cp}
+		add a bone meal named "&aInvis-Watch" to {_cp}
+		set level of {_cp} to 30
+		set level progress of {_cp} to 0.99
+	{_cls} is "Sniper":
+		apply health boost 6 to {_cp} for 10 days
+		add a magenta dye named "&aSniper" to {_cp}
+		add a stone sword named "&aMachete" to {_cp}
+		set level of {_cp} to 6
+		set level progress of {_cp} to 0.99
+	{_cls} is "Heavy":
+		apply health boost 10 to {_cp} for 10 days
+		apply slowness 3 to {_cp} for 10 days
+		apply mining fatigue 4 to {_cp} for 10 days
+		apply resistance 2 to {_cp} for 10 days
+		add a gold pickaxe named "&aRailgun" to {_cp}
+		set level of {_cp} to 100
+		set level progress of {_cp} to 0.99
+	{_cls} is "Medic":
+		apply speed to {_cp} for 10 days
+		add a stone hoe named "&aMedi Gun" to {_cp}
+		add a golden hoe named "&aSyringe Gun" to {_cp}
+		set level of {_cp} to 0
+		set level progress of {_cp} to 0.99
+	#{_cls} is "Engineer":
+	#	apply health boost 6 to {_cp} for 10 days
+	#	add a light green dye named "&aWrench" to {_cp}
+	#	add a black dye named "&aScattergun" to {_cp}
+	#	add a book named "&aConstruction PDA" to {_cp}1
+	#	add a book named "&aDestruction PDA" to {_cp}
+	#	set the level of {_cp} to 200
+	#	set the level progress of {_cp} to 0.99
+	{_cls} is "Scout":
+		apply jump boost 3 to {_cp} for 10 days
+		apply health boost 4 to {_cp} for 10 days
+		add a black dye named "&aScattergun" to {_cp}
+		add a wooden spade of knockback 3 and sharpness 2 named "&bBaseball Bat" to {_cp}
+		add a firework star named "&bBase Ball" to {_cp}
+		apply speed 2 to {_cp} for 10 days
+		apply haste 2 to {_cp} for 10 days
+		set the level of {_cp} to 0
+		set the level progress of {_cp} to 0.99
+	{_cls} is "Soldier":
+		apply health boost 6 to {_cp} for 10 days
+		add a iron hoe of unbreaking 1 named "&aRocket Launcher" to {_cp}
+		add a iron spade of unbreaking 1 and sharpness 1 named "&aShovel" to {_cp}
+		apply slowness 1 to {_cp} for 10 days
+		set the level of {_cp} to 0
+		set the level progress of {_cp} to 0.99
+	{_cls} is "Pyro":
+		apply health boost 6 to {_cp} for 10 days
+		apply fire resistance to {_cp} for 10 days
+		set hunger bar of {_cp} to 3
+		add a yellow dye of unbreaking 1 named "&aFlamethrower" to {_cp}
+		add a stone axe of unbreaking 1 and sharpness 1 named "&aFireman's Axe" to {_cp}
+		set the level of {_cp} to 200
+		set the level progress of {_cp} to 0.99
+	{_cls} is "Demoman":
+		clear {tf2.demomangrenades.%{_cp}%::*}
+		apply health boost 6 to {_cp} for 10 days
+		add a wooden hoe named "&aSticky Bomb Launcher" to {_cp}
+		add a glass bottle of unbreaking 1 and sharpness 3 named "&aEmpty Bottle" to {_cp}
+		loop 5 times:
+			add 64 black glass to {_cp}
+		add 12 firework stars named "&aSticky Bomb Ammo" to {_cp}
+		remove all black glass from {_cp}
+		set the level of {_cp} to 0
+		set the level progress of {_cp} to 0.99
+	heal {_cp}
+	set the scaled health state of {_cp} to true
+	{tf2.gametype.%{_map}%} isn't "KoTH":
+		make score "&a&lTeam" in board of {_cp} to -1
+		#{tf2.team.%{_cp}%} is "red":
+			#set prefix {_cp} to "&4[Red] &c"
+			#set suffix {_cp} to "&e %{_cls}%"
+			#set {_cp} nametag to "&c%{_cp}%"
+		#{tf2.team.%{_cp}%} is "blu":
+			#set prefix {_cp} to "&9[Blu] &b"
+			#set suffix {_cp} to "&e %{_cls}%"
+			#set {_cp} nametag to "&b%{_cp}%"
+		display board named "&6&lMCOTG &4&lTF2" to {_cp}
+		make score "&a&lTeam" in board of {_cp} to -1
+		{tf2.team.%{_cp}%} is "red":
+			make score "&4&lRed Team" in board of {_cp} to -2
+			#teleport {_cp} to {tf2.location.redspawn.%{_map}%}
+		{tf2.team.%{_cp}%} is "blu":
+			make score "&9&lBlu Team" in board of {_cp} to -2
+			#teleport {_cp} to {tf2.location.bluespawn.%{_map}%}
+		make score "&a" in board of {_cp} to -3
+		make score "&a&lClass" in board of {_cp} to -4
+		make score "&l%{tf2.class.%{_cp}%}%" in board of {_cp} to -5
+		move display of {_cp} to sidebar
+	invoke "tf2-updatehat" from {_cp}
+
+sub "tf2-assignteam-map":
+	set {_map} to "%parameter 1%"
+	set {_previousteam} to "red"
+	chance of 50%:
+		set {_previousteam} to "blu"
+	loop all players:
+		set {_cp} to "%Loop-player%" parsed as a player
+		delete {tf2.team.%{_cp}%}
+	loop all players:
+		set {_cp} to "%Loop-player%" parsed as a player
+		{_previousteam} is "red":
+			set {tf2.team.%{_cp}%} to "blu"
+			set {_previousteam} to "blu"
+		{_previousteam} is "blu":
+			{tf2.team.%{_cp}%} isn't set
+			set {tf2.team.%{_cp}%} to "red"
+			set {_previousteam} to "red"
+			
+sub "tf2-assignteam-player":
+	set {_plyr} to "%parameter 1%" parsed as a player
+	set {_map} to {tf2.currentmap}
+	set {_blu} to 0
+	set {_red} to 0
+	set {_teamset} to false
+	loop all players:
+		{tf2.team.%loop-player%} is set:
+			add 1 to {_%{tf2.team.%loop-player%}%}
+	{_blu} is more than {_red}:
+		set {tf2.team.%{_plyr}%} to "red"
+		set {_teamset} to true
+	{_red} is more than {_blu}:
+		set {tf2.team.%{_plyr}%} to "blu"
+		set {_teamset} to true
+	{_teamset} is false:
+		set {_previousteam} to "red"
+		chance of 50%:
+			set {_previousteam} to "blu"
+		{_previousteam} is "red":
+			set {tf2.team.%{_plyr}%} to "blu"
+		{_previousteam} is "blu":
+			set {tf2.team.%{_plyr}%} to "red"
+	clear boss bar of {_plyr}
+	set boss bar of {_plyr} to "&4Match starting! Please wait!"
+	{tf2.team.%{_plyr}%} is "red":
+		teleport {_plyr} to {tf2.location.redspawn.%{_map}%}
+	{tf2.team.%{_plyr}%} is "blu":
+		teleport {_plyr} to {tf2.location.bluespawn.%{_map}%}
+	clear inventory of {_plyr}
+	invoke "tf2-items" from "%{_plyr}%"
+	stop
+			
+sub "tf2-leavemap":
+	delete {tf2.disguise.%{_plyr}%}
+	set {_plyr} to "%parameter 1%" parsed as a player
+	set {_map} to {tf2.playerarena.%{_plyr}%}
+	"TF2BluTeam".Team.removePlayer{{_plyr}};
+	"TF2RedTeam".Team.removePlayer{{_plyr}};
+	{_plyr} remove scoreboard
+	remove 1 from {tf2.playeramount.%{_Map}%}
+	clear the inventory of {_plyr}
+	remove {_plyr} from {tf2.playerlist.%{_map}%::*}
+	execute console command "/heal %{_plyr}%"
+	delete {tf2.class.%{_plyr}%}
+	#set prefix of {_plyr} to "&7[&cTF2&7] &r"
+	#disallow {_plyr} to fly
+	set gamemode of {_plyr} to survival
+	set level progress of {_plyr} to 0
+	set level of {_plyr} to 0
+	delete {tf2.playerarena.%{_plyr}%}
+	#set {_plyr} nametag to "&f%{_plyr}%"
+	loop all players:
+		{tf2.playerarena.%loop-player%} = {_map}:
+			message "%{tf2.logo}%&e%{_plyr}%&6 has left!" to the loop-player
+	display board named "" to {_plyr}
+	delete boss bar of {_plyr}
+	invoke "tf2-teleportlobby" from {_plyr}
+
+sub "tf2-spydisguise":
+	set {_cp} to "%parameter 1%" parsed as a player
+	set {_class} to "%parameter 2%"
+	message "%{tf2.logo}%Disguised as %{_class}%" to {_cp}
+	spawn 1000 of particle cloud:0 offset at 2, 1.5, 2 at {_cp}
+	set slot 0 of {_cP} to air
+	set slot 1 of {_cP} to air
+	set slot 2 of {_cP} to air
+	wait 1 tick
+	set {_health} to {_cp}'s health
+	set {_maxhealth} to {_cp}'s maximum health
+	wait 1 tick
+	execute console command "heal %{_cp}%"
+	wait 1 tick
+	set {_cp}'s maximum health to {_maxhealth}
+	set {_cp}'s health to {_health}
+	set slot 8 of {_cp}'s inventory to a book named "&cReselect Class!" 
+	wait 1 tick
+	{_class} is "Spy":
+		set slot 0 of {_cp} to a golden shovel named "&aPistol"
+		set slot 1 of {_cp} to a orange dye named "&aDisguises"
+		set slot 2 of {_cp} to a bone meal named "&aInvis-Watch"
+	{_class} is "Sniper":
+		set slot 0 of {_cp} to a magenta dye named "&aPistol"
+		set slot 1 of {_cp} to a stone sword named "&aDisguises"
+		set slot 2 of {_cp} to a sponge named "&aInvis-Watch"
+	{_class} is "Heavy":
+		apply slowness 3  to {_cp} for 10 days
+		set slot 0 of {_cp} to a gold pickaxe named "&aPistol"
+		set slot 1 of {_cp} to a sponge named "&aDisguises"
+		set slot 2 of {_cp} to a sponge named "&aInvis-Watch"
+	{_class} is "Medic":
+		set slot 0 of {_cp} to stone hoe named "&aPistol"
+		set slot 1 of {_cp} to golden hoe named "&aDisguises" 
+		set slot 2 of {_cp} to sponge named "&aInvis-Watch" 
+	{_class} is "Engineer":
+		set slot 0 of {_cp} to light green dye named "&aPistol" 
+		set slot 1 of {_cp} to black dye named "&aDisguises" 
+		set slot 2 of {_cp} to book named "&aInvis-Watch" 
+	{_class} is "Scout":
+		set slot 0 of {_cp} to black dye named "&aPistol" 
+		set slot 1 of {_cp} to wooden spade named "&aDisguises" 
+		set slot 2 of {_cp} to firework star named "&aInvis-Watch" 
+	{_class} is "Soldier":
+		set slot 0 of {_cp} to iron hoe named "&aPistol" 
+		set slot 1 of {_cp} to iron spade named "&aDisguises" 
+		set slot 2 of {_cp} to sponge named "&aInvis-Watch" 
+		apply slowness 1 to {_cp} for 10 days
+	{_class} is "Pyro":
+		set hunger bar of {_cp} to 3
+		set slot 0 of {_cp} to yellow dye of unbreaking 1 named "&aPistol" 
+		set slot 1 of {_cp} to stone axe of unbreaking 1 named "&aDisguises" 
+		set slot 2 of {_cp} to sponge named "&aInvis-Watch" 
+	{_class} is "Demoman":
+		set slot 0 of {_cp} to wooden hoe named "&aPistol" 
+		set slot 1 of {_cp} to glass bottle named "&aDisguises" 
+		set slot 2 of {_cp} to sponge named "&aInvis-Watch" 
+	set {tf2.disguise.%{_Cp}%} to {_class}
+	while {tf2.disguise.%{_Cp}%} is {_class}:
+		{_class} is "Spy":
+			set slot 0 of {_cp} to a golden shovel named "&aPistol"
+			set slot 1 of {_cp} to a orange dye named "&aDisguises"
+			set slot 2 of {_cp} to a bone meal named "&aInvis-Watch"
+		{_class} is "Sniper":
+			set slot 0 of {_cp} to a magenta dye named "&aPistol"
+			set slot 1 of {_cp} to a stone sword named "&aDisguises"
+			set slot 2 of {_cp} to a sponge named "&aInvis-Watch"
+		{_class} is "Heavy":
+			apply slowness 3  to {_cp} for 10 days
+			set slot 0 of {_cp} to a gold pickaxe named "&aPistol"
+			set slot 1 of {_cp} to a sponge named "&aDisguises"
+			set slot 2 of {_cp} to a sponge named "&aInvis-Watch"
+		{_class} is "Medic":
+			set slot 0 of {_cp} to stone hoe named "&aPistol"
+			set slot 1 of {_cp} to golden hoe named "&aDisguises" 
+			set slot 2 of {_cp} to sponge named "&aInvis-Watch" 
+		{_class} is "Engineer":
+			set slot 0 of {_cp} to light green dye named "&aPistol" 
+			set slot 1 of {_cp} to black dye named "&aDisguises" 
+			set slot 2 of {_cp} to book named "&aInvis-Watch" 
+		{_class} is "Scout":
+			set slot 0 of {_cp} to black dye named "&aPistol" 
+			set slot 1 of {_cp} to wooden spade named "&aDisguises" 
+			set slot 2 of {_cp} to firework star named "&aInvis-Watch" 
+		{_class} is "Soldier":
+			set slot 0 of {_cp} to iron hoe named "&aPistol" 
+			set slot 1 of {_cp} to iron spade named "&aDisguises" 
+			set slot 2 of {_cp} to sponge named "&aInvis-Watch" 
+			apply slowness 1 to {_cp} for 10 days
+		{_class} is "Pyro":
+			set hunger bar of {_cp} to 3
+			set slot 0 of {_cp} to yellow dye of unbreaking 1 named "&aPistol" 
+			set slot 1 of {_cp} to stone axe of unbreaking 1 and sharpness 1 named "&aDisguises" 
+			set slot 2 of {_cp} to sponge named "&aInvis-Watch" 
+		{_class} is "Demoman":
+			set slot 0 of {_cp} to wooden hoe named "&aPistol" 
+			set slot 1 of {_cp} to glass bottle named "&aDisguises" 
+			set slot 2 of {_cp} to sponge named "&aInvis-Watch" 
+		{tf2.team.%{_cp}%} is "blu":
+			dye {_cp}'s chestplate red
+			dye {_cp}'s boots red
+			dye {_cp}'s leggings red
+		{tf2.team.%{_cp}%} is "red":
+			dye {_cp}'s chestplate blue
+			dye {_cp}'s boots blue
+			dye {_cp}'s leggings blue
+		wait 1 tick
+	set {_health} to {_cp}'s health
+	wait 1 tick
+	set {_cp}'s maximum health to 10
+	invoke "tf2-items" from {_cp}
+	wait 10 tick
+	set {_cp}'s health to {_health}
+	spawn 1000 of particle cloud:0 offset at 2, 1.5, 2 at {_cp}
+
+sub "tf2-engineer-checkturret":
+	set {_cp} to "%parameter 1%" parsed as a player
+	{tf2.engineer.turretlocation.%{_cp}%} isn't set:
+		add a dispenser named "&aPlace Turret" to {_cp}
+		message "%{tf2.logo}%Place the Dispenser to place the turret!" to {_cp}
+
+sub "tf2-engineer-placeturret":
+	set {_cp} to "%parameter 1%" parsed as a player
+	set {_loc} to parameter 2
+	set {_loc} to location of block at {_loc}
+	#spawn 15 of blockcrackblockcrack_%id of block below {_loc}%_%data value of block below {_loc}% data 0 at {_loc} offset by 0.4
+	play anvil use at {_loc} with pitch 1
+	spawn a baby farmer at {_loc}
+	apply slowness 50000 to spawned baby farmer for 10 days
+	apply jump boost 50000 to spawned baby farmer for 10 days
+	set maximum health of spawned baby farmer to 100000
+	heal spawned baby farmer
+
+	#set name of spawned baby farmer to "%{tf2.team.%{_cp}%}%"
+	set {_turret} to spawned baby farmer
+	spawn a skeleton at {_loc}
+	make spawned skeleton ride {_turret}
+	apply invisibility to spawned skeleton for 10 days
+	set {tf2.turrethealth.%{_turret}%} to 100
+	set {_skeletonrider} to spawned skeleton
+	while {_turret} is alive:
+		set helmet of all skeletons to sponge
+		distance between {_turret} and {_loc} is more than 1.5:
+			delete passenger of {_turret}
+			wait 1 tick
+			teleport {_turret} to {_loc}
+		passenger of {_turret} isn't alive:
+			spawn a skeleton at {_loc}
+			make spawned skeleton ride {_turret}
+			apply invisibility to spawned skeleton for 10 days
+			set {_skeletonrider} to last spawned skeleton
+		wait 1 second
+	kill {_skeletonrider}
+	stop
+
+sub "tf2-teleportlobby":
+	set {_cp} to "%parameter 1%" parsed as a player
+	teleport {_cp} to {tf2.mainlobby}
+	clear inventory of {_cp}

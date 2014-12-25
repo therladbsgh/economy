@@ -1,0 +1,467 @@
+options:
+	Logo: &7<] &6Team Fortress 2 &7[> &6
+	Version: 1.64 Beta
+	
+command /clr [<integer>]:
+	trigger:
+		arg isn't set:
+			set {_line} to 0
+			loop 4 times:
+				add 1 to {_line}
+				set line {_line} of targeted block to "%coloured line {_line} of targeted block%"
+			stop
+		arg isn't 1 or 2 or 3 or 4:
+			message "&a1 or 2 or 3 or 4... derp"
+			stop
+		set {_line} to arg - 1
+		add 1 to {_line}
+		set line {_line} of targeted block to "%coloured line {_line} of targeted block%"
+	
+	
+command /tf2 [<text>] [<text>] [<text>] [<text>]:
+	description: Main TF2 Commands
+	aliases: tf2:tf2
+	trigger:
+		argument 1 isn't set:
+			message "%{tf2.logo}%&6Created by &eFunnygatt"
+			message "%{tf2.logo}%&6Version: {@Version}"
+			stop
+		argument 1 is "leave":
+			connect player to "grid"
+			stop
+		argument 1 is "join":
+			{tf2.map.%argument 2%} is set:
+				set {_map} to argument 2
+				{tf2.playeramount.%{_map}%} is less than 24:
+					invoke "tf2-joinmap" from player and {_map}
+					wait 1 tick
+					invoke "tf2-updatehat" from player
+					stop
+				message "%{tf2.logo}%This match is full! Sorry!"
+		argument 1 is "set":
+			argument 2 is "player"
+			argument 3 is "hat"
+			{tf2.playerhashats.%player%.%argument 4%} isn't set:
+				message "%{tf2.logo}%You do not own this hat!"
+				stop
+			set {tf2.hat.%player%} to "%argument 4%"
+			invoke "tf2-updatehat" from player
+			message "%{tf2.logo}%Your hat has been set to &e%argument 4%"
+		argument 1 is "admin" or "a":
+			player is a player:
+				player doesn't have permission "tf2.admin":
+					message "%{tf2.logo}%&6insert random funny no perm message here... Derp"
+					stop
+			argument 2 is "reselectclass":
+				set {_plyr} to "%argument 3%" parsed as a player
+				set {tf2.reclass.%argument 3%} to "%argument 4%"
+				message "%{tf2.logo}%You've set your class to &e%argument 4%&6! It will be changed once you respawn!" to {_plyr}
+			argument 2 is "playerclass":
+				set {_plyr} to "%argument 3%" parsed as a player
+				set {tf2.class.%argument 3%} to "%argument 4%"
+				message "%{tf2.logo}%You've set your class to &e%argument 4%&6!" to {_plyr}
+				{tf2.mapstatus} is "started":
+					invoke "tf2-assignteam-player" from {_plyr}
+			argument 2 is "createmap":
+				{tf2.map.%argument 3%} isn't set:
+					set {tf2.map.%argument 3%} to true
+					add argument 3 to {tf2.maplist::*}
+					set {tf2.playeramount.%arg 3%} to 0
+					message "%{tf2.logo}%Created map &e%argument 3%&6. You gotta set it up now! Use &e/tf2 a setupmap %argument 3%"
+					stop
+				message "%{tf2.logo}%Map name already taken!"
+				stop
+			argument 2 is "deletemap":
+				{tf2.map.%argument 3%} is set:
+					delete {tf2.map.%argument 3%}
+					remove argument 3 from {tf2.maplist::*}
+					message "%{tf2.logo}%Deleted map &e%argument 3%&6."
+					stop
+				message "%{tf2.logo}%Unknown Map"
+				stop
+			argument 2 is "resetgametype":
+				{tf2.map.%argument 3%} is set:
+					close inventory of player
+					wait 1 tick
+					show "s;9;i;grass;n;&6KoTH;l;Click to setup as a KoTH Map!;c;playercmd %player% tf2 a setupmap %argument 3% koth;s;5;i;red wool;n;&6Capture the Points;l;Click to setup as a CTP Map!;c;playercmd %player% tf2 a setupmap %argument 3% cap;s;3;i;diamond sword;n;&6Team Death Match;l;Click to setup as a TDM Map!;c;playercmd %player% tf2 a setupmap %argument 3% tdm;s;1;i;wool;n;&cCapture the Intel Map;l;&6Click to set this map as a CTI Map!;c;playercmd %player% tf2 a setupmap %argument 3% cti" with 1 rows named "Select a Game Type!" to player
+					stop
+			argument 2 is "setupmap":
+				{tf2.map.%argument 3%} is set:
+					argument 4 isn't set:
+						set {tf2.admininv.presetup::%player%} to serialized inventory of player
+						loop all items in the player's inventory:
+							delete the loop-item
+						{tf2.gametype.%argument 3%} isn't set:
+							show "s;9;i;grass;n;&6KoTH;l;Click to setup as a KoTH Map!;c;playercmd %player% tf2 a setupmap %argument 3% koth;s;5;i;red wool;n;&6Capture the Points;l;Click to setup as a CTP Map!;c;playercmd %player% tf2 a setupmap %argument 3% cap;s;3;i;diamond sword;n;&6Team Death Match;l;Click to setup as a TDM Map!;c;playercmd %player% tf2 a setupmap %argument 3% tdm;s;1;i;wool;n;&cCapture the Intel Map;l;&6Click to set this map as a CTI Map!;c;playercmd %player% tf2 a setupmap %argument 3% cti" with 1 rows named "Select a Game Type!" to player
+							stop
+						make the player execute command "/tf2 a setupmap %argument 3% %{tf2.gametype.%argument 3%}%"
+						stop
+					argument 4 is "KoTH":
+						set {tf2.gametype.%argument 3%} to "KoTH"
+						set {tf2.adminsetup.%player%} to argument 3
+						add a book named "&bBook of Locations" to player
+						message "%{tf2.logo}%Right Click the book to open the locations menu to set locations!"
+					argument 4 is "cap":
+						set {tf2.gametype.%argument 3%} to "cap"
+						set {tf2.adminsetup.%player%} to argument 3
+						add a book named "&bBook of Locations" to player
+						message "%{tf2.logo}%Right Click the book to open the locations menu to set locations!"
+					argument 4 is "cti":
+						set {tf2.gametype.%argument 3%} to "cti"
+						set {tf2.adminsetup.%player%} to argument 3
+						add a book named "&bBook of Locations" to player
+						message "%{tf2.logo}%Right Click the book to open the locations menu to set locations!"
+					argument 4 is "tdm":
+						set {tf2.gametype.%argument 3%} to "tdm"
+						set {tf2.adminsetup.%player%} to argument 3
+						add a book named "&bBook of Locations" to player
+						message "%{tf2.logo}%Right Click the book to open the locations menu to set locations!"
+			argument 2 is "finishsetup":
+				{tf2.adminsetup.%player%} is set:
+					{tf2.gametype.%{tf2.adminsetup.%player%}%} is "KoTH":
+						{tf2.location.lobby.%{tf2.adminsetup.%player%}%} is set:
+							{tf2.location.redspawn.%{tf2.adminsetup.%player%}%} is set
+							{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%} is set
+							{tf2.location.hilllocation.%{tf2.adminsetup.%player%}%} is set
+							message "%{tf2.logo}%Set all locations for &e%{tf2.adminsetup.%player%}%&6. Finished setup!"
+							remove all books from the player
+							restore inventory of player from {tf2.admininv.presetup::%player%}
+							delete {tf2.adminsetup.%player%}
+							stop
+						message "%{tf2.logo}%You didn't setup all locations! But that's fine. To continue use &e/tf2 a setupmap %{tf2.adminsetup.%player%}%"
+						delete {tf2.adminsetup.%player%}
+						remove all books from the player
+						restore inventory of player from {tf2.admininv.presetup::%player%}
+						stop
+					{tf2.gametype.%{tf2.adminsetup.%player%}%} is "TDM" or "cap":
+						{tf2.location.lobby.%{tf2.adminsetup.%player%}%} is set:
+							{tf2.location.redspawn.%{tf2.adminsetup.%player%}%} is set
+							{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%} is set
+							message "%{tf2.logo}%Set all locations for &e%{tf2.adminsetup.%player%}%&6. Finished setup!"
+							remove all books from the player
+							restore inventory of player from {tf2.admininv.presetup::%player%}
+							delete {tf2.adminsetup.%player%}
+							stop
+						message "%{tf2.logo}%You didn't setup all locations! But that's fine. To continue use &e/tf2 a setupmap %{tf2.adminsetup.%player%}%"
+						delete {tf2.adminsetup.%player%}
+						remove all books from the player
+						restore inventory of player from {tf2.admininv.presetup::%player%}
+						stop
+					{tf2.gametype.%{tf2.adminsetup.%player%}%} is "cti":
+						{tf2.location.lobby.%{tf2.adminsetup.%player%}%} is set:
+							{tf2.location.redspawn.%{tf2.adminsetup.%player%}%} is set
+							{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%} is set
+							{tf2.location.redintel.%{tf2.adminsetup.%player%}%} is set
+							{tf2.location.blueintel.%{tf2.adminsetup.%player%}%} is set
+							message "%{tf2.logo}%Set all locations for &e%{tf2.adminsetup.%player%}%&6. Finished setup!"
+							remove all books from the player
+							restore inventory of player from {tf2.admininv.presetup::%player%}
+							delete {tf2.adminsetup.%player%}
+							stop
+						message "%{tf2.logo}%You didn't setup all locations! But that's fine. To continue use &e/tf2 a setupmap %{tf2.adminsetup.%player%}%"
+						delete {tf2.adminsetup.%player%}
+						remove all books from the player
+						restore inventory of player from {tf2.admininv.presetup::%player%}
+						stop
+			argument 2 is "setlocation":
+				{tf2.map.%argument 3%} is set:
+					{tf2.gametype.%argument 3%} is "KoTH":
+						argument 4 is "lobby":
+							set {tf2.location.lobby.%argument 3%} to location of player
+							message "%{tf2.logo}%Set the Lobby Location for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						argument 4 is "bspawn":
+							set {tf2.location.bluespawn.%argument 3%} to location of player
+							message "%{tf2.logo}%Set the Blue Spawn Location for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						argument 4 is "rspawn":
+							set {tf2.location.redspawn.%argument 3%} to location of player
+							message "%{tf2.logo}%Set the Red Spawn Location for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						argument 4 is "hill" or "hillocation":
+							set {tf2.location.hilllocation.%argument 3%} to location of player
+							message "%{tf2.logo}%Set the Hill Location for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						{tf2.location.lobby.%{tf2.adminsetup.%player%}%} is set:
+							{tf2.location.redspawn.%{tf2.adminsetup.%player%}%} is set
+							{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%} is set
+							{tf2.location.hilllocation.%{tf2.adminsetup.%player%}%} is set
+							message "%{tf2.logo}%All locations are set! You can now use &e/tf2 a finishsetup&6 or change the locations!"
+					{tf2.gametype.%argument 3%} is "cap":
+						argument 4 is "lobby":
+							set {tf2.location.lobby.%argument 3%} to location of player
+							message "%{tf2.logo}%Set the Lobby Location for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						"%argument 4%" contains "cp":
+							set {tf2.location.%arg 4%.%arg 3%} to location of player
+							message "%{tf2.logo}%Set Capture Point %arg 4% for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						argument 4 is "bspawn":
+							set {tf2.location.bluespawn.%argument 3%} to location of player
+							message "%{tf2.logo}%Set the Blue Spawn Location for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						argument 4 is "rspawn":
+							set {tf2.location.Redspawn.%argument 3%} to location of player
+							message "%{tf2.logo}%Set the Red Spawn Location for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						{tf2.location.lobby.%{tf2.adminsetup.%player%}%} is set:
+							{tf2.location.redspawn.%{tf2.adminsetup.%player%}%} is set
+							{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%} is set
+							
+							message "%{tf2.logo}%All locations are set! You can now use &e/tf2 a finishsetup&6 or change the locations!"
+					{tf2.gametype.%argument 3%} is "tdm":
+						argument 4 is "lobby":
+							set {tf2.location.lobby.%argument 3%} to location of player
+							message "%{tf2.logo}%Set the Lobby Location for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						argument 4 is "bspawn":
+							set {tf2.location.bluespawn.%argument 3%} to location of player
+							message "%{tf2.logo}%Set the Blue Spawn Location for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						argument 4 is "rspawn":
+							set {tf2.location.redspawn.%argument 3%} to location of player
+							message "%{tf2.logo}%Set the Red Spawn Location for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						{tf2.location.lobby.%{tf2.adminsetup.%player%}%} is set:
+							{tf2.location.redspawn.%{tf2.adminsetup.%player%}%} is set
+							{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%} is set
+							message "%{tf2.logo}%All locations are set! You can now use &e/tf2 a finishsetup&6 or change the locations!"
+					{tf2.gametype.%argument 3%} is "cti":
+						argument 4 is "lobby":
+							set {tf2.location.lobby.%argument 3%} to location of player
+							message "%{tf2.logo}%Set the Lobby Location for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						argument 4 is "bintel":
+							set {tf2.location.blueintel.%argument 3%} to location of player
+							message "%{tf2.logo}%Set the Blue Intel Location for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						argument 4 is "rintel":
+							set {tf2.location.redintel.%argument 3%} to location of player
+							message "%{tf2.logo}%Set the Red Intel Location for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						argument 4 is "bspawn":
+							set {tf2.location.bluespawn.%argument 3%} to location of player
+							message "%{tf2.logo}%Set the Blue Spawn Location for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						argument 4 is "rspawn":
+							set {tf2.location.redspawn.%argument 3%} to location of player
+							message "%{tf2.logo}%Set the Red Spawn Location for map &e%{tf2.adminsetup.%player%}%&6 to &c%location of player%"
+						{tf2.location.lobby.%{tf2.adminsetup.%player%}%} is set:
+							{tf2.location.redspawn.%{tf2.adminsetup.%player%}%} is set
+							{tf2.location.bluespawn.%{tf2.adminsetup.%player%}%} is set
+							{tf2.location.redintel.%{tf2.adminsetup.%player%}%} is set
+							{tf2.location.blueintel.%{tf2.adminsetup.%player%}%} is set
+							message "%{tf2.logo}%All locations are set! You can now use &e/tf2 a finishsetup&6 or change the locations!"
+
+command /tf2hatcontrol [<text>] [<text>] [<text>] [<text>]:
+	permission: tf2.admin
+	aliases: tf2:tf2hatcontrol
+	permission message: You can haz no hatz!
+	trigger:
+		argument 1 is "listhats":
+			loop {tf2.hatlist::*}:
+				loop-value isn't "Placeholder"
+				message "&7[&cHats&7] &c%loop-value%&6 &7- &a%{tf2.hatproperties.%loop-value%.item}% &7- &a%{tf2.hatproperties.%loop-value%.chance}%%%"
+			stop
+		argument 1 is "addhat":
+			argument 2 is set
+			argument 3 is set
+			argument 4 is set
+			remove "Placeholder" from {tf2.hatlist::*}
+			set {_hatname} to "%argument 2%"
+			set {_hatitem} to "%argument 3%" parsed as an item type
+			set {_chance} to "%argument 4%" parsed as a number
+			replace all "_" in {_hatname} with " "
+			{tf2.validhat.%{_hatname}%} is set:
+				message "%{tf2.logo}%%{_hatname}% is already a hat!"
+				stop
+			{_hatitem} isn't set:
+				message "%{tf2.logo}%The third argument has to be a block"
+				stop
+			add {_hatname} to {tf2.hatlist::*}
+			set {tf2.validhat.%{_hatname}%} to true
+			set {tf2.hatproperties.%{_hatname}%.item} to {_hatitem}
+			set {tf2.hatproperties.%{_hatname}%.chance} to {_chance}
+			message "%{tf2.logo}%Added a hat named &a%{_hatname}%&6 with the block &a%{_hatitem}%&6 and with the chance of &a%{_chance}%%%"
+			#set name of {_hatitem} to {_hatname}
+			add {_hatitem} named "&6%{_hatname}%" to player
+			message "%{tf2.logo}%Edit a page, and place it in there!"
+		argument 1 is "deletehat":
+			set {_hatname} to "%argument 2%"
+			replace all "_" in {_hatname} with " "
+			{tf2.validhat.%{_hatname}%} is set:
+				remove {_hatname} from {tf2.hatlist::*}
+				delete {tf2.hatproperties.%{_hatname}%.item}
+				delete {tf2.hatproperties.%{_hatname}%.chance}
+				delete {tf2.validhat.%{_hatname}%}
+				message "%{tf2.logo}%Deleted hat: &a%{_hatname}%"
+		argument 1 is "edithatplacement":
+			{tf2.editinghatpage.%player%} is set:
+				message "%{tf2.logo}%You're already editing page &c%{tf2.editinghatpage.%player%}%"
+				stop
+			set {_loc} to {tf2.hatchest}
+			set {_page} to "%arg 2%" parsed as an integer
+			#clear inventory of block at {tf2.hatchest}
+			set {tf2.editinghatpage.%player%} to {_page}
+			set {_pdv} to 0
+			set {_in} to 0
+			#clear {tf2.hatlist.page%{_page}%::*}
+			open chest with 6 rows named "&cEditing Page &b%{_page}%" to player
+			wait 1 tick
+			set {_slot} to -1
+			loop {tf2.hatlist.page%{_page}%::*}:
+				add 1 to {_slot}
+				loop-value isn't "Placeholder"
+				set slot {_slot} of current inventory of player to {tf2.hatproperties.%loop-value%.item} named "%loop-value%"
+				#set {_hat} to "%{tf2.hatproperties.%loop-value%.item}%" parsed as an item type
+				#add {_hat} named "&6%loop-value%" to block at {tf2.hatchest}
+			set gamemode of player to creative
+			message "%{tf2.logo}%Edit hats as needed, and then use /tf2hatcontrol finishhatplacement"
+			while inventory name of current inventory of player is "&cEditing Page &b%{_page}%":
+				clear {tf2.hatlist.page%{tf2.editinghatpage.%player%}%::*}
+				set {_slot} to -1
+				loop 54 times:
+					add 1 to {_slot}
+					slot {_slot} of current inventory of player is air:
+						add "Placeholder" to {tf2.hatlist.page%{tf2.editinghatpage.%player%}%::*}
+					else:
+						add name of slot {_slot} of player's current inventory to {tf2.hatlist.page%{tf2.editinghatpage.%player%}%::*}
+				wait 1 tick
+			message "%{tf2.logo}%Finished editing page %arg 2%, hopefully it saved!"
+			delete {tf2.editinghatpage.%player%}
+			stop
+		
+command /tf2testcapturepoint:
+	aliases: tf2:tf2testcapturepoint
+	trigger:
+		set {_loc} to {tf2.testcapturepoint}
+		set {_capturestatus} to 100
+		set {_blockno} to 0
+		set {stop} to false
+		set {_woolcount} to 0
+		loop blocks in radius 6 of {_loc}:
+			loop-block is blue wool or red wool:
+				set loop-block to red wool
+				add 1 to {_woolcount}
+		set {_woolcheck} to 0
+		set {_woolno} to 0
+		loop {_woolcount} times:
+			add 1 to {_woolno}
+			set {_int} to "%100 / {_woolcount}%" parsed as a number
+			add {_int} to {_woolcheck}
+			set {_woolblockcheck.%{_woolno}%} to rounded down {_woolcheck}
+			#message "%{_woolno}% = %{_woolblockcheck.%{_woolno}%}%"
+		
+		set {_bordercount} to 0
+		loop blocks in radius 6 of {_loc}:
+			"%loop-block%" contains "slab item":
+				add 1 to {_bordercount}
+		set {_bordercheck} to 0
+		set {_borderno} to 0
+		loop {_bordercount} times:
+			add 1 to {_borderno}
+			set {_int} to "%100 / {_bordercount}%" parsed as a number
+			add {_int} to {_bordercheck}
+			set {_borderblockcheck.%{_borderno}%} to rounded down {_bordercheck}
+			#message "%{_borderno}% = %{_borderblockcheck.%{_borderno}%}%"
+		
+		loop 500 times:
+			set {_blockno} to 0
+			loop all entities in radius 4 of block at {_loc}:
+				loop-entity is a player:
+					{tf2.team.%loop-entity%} is "blu":
+						remove 1 from {_capturestatus}
+					{_capturestatus} is more than 100:
+						set {_capturestatus} to 100
+					{_capturestatus} is less than 0:
+						set {_capturestatus} to 0
+						broadcast "%{tf2.logo}%A capture point has been taken!"
+			loop blocks in radius 6 of {_loc}:
+				
+				loop-block isn't air:
+					"%Loop-block%" contains "double stone":
+						add 1 to {_blockno}
+						{_capturestatus} is more than {_borderblockcheck.%{_blockno}%}:
+							spawn 15 of particle happy villager:0 offset at 0.3, 0.3, 0.3 at block above loop-block
+						{_capturestatus} is less than {_borderblockcheck.%{_blockno}%}:
+							spawn 15 of particle red dust:0 offset at 0.3, 0.3, 0.3 at block above loop-block
+			set {_blockno} to 0
+			loop blocks in radius 6 of {_loc}:
+				loop-block isn't air:
+					loop-block is red wool or blue wool:
+						add 1 to {_blockno}
+						{_capturestatus} is more than or equal to {_woolblockcheck.%{_blockno}%}:
+							loop-block is blue wool
+							set loop-block to red wool
+							#play 50 of blockcrack_%id of loop-block%_%data value of loop-block% data 0 at loop-block offset by 0.3
+							play dig wool at loop-block with pitch 0
+						{_capturestatus} is less than or equal to {_woolblockcheck.%{_blockno}%}:
+							loop-block is red wool
+							set loop-block to blue wool
+							#play 50 of blockcrack_%id of loop-block%_%data value of loop-block% data 0 at loop-block offset by 0.3
+							play dig wool at loop-block with pitch 0
+			wait 5 ticks
+
+command /tf2showhatmenu [<integer = 0>] [<text>]:
+	aliases: tf2:tf2showhatmenu
+	trigger:
+		arg 2 is "clear":
+			set {tf2.hat.%player%} to air
+			invoke "tf2-updatehat" from player
+			message "%{tf2.logo}%Cleared your hat!"
+			stop
+		set {_pages} to arg 1
+		arg 2 is "showowned":
+			set {_slot} to -1
+			loop 54 times:
+				add 1 to {_slot}
+				format slot {_slot} of player with 1 air to be unstealable
+				unformat slot {_slot} of player
+				
+			wait 10 ticks
+			set {_slot} to -1
+			wait 1 tick
+			loop {tf2.hatlist.page%{_pages}%::*}:
+				add 1 to {_slot}
+				loop-value isn't "Placeholder"
+				{tf2.playerhashats.%player%.%Loop-value%} is set:
+					format slot {_slot} of player with {tf2.hatproperties.%loop-value%.item} named "&cHat &7- &6%loop-value%" with lore "&6Select this hat!" to run "playercmd %player% tf2 set player hat %loop-value%"
+			set {_nxtpage} to {_pages}
+			add 1 to {_nxtpage}
+			set {_nxtpageitems::*} to {tf2.hatlist.page%{_nxtpage}%::*}
+			while {_nxtpageitems::*} contains "Placeholder":
+				remove "Placeholder" from {_nxtpageitems::*}
+			"%size of {_nxtpageitems::*}%" parsed as an integer is more than 0:
+				format slot 53 of player with 1 of charcoal named "&cGoto Page &b%{_pages} + 1%" with lore "&cYour current page: &7%{_pages}%" to run "playercmd %player% tf2showhatmenu %{_pages} + 1%"
+			{_pages} is more than 1:
+				format slot 45 of player with coal item named "&cGoto Page &b%{_pages} - 1%" with lore "&cYour current page: &7%{_pages}%" to run "playercmd %player% tf2showhatmenu %{_pages} - 1%"
+			format slot 48 of player with diamond named "&6Only show &cOwned Hats" to run "playercmd %player% tf2showhatmenu %{_pages}% showowned"
+			format slot 49 of player with {tf2.hatproperties.%{tf2.hat.%player%}%.item} named "&6Clear Hat" with lore "&6Current Hat: &c%{tf2.hat.%player%}%" to run "playercmd %player% tf2showhatmenu %{_pages}% clear"
+			format slot 50 of player with water bucket named "&6Show all Hats" to run "playercmd %player% tf2showhatmenu %{_pages}%"
+			play click at player with pitch 1
+			stop
+		arg 1 is 0:
+			message "&cNo Permission"
+			stop
+		set {_pages} to arg 1
+		set {_slot} to -1
+		size of {tf2.hatlist.page%arg 1%::*} is 0:
+			remove 1 from {_pages}
+		"%inventory name of current inventory of player%" doesn't contain "Select a Hat":
+			open chest with 6 rows named "Select a Hat" to player
+		else:
+			loop 54 times:
+				add 1 to {_slot}
+				format slot {_slot} of player with 1 air to be unstealable
+				unformat slot {_slot} of player
+		wait 10 ticks
+		set {_slot} to -1
+		wait 1 tick
+		loop {tf2.hatlist.page%{_pages}%::*}:
+			add 1 to {_slot}
+			loop-value isn't "Placeholder"
+			format slot {_slot} of player with {tf2.hatproperties.%loop-value%.item} named "&cHat &7- &6%loop-value%" with lore "&cYou do not own this hat!||&c||There is a &a%{tf2.hatproperties.%loop-value%.chance}%%%||chance of finding this hat while playing!" to be unstealable
+			
+			{tf2.playerhashats.%player%.%Loop-value%} is set:
+				format slot {_slot} of player with {tf2.hatproperties.%loop-value%.item} named "&cHat &7- &6%loop-value%" with lore "&6Select this hat!" to run "playercmd %player% tf2 set player hat %loop-value%"
+		set {_nxtpage} to {_pages}
+		add 1 to {_nxtpage}
+		set {_nxtpageitems::*} to {tf2.hatlist.page%{_nxtpage}%::*}
+		while {_nxtpageitems::*} contains "Placeholder":
+			remove "Placeholder" from {_nxtpageitems::*}
+		"%size of {_nxtpageitems::*}%" parsed as an integer is more than 0:
+			format slot 53 of player with 1 of charcoal named "&cGoto Page &b%{_pages} + 1%" with lore "&cYour current page: &7%{_pages}%" to run "playercmd %player% tf2showhatmenu %{_pages} + 1%"
+		{_pages} is more than 1:
+			format slot 45 of player with coal item named "&cGoto Page &b%{_pages} - 1%" with lore "&cYour current page: &7%{_pages}%" to run "playercmd %player% tf2showhatmenu %{_pages} - 1%"
+		format slot 48 of player with diamond named "&6Only show &cOwned Hats" to run "playercmd %player% tf2showhatmenu %{_pages}% showowned"
+		format slot 49 of player with {tf2.hatproperties.%{tf2.hat.%player%}%.item} named "&6Clear Hat" with lore "&6Current Hat: &c%{tf2.hat.%player%}%" to run "playercmd %player% tf2showhatmenu %{_pages}% clear"
+		format slot 50 of player with water bucket named "&6Show all Hats" to run "playercmd %player% tf2showhatmenu %{_pages}%"
+		play click at player with pitch 1
+		while inventory name of current inventory of player is "Select a Hat":
+			format slot 49 of player with {tf2.hatproperties.%{tf2.hat.%player%}%.item} named "&6Clear Hat" with lore "&6Current Hat: &c%{tf2.hat.%player%}%" to run "playercmd %player% tf2showhatmenu %{_pages}% clear"
+			wait 1 tick

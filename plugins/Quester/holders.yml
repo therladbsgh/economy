@@ -1,0 +1,11 @@
+signs: []
+holders:
+  '0':
+    quests: '0'
+    name: Firststep
+  '1':
+    quests: '1'
+    name: Bob
+  '2':
+    quests: '2'
+    name: Carl

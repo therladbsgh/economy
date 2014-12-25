@@ -1,0 +1,48 @@
+//Level 1 iron pickaxe
+craft vanilla ironpick creation
+@override
+iron_ingot:0 + iron_ingot:0 + iron_ingot:0
+air + stick:0 + air
+air + stick:0 + air
+= iron_pickaxe:0:1
+@name &rIron Pickaxe (&8Tier 1&r)
+@lore &aCannot mine diamond ores
+
+//Level 2 iron pickaxe
+craft level 2 ironpick creation
+iron_ingot:1 + iron_ingot:1 + iron_ingot:1
+air + 2256:1 + air
+air + 2256:1 + air
+= iron_pickaxe:0:1
+@name &rIron Pickaxe (&7Tier 2&r)
+@lore &aRight click to toggle a portable torch.
+
+//Level 3 iron pickaxe
+craft level 2 ironpick creation
+iron_ingot:2 + iron_ingot:2 + iron_ingot:2
+air + 2256:2 + air
+air + 2256:2 + air
+= iron_pickaxe:0:1
+@name &rIron Pickaxe (&3Tier 3&r)
+@lore &aSneak holding this tool to scroll through skills.
+@lore &aRight click to activate said skill.
+
+//Level 4 iron pickaxe
+craft level 2 ironpick creation
+iron_ingot:3 + iron_ingot:3 + iron_ingot:3
+air + 2256:3 + air
+air + 2256:3 + air
+= iron_pickaxe:0:1
+@name &rIron Pickaxe (&5Tier 4&r)
+@lore &aSneak holding this tool to scroll through skills.
+@lore &aRight click to activate said skill.
+
+//Level 5 iron pickaxe
+craft level 2 ironpick creation
+iron_ingot:4 + iron_ingot:4 + iron_ingot:4
+air + 2256:4 + air
+air + 2256:4 + air
+= iron_pickaxe:0:1
+@name &rIron Pickaxe (&6Tier 5&r)
+@lore &aSneak holding this tool to scroll through skills.
+@lore &aRight click to activate said skill.

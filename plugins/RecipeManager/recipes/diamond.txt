@@ -1,0 +1,47 @@
+//Smelting diamond ore gives level 1 diamond
+//smelt diamondores
+//@override
+//diamond_ore
+//= diamond:0:1
+//@name &rDiamond (&8Level 1&r)
+//@lore &eScrap metal
+
+//Creates level 2 diamond
+craft level 2 diamond
+diamond:0 + diamond:0
+diamond:0 + diamond:0
+= diamond:1
+@name &rDiamond (&7Level 2&r)
+@lore &eReclaimed metal
+
+//Creates diamond pickaxe on other levels
+craft level 3 diamond
+diamond:1 + diamond:1
+diamond:1 + diamond:1
+= diamond:2
+@name &rDiamond (&3Level 3&r)
+@lore &eRefined metal
+
+//Creates diamond pickaxe on other levels
+craft level 4 diamond
+diamond:2 + diamond:2
+diamond:2 + diamond:2
+= diamond:3
+@name &rDiamond (&5Level 4&r)
+@lore &eNice quality
+
+//Creates diamond pickaxe on other levels
+craft level 5 diamond
+diamond:3 + diamond:3
+diamond:3 + diamond:3
+= diamond:4
+@name &rDiamond (&6Level 5&r)
+@lore &eUber quality
+
+//Creates diamond pickaxe on other levels
+craft level 6 diamond
+diamond:4 + diamond:4
+diamond:4 + diamond:4
+= diamond:5
+@name &rDiamond (&4Level X&r)
+@lore &eHoly crap how did you get that quality

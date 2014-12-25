@@ -1,0 +1,24 @@
+mine:
+  ==: com.koletar.jj.mineresetlite.Mine
+  resetDelay: 60
+  surface: ''
+  maxZ: 4005
+  maxY: 50
+  maxX: 4205
+  fillMode: false
+  world: world
+  minY: 30
+  resetWarnings:
+  - '5'
+  - '3'
+  - '1'
+  minX: 4185
+  composition:
+    '12:0': 0.19899999999999998
+    '3:0': 0.8
+    '54:1': 5.0E-4
+    '54:2': 5.0E-4
+  name: excavate1
+  resetClock: 54
+  minZ: 3985
+  isSilent: false

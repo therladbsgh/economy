@@ -1,0 +1,18 @@
+mine:
+  ==: com.koletar.jj.mineresetlite.Mine
+  resetDelay: 10
+  surface: ''
+  maxZ: 1025
+  maxY: 50
+  maxX: 1025
+  fillMode: false
+  world: world
+  minY: 7
+  resetWarnings: []
+  minX: 996
+  composition:
+    0:0: 1.0
+  name: mine2air2
+  resetClock: 4
+  minZ: 1005
+  isSilent: false

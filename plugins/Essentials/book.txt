@@ -1,0 +1,56 @@
+This is the book file.
+
+This file format works similar to the info.txt, motd.txt and rules.txt
+
+Place content in here that you would like to be used by books ingame.
+
+You can use this content by using the book:<section> meta option in kits or item spawning.
+
+#Colors
+Minecraft colors:
+&0 &&0  &1 &&1  &2 &&2  &3 &&3
+&4 &&4  &5 &&5  &6 &&6  &7 &&7
+&8 &&8  &9 &&9  &a &&a  &b &&b
+&c &&c  &d &&d  &e &&e  &f &&f
+&0 
+&&k &kMagic&r   &&l &lBold
+&&m &mStrike&r  &&n &nUline
+&&o &oItalic&r   &&r &rReset
+
+#Mining
+	Mining jobs will be located near mines, and will require a pickaxe (and optionally a bucket). The mines will be separated into distinct sectors, with higher level sectors located deeper underground, and with greater hazards (lava, parkour, traps, etc.) although with greater loot. Since most materials in the higher tiers will require higher grade pickaxes, it would be advisable to begin at the low tier sectors before moving on.
+The following can be obtained from mining:
+
+Cobblestone
+Coal
+Iron ore
+Gold ore
+Lapis lazuli
+Emerald
+Redstone
+Diamond
+Water bucket
+Lava bucket
+Obsidian
+Mossy cobble
+Coal block
+Redstone block
+Iron block
+Gold block
+Diamond block
+Emerald block
+Lapis block
+Stone
+Sandstone
+Netherrack
+Stone brick
+Prismarine
+Quartz
+
+Wood and stone picks should be the player's main tools (at the beginning anyway) Since they are renewable, they should be in infinite supply. Iron, gold and diamond are hard to process (they have a chance of being destroyed when being smelted) and is thus scarce. Furthermore, you need iron to dig gold. You need gold to dig diamond. Thus the rarity of ores become iron < gold < diamond. Diamond picks are rare and the best of course.
+The above statement also implies that iron will not be able to dig diamond. Thus the novelty of gold becomes that they can break all blocks in the world, while iron cannot. Gold becomes outclassed by diamond, as it can break all blocks as well, but gold is definitely more plentiful and cheaper to create.
+Higher tier wood picks will focus on general improvement (basically all areas). It will improve in digging speed, durability, and can break more (different) blocks. Tier 5 wood tools will be able to break all blocks, will last longer, and able to instamine.
+Higher tier stone picks will focus on durability, and greater support for enchantments.
+Higher tier iron picks will focus on convenience. The tool will provide variety of special effects available for use. For instance, you can build or break blocks from a distance, or dowse for ores. This effectively negates helper items.
+Higher tier gold picks will focus on wealth. Iron ores may drop iron ingots, more than one item may come out from a block.
+Higher tier diamond picks will focus on speed. For instance, the tools will dig a 2x2 area instead of 1x1. Eventually the tools will cause explosions (that does not harm).

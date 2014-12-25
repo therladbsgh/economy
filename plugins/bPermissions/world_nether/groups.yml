@@ -1,0 +1,113 @@
+default: user
+groups:
+  excavator:
+    permissions:
+    - economy.class
+    - economy.excavator.warpsign
+    groups:
+    - user
+    meta:
+      prefix: '&e[Excavator] &f'
+      priority: '60'
+  mod:
+    permissions: []
+    groups:
+    - user
+    meta:
+      prefix: '&b[Mods] &f'
+      priority: '60'
+  forester:
+    permissions:
+    - economy.class
+    - economy.forester.warpsign
+    groups:
+    - user
+    meta:
+      prefix: '&e[Forester] &f'
+      priority: '60'
+  crafter:
+    permissions:
+    - economy.class
+    - economy.crafter.warpsign
+    groups:
+    - user
+    meta:
+      prefix: '&e[Crafter] &f'
+      priority: '60'
+  admin:
+    permissions:
+    - craftbook.mech.elevator
+    - economy.sign.create
+    - auction.admin
+    - whatisit.*
+    groups:
+    - mod
+    meta:
+      prefix: '&4[Admin] &f'
+      priority: '60'
+  farmer:
+    permissions:
+    - economy.class
+    - economy.farmer.warpsign
+    groups:
+    - user
+    meta:
+      prefix: '&e[Farmer] &f'
+      priority: '60'
+  user:
+    permissions:
+    - craftbook.mech.elevator.use
+    - essentials.afk
+    - essentials.balance
+    - essentials.clearinventory
+    - essentials.compass
+    - essentials.delhome
+    - essentials.getpos
+    - essentials.help
+    - essentials.home
+    - essentials.kit
+    - essentials.kit.*
+    - essentials.mail
+    - essentials.mail.send
+    - essentials.msg
+    - essentials.pay
+    - essentials.seen
+    - essentials.sethome
+    - essentials.signs.use.balance
+    - essentials.signs.use.buy
+    - essentials.signs.use.kit
+    - essentials.signs.use.mail
+    - essentials.signs.use.sell
+    - essentials.signs.use.warp
+    - essentials.spawn
+    - essentials.tpa
+    - essentials.tpaccept
+    - essentials.tpdeny
+    - essentials.warp
+    - essentials.warp.list
+    - ironelevators.use
+    - war.player
+    - auction.start
+    - auction.bid
+    groups: []
+    meta:
+      prefix: '&7[User] &f'
+      priority: '60'
+  miner:
+    permissions:
+    - economy.class
+    - economy.miner.warpsign
+    groups:
+    - user
+    meta:
+      prefix: '&e[Miner] &f'
+      priority: '60'
+  smelter:
+    permissions:
+    - economy.class
+    - economy.smelter.warpsign
+    groups:
+    - user
+    meta:
+      prefix: '&e[Smelter] &f'
+      priority: '60'

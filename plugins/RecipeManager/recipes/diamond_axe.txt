@@ -1,0 +1,45 @@
+//Level 1 Diamond Axe
+craft vanilla diamondaxe creation
+@override
+diamond:0 + diamond:0
+diamond:0 + stick:0
+air + stick:0
+= diamond_axe:0:1
+@name &rDiamond Axe (&8Tier 1&r)
+
+//Level 2 Diamond Axe
+craft level 2 diamondaxe creation
+diamond:1 + diamond:1
+diamond:1 + 2256:1
+air + 2256:1
+= diamond_axe:0:1
+@name &rDiamond Axe (&7Tier 2&r)
+@lore &eBreaks blocks in a 3x3 radius.
+
+//Level 3 Diamond Axe
+craft level 3 diamondaxe creation
+diamond:2 + diamond:2
+diamond:2 + 2256:2
+air + 2256:2
+= diamond_axe:0:1
+@name &rDiamond Axe (&3Tier 3&r)
+@lore &eRight click to toggle instant mining.
+
+//Level 4 Diamond Axe
+craft level 4 diamondaxe creation
+diamond:3 + diamond:3
+diamond:3 + 2256:3
+air + 2256:3
+= diamond_axe:0:1
+@name &rDiamond Axe (&5Tier 4&r)
+@lore &eBreaks blocks in a 3x3 radius.
+@lore &eRight click to toggle instant mining.
+
+//Level 5 Diamond Axe
+craft level 5 diamondaxe creation
+diamond:4 + diamond:4
+diamond:4 + 2256:4
+air + 2256:4
+= diamond_axe:0:1
+@name &rDiamond Axe (&6Tier 5&r)
+@lore &eMake trees fall.

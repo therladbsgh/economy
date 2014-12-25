@@ -1,0 +1,312 @@
+MSG_ONLY_PLAYER: This command can only be run by player.
+MSG_PROFILES_SAVE: Profiles saved.
+MSG_AUTOSAVE_DISABLED: AutoSaving is disabled in config.
+MSG_AUTOSAVE_STARTED: 'Saving started. Interval: %intervalm'
+MSG_AUTOSAVE_RUNNING: Saving already running.
+MSG_AUTOSAVE_STOPPED: Saving Stopped.
+MSG_AUTOSAVE_NOT_RUNNING: Saving not running.
+MSG_CONFIG_RELOADED: Quest configs reloaded.
+MSG_PERMS: You don't have permission for this.
+MSG_Q_STARTED: You have started quest %q
+MSG_Q_COMPLETED: Quest %q completed.
+MSG_Q_CANCELLED: Quest %q cancelled.
+MSG_Q_DEACTIVATED: One of your quests has been deactivated.
+MSG_OBJ_COMPLETED: You completed a quest objective.
+INFO_NAME: Name
+INFO_DESCRIPTION: Description
+INFO_LOCATION: Location
+INFO_WORLDS: Worlds
+INFO_FLAGS: Flags
+INFO_CONDITIONS: Conditions
+INFO_OBJECTIVES: Objectives
+INFO_EVENTS: Events
+INFO_FIRST_OBJECTIVE: First objective
+INFO_QUEST_LIST: Quest list
+INFO_QUEST_INFO: Quest info
+INFO_PROGRESS: '%q progress'
+INFO_PROGRESS_HIDDEN: Quest progress hidden
+INFO_PROGRESS_COMPLETED: Completed
+INFO_PROFILE_POINTS: Quest points
+INFO_PROFILE_RANK: Quester rank
+INFO_PROFILE_COMPLETED: Completed quests
+INFO_PROFILE_NOT_EXIST: '%p does not have profile.'
+INFO_HOLDER_LIST: Holder list
+HELP_SECTION_USE: Quester help
+HELP_SECTION_MODIFY: Modify help
+HELP_SECTION_MODIFY_SELECTED: Applies only to selected quest
+HELP_SECTION_MODIFY_HOLDER_SELECTED: Applies only to selected quest holder
+HELP_SECTION_ADMIN: Admin help
+HELP_VER: '- version info'
+HELP_HELP: '- this'
+HELP_LIST: '- displays quest list'
+HELP_SHOW: '- shows info about quest'
+HELP_START_PICK: '- starts a quest'
+HELP_START_RANDOM: '- starts random quest'
+HELP_CANCEL: '- cancels current quest'
+HELP_DONE: '- completes current quest'
+HELP_SWITCH: '- switches current quest'
+HELP_PROGRESS: '- shows quest progress'
+HELP_QUESTS_USE: '- shows held quests'
+HELP_QUESTS_MOD: '- shows quests of other player'
+HELP_PROFILE_USE: '- displays your quester profile'
+HELP_PROFILE_MOD: '- shows player''s profile'
+HELP_CREATE: '- creates a quest'
+HELP_REMOVE: '- removes the quest'
+HELP_SELECT: '- selects the quest'
+HELP_TOGGLE: '- toggles state of the quest'
+HELP_INFO: '- shows detailed info about the quest'
+HELP_NAME: '- changes the name'
+HELP_DESC: '- quest description manipulation'
+HELP_WORLD: '- world restriction manipulation'
+HELP_FLAG: '- quest flag manipulation'
+HELP_CONDITION: '- condition manipulation'
+HELP_OBJECTIVE: '- objective manipulation'
+HELP_EVENT: '- event manipulation'
+HELP_STARTSAVE: '- starts scheduled profile saving'
+HELP_STOPSAVE: '- stops scheduled profile saving'
+HELP_SAVE: '- saves profiles'
+HELP_RELOAD: '- reloads config and local file'
+HELP_LOCATION: '- set the quest location'
+HELP_HOL_CREATE: '- creates a holder'
+HELP_HOL_DELETE: '- deletes a holder'
+HELP_HOL_ADD: '- adds quest to holder'
+HELP_HOL_REMOVE: '- removes quest from holder'
+HELP_HOL_MOVE: '- moves quest in holder'
+HELP_HOL_LIST: '- lists quest holders'
+HELP_HOL_INFO: '- shows info about holder'
+HELP_HOL_SELECT: '- selects holder'
+USAGE_LABEL: 'Usage: '
+USAGE_FLAG_AVAIL: 'Available flags: '
+USAGE_SHOW: '%cmd show [quest_name].'
+USAGE_INFO_USER: '%cmd info [quest_name].'
+USAGE_INFO_MOD: '%cmd info [quest_ID*].%n* - optional if selected'
+USAGE_CREATE: '%cmd create [quest_name].'
+USAGE_REMOVE: '%cmd remove [quest_ID].'
+USAGE_SELECT: '%cmd select [quest_ID].'
+USAGE_NAME: '%cmd name [new_name].'
+USAGE_DESC: '%cmd desc [set|add] [quest_description].'
+USAGE_LOC_SET: '%cmd location set {location} [range].'
+USAGE_LOC: '%cmd location [set|remove].'
+USAGE_FLAG: '%cmd flag [add|remove] [flag_1]... .'
+USAGE_WORLD: '%cmd world [add|remove] [world_name or ''%this''].'
+USAGE_SWITCH: '%cmd switch <index in ''/q quests''>.'
+Q_CREATED: Quest created and selected.
+Q_REMOVED: Quest removed.
+Q_SELECTED: Quest selected.
+Q_RENAMED: Quest name changed to '%q'.
+Q_DESC_SET: Quest description set.
+Q_DESC_ADDED: Quest description added.
+Q_LOC_SET: Quest location set.
+Q_LOC_REMOVED: Quest location removed.
+Q_FLGS_ADDED: Flags added.
+Q_FLGS_REMOVED: Flags removed.
+Q_ACTIVATED: Quest activated.
+Q_DEACTIVATED: Quest deactivated.
+Q_WORLD_ADDED: Quest world added.
+Q_WORLD_REMOVED: Quest world removed.
+Q_SWITCHED: Quest switched.
+HOL_CREATED: Holder created and selected.
+HOL_REMOVED: Holder deleted.
+HOL_SELECTED: Holder selected.
+HOL_ASSIGNED: Holder assigned.
+HOL_UNASSIGNED: Holder unassigned.
+HOL_Q_ADDED: Quest added to holder.
+HOL_Q_REMOVED: Quest removed from holder.
+HOL_Q_MOVED: Quest in holder moved.
+HOL_USAGE: '%cmd holder [create|delete|add|remove|move|list|info|select] [args]'
+HOL_CREATE_USAGE: '%cmd holder create <holder name>'
+HOL_DELETE_USAGE: '%cmd holder delete <holder ID>'
+HOL_ADD_USAGE: '%cmd holder add <quest ID>'
+HOL_REMOVE_USAGE: '%cmd holder remove <quest ID>'
+HOL_MOVE_USAGE: '%cmd holder move <FROM> <TO>'
+HOL_INFO_USAGE: '%cmd holder info [HOLDER ID]'
+HOL_SELECT_USAGE: '%cmd holder select <HOLDER ID>'
+OBJ_ADD: '%type objective added.'
+OBJ_ADD_AVAILABLE: 'Available objective types: '
+OBJ_REMOVE: Objective %id removed.
+OBJ_REMOVE_USAGE: '%cmd objective remove <id_number>.'
+OBJ_SWAP: Objectives %id1 and %id2 swapped.
+OBJ_SWAP_USAGE: '%cmd objective swap <id_1> <id_2>.'
+OBJ_MOVE: Objective moved from %id1 to %id2.
+OBJ_MOVE_USAGE: '%cmd objective move <from> <to>.'
+OBJ_BAD_ID: Objective ID must be number.
+OBJ_DESC_ADD: Description to objective %id added.
+OBJ_DESC_ADD_USAGE: '%cmd objective desc add <obj_ID> <description*>%n* - %r = remaining
+  amount, %t = total required amount'
+OBJ_DESC_REMOVE: Description of objective %id removed.
+OBJ_DESC_USAGE: '%cmd objective desc <add|remove> <obj_ID>.'
+OBJ_REQ_ADD: Prerequisites to objective %id added.
+OBJ_REQ_ADD_USAGE: '%cmd objective prereq add <obj_ID> <prerequisites>'
+OBJ_REQ_REMOVE: Prerequisites of objective %id removed.
+OBJ_REQ_REMOVE_USAGE: '%cmd objective prereq remove <obj_ID> <prerequisites>'
+OBJ_REQ_USAGE: '%cmd objective prereq <add|remove> <obj_ID> <prerequisites>.'
+OBJ_USAGE: '%cmd objective [add|remove|swap|move|desc|prereq] [args].'
+OBJ_BREAK_TYPE: Break
+OBJ_BREAK_USAGE: '%cmd objective add break {<item>} <amount> [hand]'
+OBJ_PLACE_TYPE: Place
+OBJ_PLACE_USAGE: '%cmd objective add place {<item>} <amount>'
+OBJ_ITEM_TYPE: Item
+OBJ_ITEM_USAGE: '%cmd objective add item {<item>} [amount] {[ench1]}...'
+OBJ_COLLECT_TYPE: Collect
+OBJ_COLLECT_USAGE: '%cmd objective add collect {<item>} <amount>'
+OBJ_ENCH_TYPE: Enchant
+OBJ_ENCH_NUMBERS: Amount must be > 0.
+OBJ_ENCH_USAGE: '%cmd objective add ench {<item>} [amount] {[ench1]}...'
+OBJ_EXP_TYPE: Experience
+OBJ_EXP_USAGE: '%cmd objective add exp <amount>'
+OBJ_LOC_TYPE: Location
+OBJ_LOC_USAGE: '%cmd objective add loc {<location>} [range]'
+OBJ_DEATH_TYPE: Death
+OBJ_DEATH_USAGE: '%cmd objective add death <amount> {[location]} [range]'
+OBJ_WORLD_TYPE: World
+OBJ_WORLD_USAGE: '%cmd objective add world {<world>}'
+OBJ_MOBKILL_TYPE: Mob kill
+OBJ_MOBKILL_USAGE: '%cmd objective add mobkill <amount> {[entity]}'
+OBJ_KILL_TYPE: Player kill
+OBJ_KILL_USAGE: '%cmd objective add kill <amount> [player]'
+OBJ_CRAFT_TYPE: Craft
+OBJ_CRAFT_USAGE: '%cmd objective add craft {<item>} <amount>'
+OBJ_SMELT_TYPE: Smelt
+OBJ_SMELT_USAGE: '%cmd objective add smelt {<item>} <amount>'
+OBJ_SHEAR_TYPE: Shear
+OBJ_SHEAR_USAGE: '%cmd objective add shear <amount> {[color]}'
+OBJ_FISH_TYPE: Fish
+OBJ_FISH_USAGE: '%cmd objective add fish <amount>'
+OBJ_MILK_TYPE: Milk
+OBJ_MILK_USAGE: '%cmd objective add milk <amount>'
+OBJ_TAME_TYPE: Tame
+OBJ_TAME_USAGE: '%cmd objective add tame <amount> {[entity]}'
+OBJ_MONEY_TYPE: Money
+OBJ_MONEY_USAGE: '%cmd objective add money <amount>'
+OBJ_ACTION_TYPE: Action
+OBJ_ACTION_USAGE: '%cmd objective add action {<click>} {[block]} {[item]} {[location]}
+  [range]'
+OBJ_NPC_TYPE: Npc
+OBJ_NPC_USAGE: '%cmd objective add npc <id> [cancel*]%n* - true/false, default is
+  false'
+OBJ_DYE_TYPE: Dye
+OBJ_DYE_USAGE: '%cmd objective add dye <amount> {[color]}'
+OBJ_BOSS_TYPE: Boss
+OBJ_BOSS_USAGE: '%cmd objective add boss <name> [amount]'
+OBJ_NPCKILL_TYPE: Npckill
+OBJ_NPCKILL_USAGE: '%cmd objective add npckill <name*> [amount]%n* - ''ANY'' for any
+  npc'
+CON_ADD: '%type condition added.'
+CON_ADD_AVAILABLE: 'Available condition types: '
+CON_REMOVE: Condition %id removed.
+CON_REMOVE_USAGE: '%cmd condition remove <con_ID>'
+CON_BAD_ID: Condition ID must be number.
+CON_DESC_ADD: Description to condition %id added.
+CON_DESC_ADD_USAGE: '%cmd condition desc add <con_ID> <description*>.%n* - %amt =
+  amount, %id = item id, %data = data, %perm = permission, %qst = quest'
+CON_DESC_REMOVE: Description of condition %id removed.
+CON_DESC_USAGE: '%cmd condition desc <add|remove> <con_ID> [args].'
+CON_USAGE: '%cmd condition <add|remove|desc> [args].'
+CON_QUEST_TYPE: Quest
+CON_QUEST_USAGE: '%cmd condition add quest [t:<time_secs>] <quest_name>'
+CON_QUESTNOT_TYPE: QuestNot
+CON_QUESTNOT_USAGE: '%cmd condition add questnot [t:<time_secs>] <quest_name>'
+CON_PERM_TYPE: Permission
+CON_PERM_USAGE: '%cmd condition add perm <quest_name>'
+CON_MONEY_TYPE: Money
+CON_MONEY_USAGE: '%cmd condition add money <amount>'
+CON_ITEM_TYPE: Item
+CON_ITEM_USAGE: '%cmd condition add item {<item>} <amount>'
+CON_POINT_TYPE: Point
+CON_POINT_USAGE: '%cmd condition add point <amount>'
+EVT_ADD: '%type event added.'
+EVT_ADD_AVAILABLE: 'Available event types: '
+EVT_ADD_USAGE: '%cmd event add {<occasion>} <event_type> [args]'
+EVT_REMOVE: Event %id removed.
+EVT_REMOVE_USAGE: '%cmd event remove <id_number>'
+EVT_NUMBERS: 'Occasion must be > -4. Delay must be >= 0. Format: <occasion>[:delay]'
+EVT_SPECIFY: Specify occasion and delay.
+EVT_USAGE: '%cmd event <add|remove> [args]'
+EVT_MSG_TYPE: Message
+EVT_MSG_USAGE: '%cmd event add {<occasion>} msg <message*>%n* - supports ''&'' colors
+  and ''\n'' newline'
+EVT_QUEST_TYPE: Quest
+EVT_QUEST_USAGE: '%cmd event add {<occasion>} quest <quest_name>'
+EVT_TOGGLE_TYPE: Toggle
+EVT_TOGGLE_USAGE: '%cmd event add {<occasion>} toggle <quest_ID>'
+EVT_OBJCOM_TYPE: Objective complete
+EVT_OBJCOM_USAGE: '%cmd event add {<occasion>} objcom <objective_ID>'
+EVT_CANCEL_TYPE: Cancel
+EVT_CMD_TYPE: Command
+EVT_CMD_USAGE: '%cmd event add {<occasion>} cmd <command*>%n* - without ''/'''
+EVT_EXPL_TYPE: Explosion
+EVT_EXPL_USAGE: '%cmd event add {<occasion>} explosion {<location>} [range] [damage*]%n*
+  - true/false, default is false'
+EVT_LIGHT_TYPE: Lightning
+EVT_LIGHT_USAGE: '%cmd event add {<occasion>} lightning {<location>} [range] [damage*]%n*
+  - true/false, default is false'
+EVT_TELE_TYPE: Teleport
+EVT_TELE_USAGE: '%cmd event add {<occasion>} tele {<location>}'
+EVT_BLOCK_TYPE: Block
+EVT_BLOCK_USAGE: '%cmd event add {<occasion>} block {<block>} {<location>*}%n* - location
+  ''here'' means block you are looking at'
+EVT_SPAWN_TYPE: Spawn
+EVT_SPAWN_USAGE: '%cmd event add {<occasion>} spawn {<entity>} <amount> {<location>}
+  [range]'
+EVT_EFF_TYPE: Effect
+EVT_EFF_USAGE: '%cmd event add {<occasion>} effect {<potion effect>}'
+EVT_ITEM_TYPE: Item
+EVT_ITEM_USAGE: '%cmd event add {<occasion>} item {<item>} [amount] {[enchants]}...'
+EVT_MONEY_TYPE: Money
+EVT_MONEY_USAGE: '%cmd event add {<occasion>} money <amount>'
+EVT_EXP_TYPE: Experience
+EVT_EXP_USAGE: '%cmd event add {<occasion>} exp <amount>'
+EVT_POINT_TYPE: Point
+EVT_POINT_USAGE: '%cmd event add {<occasion>} point <amount>'
+ERROR_CUSTOM: Something is wrong.
+ERROR_CMD_BAD_ID: ID must be number.
+ERROR_CMD_RANGE_INVALID: Invalid range.
+ERROR_CMD_WORLD_THIS: World '%this' requires player context.
+ERROR_CMD_WORLD_INVALID: Invalid world.
+ERROR_CMD_ITEM_UNKNOWN: Unknown item.
+ERROR_CMD_BLOCK_UNKNOWN: Unknown block.
+ERROR_CMD_ITEM_NUMBERS: Amount must be > 0. Data must be >= 0.
+ERROR_CMD_ENCH_LEVEL: Enchantment level must be > 0.
+ERROR_CMD_ENCH_INVALID: Invalid enchantment.
+ERROR_CMD_ENCH_CANT: One or more enchantments cannot be applied to specified item.
+ERROR_CMD_EFFECT_UNKNOWN: Unknown effect.
+ERROR_CMD_EFFECT_DURATION: Duration must be positive number.
+ERROR_CMD_EFFECT_AMPLIFIER: Amplifier must be non-negative number.
+ERROR_CMD_AMOUNT_GENERAL: Amount must be number.
+ERROR_CMD_AMOUNT_POSITIVE: Amount must be positive number.
+ERROR_CMD_LOC_INVALID: Invalid location.
+ERROR_CMD_LOC_HERE: Location '%here' requires player context.
+ERROR_CMD_LOC_BLOCK: Location '%block' requires player context.
+ERROR_CMD_LOC_NOBLOCK: No block targeted.
+ERROR_CMD_COORDS_INVALID: Invalid coordinates.
+ERROR_CMD_ENTITY_UNKNOWN: Unknown entity.
+ERROR_CMD_ENTITY_NUMBERS: Amount must be > 0. Id must be number or valid entity name.
+ERROR_CMD_COLOR_UNKNOWN: Unknown color.
+ERROR_CMD_ARGUMENTS_UNKNOWN: Unknown arguments. Type %cmd help.
+ERROR_CMD_ID_OUT_OF_BOUNDS: Index does not exist.
+ERROR_Q_EXIST: Quest already exists.
+ERROR_Q_NOT_EXIST: Quest does not exist.
+ERROR_Q_NOT_SELECTED: No quest selected.
+ERROR_Q_CANT_MODIFY: Modification of active quests is not allowed.
+ERROR_Q_NONE: No quest available.
+ERROR_Q_NONE_ACTIVE: No quest active.
+ERROR_Q_ASSIGNED: Quest is already assigned.
+ERROR_Q_NOT_ASSIGNED: Quest not assigned.
+ERROR_Q_CANT_CANCEL: This quest cannot be cancelled.
+ERROR_Q_NOT_COMPLETED: One or more objectives are not completed.
+ERROR_Q_BAD_WORLD: Quest cannot be completed in this world.
+ERROR_Q_NOT_CMD: Quest cannot be started or completed by command.
+ERROR_Q_MAX_AMOUNT: Maximum quest amount reached.
+ERROR_Q_NOT_HERE: You can't complete your quest here.
+ERROR_HOL_NOT_EXIST: Holder does not exist.
+ERROR_HOL_NOT_SELECTED: No holder selected.
+ERROR_HOL_NOT_ASSIGNED: No holder assigned.
+ERROR_CON_NOT_EXIST: Condition does not exist.
+ERROR_OBJ_NOT_EXIST: Objective does not exist.
+ERROR_OBJ_CANT_DO: Not enough resources to complete objective.
+ERROR_OCC_NOT_EXIST: Occasion does not exist.
+ERROR_REW_NOT_EXIST: Reward does not exist.
+ERROR_REW_CANT_DO: Not enough space to recieve quest rewards.
+ERROR_EVT_NOT_EXIST: Event does not exist.
+ERROR_WHY: Why would you want to do this ?
+ERROR_INTERESTING: Interesting error, you should definitely notify Quester developer.

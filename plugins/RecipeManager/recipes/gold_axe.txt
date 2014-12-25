@@ -1,0 +1,47 @@
+//Level 1 Gold Axe
+craft vanilla goldaxe creation
+@override
+gold_ingot:0 + gold_ingot:0
+gold_ingot:0 + stick:0
+air + stick:0
+= diamond_axe:0:1
+@name &rGold Axe (&8Tier 1&r)
+
+//Level 2 Gold Axe
+craft level 2 goldaxe creation
+gold_ingot:1 + gold_ingot:1
+gold_ingot:1 + 2256:1
+air + 2256:1
+= diamond_axe:0:1
+@name &rGold Axe (&7Tier 2&r)
+@lore &eBlock output doubled.
+
+//Level 3 Gold Axe
+craft level 3 goldaxe creation
+gold_ingot:2 + gold_ingot:2
+gold_ingot:2 + 2256:2
+air + 2256:2
+= diamond_axe:0:1
+@name &rGold Axe (&3Tier 3&r)
+@lore &eBlock output tripled.
+
+//Level 4 Gold Axe
+craft level 4 goldaxe creation
+gold_ingot:3 + gold_ingot:3
+gold_ingot:3 + 2256:3
+air + 2256:3
+= diamond_axe:0:1
+@name &rGold Axe (&5Tier 4&r)
+@lore &eBlock output tripled.
+@lore &eTreasures may be found while mining.
+
+//Level 5 Gold Axe
+craft level 5 goldaxe creation
+gold_ingot:4 + gold_ingot:4
+gold_ingot:4 + 2256:4
+air + 2256:4
+= diamond_axe:0:1
+@name &rGold Axe (&6Tier 5&r)
+@lore &eBlock output tripled.
+@lore &eTreasures may be found while mining.
+@lore &eRight click to toggle smelt mining.

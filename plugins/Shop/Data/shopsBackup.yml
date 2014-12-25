@@ -1,0 +1,14 @@
+shops:
+  Superboop:
+    '1':
+      location: world,-33,63,-109
+      price: 10.0
+      amount: 1
+      type: selling
+      timesUsed: 0
+      item:
+        name: ''
+        data: CHEST(0)
+        durability: 0
+        enchantments: '{}'
+        lore: '[]'
