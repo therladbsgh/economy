@@ -1,16 +1,16 @@
 uuid: 441a80b7-94ea-3dd9-9075-8f150c228243
 timestamps:
-  login: 1419408747478
-  lastteleport: 1419329221935
-  logout: 1419409047879
+  login: 1420269634924
+  lastteleport: 1420275150050
+  logout: 1420050250700
 ipAddress: 127.0.0.1
 lastlocation:
   world: world
-  x: 403.8257351444553
-  y: 104.0
-  z: 40.47217988687507
-  yaw: -90.94683
-  pitch: 15.750074
+  x: 139.41081133523988
+  y: 94.0
+  z: -114.67972606370023
+  yaw: -90.37934
+  pitch: 6.505329
 homes:
   home:
     world: world
@@ -21,11 +21,12 @@ homes:
     pitch: 24.9
 logoutlocation:
   world: world
-  x: 397.6224221439865
-  y: 88.0
-  z: 46.81346489479342
-  yaw: 108.55382
-  pitch: 14.699988
-money: '891584.4'
+  x: 354.17106230819843
+  y: 80.0
+  z: 92.63114453221176
+  yaw: -111.19775
+  pitch: 14.849986
+money: '0.5'
 godmode: true
 afk: false
+nickname: Superboop

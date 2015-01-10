@@ -19,6 +19,6 @@ mine:
     '14:0': 0.01
     '56:0': 0.01
   name: mine2core
-  resetClock: 54
+  resetClock: 59
   minZ: 1006
   isSilent: false

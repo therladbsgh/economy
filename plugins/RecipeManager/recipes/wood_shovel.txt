@@ -1,0 +1,52 @@
+//Level 1 Wooden Shovel
+craft vanilla woodshovel creation
+@displayresult first | silentfail
+@override
+wood
+stick:0
+stick:0
+= wood_shovel:0:1
+@name &rWooden Shovel (&8Tier 1&r)
+@ingredientcondition wood | data 0,1,2,3,4,5 | failmsg false
+
+//Level 2 Wooden Shovel
+craft level 2 woodshovel creation
+wood:6
+2256:1
+2256:1
+= wood_shovel:0:1
+@name &rWooden Shovel (&7Tier 2&r)
+@enchantitem efficiency 1
+@enchantitem unbreaking 1
+
+//Level 3 Wooden Shovel
+craft level 3 woodshovel creation
+wood:7
+2256:2
+2256:2
+= wood_shovel:0:1
+@name &rWooden Shovel (&3Tier 3&r)
+@enchantitem efficiency 2
+@enchantitem unbreaking 2
+
+//Level 4 Wooden Shovel
+craft level 4 woodshovel creation
+wood:8
+2256:3
+2256:3
+= wood_shovel:0:1
+@name &rWooden Shovel (&5Tier 4&r)
+@enchantitem efficiency 3
+@enchantitem unbreaking 3
+@lore &aDrop amount +25%
+
+//Level 5 Wooden Shovel
+craft level 5 woodshovel creation
+wood:9
+2256:4
+2256:4
+= wood_shovel:0:1
+@name &rWooden Shovel (&6Tier 5&r)
+@enchantitem efficiency 4
+@lore &aInfinite durability
+@lore &aDrop amount +50%

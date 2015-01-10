@@ -1,0 +1,47 @@
+//Level 1 Gold Shovel
+craft vanilla goldshovel creation
+@override
+gold_ingot:0
+stick:0
+stick:0
+= gold_shovel:0:1
+@name &rGold Shovel (&8Tier 1&r)
+
+//Level 2 Gold Shovel
+craft level 2 goldshovel creation
+gold_ingot:1
+2256:1
+2256:1
+= gold_shovel:0:1
+@name &rGold Shovel (&7Tier 2&r)
+@lore &aDrop amount +25%
+
+//Level 3 Gold Shovel
+craft level 3 goldshovel creation
+gold_ingot:2
+2256:2
+2256:2
+= gold_shovel:0:1
+@name &rGold Shovel (&3Tier 3&r)
+@lore &aDrop amount +50%
+
+//Level 4 Gold Shovel
+craft level 4 goldshovel creation
+gold_ingot:3
+2256:3
+2256:3
+= gold_shovel:0:1
+@name &rGold Shovel (&5Tier 4&r)
+@lore &aDrop amount +75%
+@lore &aMay uncover treasures.
+
+//Level 5 Gold Shovel
+craft level 5 goldshovel creation
+gold_ingot:4
+2256:4
+2256:4
+= gold_shovel:0:1
+@name &rGold Shovel (&6Tier 5&r)
+@lore &aDrop amount +100%
+@lore &aMay uncover treasures.
+@lore &aRight click to toggle smelt mining.

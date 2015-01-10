@@ -1,0 +1,56 @@
+//Level 1 Wooden Hoe
+craft vanilla woodhoe creation
+@displayresult first | silentfail
+@override
+wood + wood
+air + stick:0
+air + stick:0
+= wood_hoe:0:1
+@name &rWooden Hoe (&8Tier 1&r)
+@ingredientcondition wood | data 0,1,2,3,4,5 | failmsg false
+@lore &a3s harvest time
+
+//Level 2 Wooden Hoe
+craft level 2 woodhoe creation
+wood:6 + wood:6
+air + 2256:1
+air + 2256:1
+= wood_hoe:0:1
+@name &rWooden Hoe (&7Tier 2&r)
+@lore &a2s harvest time
+@enchantitem unbreaking 1
+
+//Level 3 Wooden Hoe
+craft level 3 woodhoe creation
+wood:7 + wood:7
+air + 2256:2
+air + 2256:2
+= wood_hoe:0:1
+@name &rWooden Hoe (&3Tier 3&r)
+@lore &a2s harvest time
+@enchantitem unbreaking 2
+@lore &aCan harvest premium crops
+
+//Level 4 Wooden Hoe
+craft level 4 woodhoe creation
+wood:8 + wood:8
+air + 2256:3
+air + 2256:3
+= wood_hoe:0:1
+@name &rWooden Hoe (&5Tier 4&r)
+@lore &a1s harvest time
+@enchantitem unbreaking 3
+@lore &aDrop amount +25%
+@lore &aCan harvest premium crops
+
+//Level 5 Wooden Hoe
+craft level 5 woodhoe creation
+wood:9 + wood:9
+air + 2256:4
+air + 2256:4
+= wood_hoe:0:1
+@name &rWooden Hoe (&6Tier 5&r)
+@lore &a1s harvest time
+@lore &aInfinite durability
+@lore &aDrop amount +50%
+@lore &aCan harvest deluxe crops

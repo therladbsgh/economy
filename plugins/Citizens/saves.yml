@@ -1,6 +1,6 @@
 # Citizens NPC Storage
 
-last-created-npc-id: 12
+last-created-npc-id: 13
 npc:
   '8':
     name: Left click me
@@ -23,18 +23,18 @@ npc:
         x: '407.42696040123485'
         y: '104.0'
         z: '40.852120716371246'
-        yaw: '161.55288696289062'
-        pitch: '0.0'
+        yaw: '55.20838928222656'
+        pitch: '-29.806066513061523'
       spawned: true
       speech: chat
-      owner:
-        owner: Superboop
-        uuid: 441a80b7-94ea-3dd9-9075-8f150c228243
       lookclose:
         enabled: true
         range: '3.0'
         realisticlooking: true
-    traitnames: owner,spawned,text,location,inventory,speech,quester,lookclose,type
+      owner:
+        owner: Superboop
+        uuid: 441a80b7-94ea-3dd9-9075-8f150c228243
+    traitnames: lookclose,spawned,speech,quester,location,inventory,text,owner,type
     navigator:
       pathfindingrange: '25.0'
       stationaryticks: -1
@@ -55,8 +55,8 @@ npc:
         x: '391.29216922330903'
         y: '96.0'
         z: '40.96472578829927'
-        yaw: '-71.87444305419922'
-        pitch: '0.0'
+        yaw: '11.661827087402344'
+        pitch: '-16.721542358398438'
       inventory: {}
       speech: chat
       text:
@@ -70,14 +70,14 @@ npc:
       quester:
         quester:
           holder: 1
-      owner:
-        owner: Superboop
-        uuid: 441a80b7-94ea-3dd9-9075-8f150c228243
       lookclose:
         enabled: true
         range: '3.0'
         realisticlooking: true
-    traitnames: owner,spawned,location,text,inventory,speech,quester,lookclose,type
+      owner:
+        owner: Superboop
+        uuid: 441a80b7-94ea-3dd9-9075-8f150c228243
+    traitnames: spawned,lookclose,speech,quester,location,inventory,text,owner,type
     navigator:
       pathfindingrange: '25.0'
       stationaryticks: -1
@@ -103,8 +103,8 @@ npc:
         x: '390.9088581940532'
         y: '88.0'
         z: '40.84466695614206'
-        yaw: '-77.25022888183594'
-        pitch: '0.0'
+        yaw: '-63.940067291259766'
+        pitch: '-12.042885780334473'
       spawned: true
       text:
         talk-close: true
@@ -117,14 +117,54 @@ npc:
       quester:
         quester:
           holder: 2
-      owner:
-        owner: Superboop
-        uuid: 441a80b7-94ea-3dd9-9075-8f150c228243
       lookclose:
         enabled: true
         range: '3.0'
         realisticlooking: true
-    traitnames: owner,spawned,text,location,inventory,speech,quester,lookclose,type
+      owner:
+        owner: Superboop
+        uuid: 441a80b7-94ea-3dd9-9075-8f150c228243
+    traitnames: lookclose,spawned,speech,quester,location,inventory,text,owner,type
+    navigator:
+      pathfindingrange: '25.0'
+      stationaryticks: -1
+      speedmodifier: '1.0'
+      avoidwater: false
+      usedefaultstuckaction: true
+  '13':
+    metadata:
+      cached-skin-uuid: c3844e67-33af-4250-b20d-9b4d0f0d220c
+      player-skin-name: Tribbs
+      cached-skin-uuid-name: Tribbs
+    name: Paul
+    uuid: b5fe68c5-9c81-4583-91eb-3eea419ac9d5
+    traits:
+      inventory: {}
+      location:
+        world: world
+        x: '379.3266223334387'
+        y: '79.0'
+        z: '45.026625505621745'
+        yaw: '133.5374755859375'
+        pitch: '12.20812702178955'
+      speech: chat
+      spawned: true
+      text:
+        talk-close: true
+        random-talker: false
+        realistic-looking: true
+        range: '1.0'
+        talkitem: default
+        text:
+          '0': This is the beginner zone. Go forth to access beginner areas, and the market.
+      lookclose:
+        enabled: true
+        range: '3.0'
+        realisticlooking: true
+      owner:
+        owner: Superboop
+        uuid: 441a80b7-94ea-3dd9-9075-8f150c228243
+    traitnames: spawned,lookclose,speech,location,inventory,text,owner,type
     navigator:
       pathfindingrange: '25.0'
       stationaryticks: -1

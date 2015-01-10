@@ -1,0 +1,47 @@
+//Level 1 Iron Axe
+craft vanilla ironaxe creation
+@override
+iron_ingot:0 + iron_ingot:0
+iron_ingot:0 + stick:0
+air + stick:0
+= iron_axe:0:1
+@name &rIron Axe (&8Tier 1&r)
+
+//Level 2 Iron Axe
+craft level 2 ironaxe creation
+iron_ingot:1 + iron_ingot:1
+iron_ingot:1 + 2256:1
+air + 2256:1
+= iron_axe:0:1
+@name &rIron Axe (&7Tier 2&r)
+@lore &aRight click to toggle leaf blowing.
+
+//Level 3 Iron Axe
+craft level 3 ironaxe creation
+iron_ingot:2 + iron_ingot:2
+iron_ingot:2 + 2256:2
+air + 2256:2
+= iron_axe:0:1
+@name &rIron Axe (&3Tier 3&r)
+@lore &aSneak holding this tool to scroll through skills.
+@lore &aRight click to activate said skill.
+
+//Level 4 Iron Axe
+craft level 4 ironaxe creation
+iron_ingot:3 + iron_ingot:3
+iron_ingot:3 + 2256:3
+air + 2256:3
+= iron_axe:0:1
+@name &rIron Axe (&5Tier 4&r)
+@lore &aSneak holding this tool to scroll through skills.
+@lore &aRight click to activate said skill.
+
+//Level 5 Iron Axe
+craft level 5 ironaxe creation
+iron_ingot:4 + iron_ingot:4
+iron_ingot:4 + 2256:4
+air + 2256:4
+= iron_axe:0:1
+@name &rIron Axe (&6Tier 5&r)
+@lore &aSneak holding this tool to scroll through skills.
+@lore &aRight click to activate said skill.

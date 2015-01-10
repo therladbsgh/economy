@@ -1,0 +1,47 @@
+//Level 1 Stone Axe
+craft vanilla stoneaxe creation
+@override
+cobblestone + cobblestone
+cobblestone + stick:0
+air + stick:0
+= stone_axe:0:1
+@name &rStone Axe (&8Tier 1&r)
+
+//Level 2 Stone Axe
+craft level 2 stoneaxe creation
+43:11 + 43:11
+43:11 + 2256:1
+air + 2256:1
+= stone_axe:0:1
+@name &rStone Axe (&7Tier 2&r)
+@enchantitem unbreaking 2
+
+//Level 3 Stone Axe
+craft level 3 stoneaxe creation
+43:19 + 43:19
+43:19 + 2256:2
+air + 2256:2
+= stone_axe:0:1
+@name &rStone Axe (&3Tier 3&r)
+@enchantitem unbreaking 3
+@lore &a+10% enchant success rate
+
+//Level 4 Stone Axe
+craft level 4 stoneaxe creation
+43:27 + 43:27
+43:27 + 2256:3
+air + 2256:3
+= stone_axe:0:1
+@name &rStone Axe (&5Tier 4&r)
+@lore &aInfinite durability
+@lore &a+30% enchant success rate
+
+//Level 5 Stone Axe
+craft level 5 stoneaxe creation
+43:35 + 43:35
+43:35 + 2256:4
+air + 2256:4
+= stone_axe:0:1
+@name &rStone Axe (&6Tier 5&r)
+@lore &aInfinite durability
+@lore &a+50% enchant success rate

@@ -1,11 +1,12 @@
 //Creates level 2 Wood
 craft level 2 Wood
-wood:0 + wood:0 + wood:0
-wood:0 + wood:0 + wood:0
-wood:0 + wood:0 + wood:0
+wood + wood + wood
+wood + wood + wood
+wood + wood + wood
 = wood:6
 @name &rWood Planks (&7Level 2&r)
 @lore &eReclaimed metal
+@ingredientcondition wood | data 0,1,2,3,4,5 | failmsg false
 
 //Creates iron pickaxe on other levels
 craft level 3 Wood

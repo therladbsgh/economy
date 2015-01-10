@@ -13,6 +13,6 @@ mine:
   composition:
     0:0: 1.0
   name: mine2air2
-  resetClock: 4
+  resetClock: 9
   minZ: 1005
   isSilent: false

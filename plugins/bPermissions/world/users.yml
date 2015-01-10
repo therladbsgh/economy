@@ -14,7 +14,7 @@ users:
   superboop:
     permissions: []
     groups:
-    - excavator
+    - admin
   right click me:
     permissions: []
     groups:

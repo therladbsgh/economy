@@ -39,6 +39,9 @@ second step:
       occasion: -3
       message: '&f<&e[NPC] &fCarl> You just met Bob, right? Nice to meet you.'
   ID: 1
+fourth step:
+  name: Fourth step
+  ID: 3
 third step:
   name: Third step
   description: '&f<&e[NPC] &fCarl> If you are new, you need to select a &6job&f. I''ve
@@ -52,7 +55,7 @@ third step:
       cancel: true
     '1':
       type: ACTION
-      block: '323'
+      block: '68'
       click: 2
       location: 399.00;89.00;48.00;world;0.00;0.00;
       range: 8
@@ -64,13 +67,13 @@ third step:
     '0':
       type: MONEY
       occasion: -1
-      amount: 150.0
+      amount: 100.0
     '1':
       type: MSG
       occasion: -3
       message: '&f<&e[NPC] &fCarl> Great, you''ve selected a &6job&f!'
     '2':
       type: MSG
-      occasion: 0
+      occasion: 1
       message: '&6Now that you''ve selected a job, go back to Carl.'
   ID: 2

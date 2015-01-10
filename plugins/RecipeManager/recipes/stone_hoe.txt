@@ -1,0 +1,55 @@
+//Level 1 Stone Hoe
+craft vanilla stonehoe creation
+@override
+cobblestone + cobblestone
+air + stick:0
+air + stick:0
+= stone_hoe:0:1
+@name &rStone Hoe (&8Tier 1&r)
+@lore &a3s harvest time
+
+//Level 2 Stone Hoe
+craft level 2 stonehoe creation
+43:11 + 43:11
+air + 2256:1
+air + 2256:1
+= stone_hoe:0:1
+@name &rStone Hoe (&7Tier 2&r)
+@lore &a3s harvest time
+@enchantitem unbreaking 2
+
+//Level 3 Stone Hoe
+craft level 3 stonehoe creation
+43:19 + 43:19
+air + 2256:2
+air + 2256:2
+= stone_hoe:0:1
+@name &rStone Hoe (&3Tier 3&r)
+@lore &a3s harvest time
+@enchantitem unbreaking 3
+@lore &a+10% enchant success rate
+@lore &aCan harvest premium crops
+
+//Level 4 Stone Hoe
+craft level 4 stonehoe creation
+43:27 + 43:27
+air + 2256:3
+air + 2256:3
+= stone_hoe:0:1
+@name &rStone Hoe (&5Tier 4&r)
+@lore &a3s harvest time
+@lore &aInfinite durability
+@lore &a+30% enchant success rate
+@lore &aCan harvest premium crops
+
+//Level 5 Stone Hoe
+craft level 5 stonehoe creation
+43:35 + 43:35
+air + 2256:4
+air + 2256:4
+= stone_hoe:0:1
+@name &rStone Hoe (&6Tier 5&r)
+@lore &a3s harvest time
+@lore &aInfinite durability
+@lore &a+50% enchant success rate
+@lore &aCan harvest deluxe crops

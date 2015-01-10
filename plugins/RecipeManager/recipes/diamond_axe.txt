@@ -14,7 +14,7 @@ diamond:1 + 2256:1
 air + 2256:1
 = diamond_axe:0:1
 @name &rDiamond Axe (&7Tier 2&r)
-@lore &eBreaks blocks in a 3x3 radius.
+@enchantitem efficiency 2
 
 //Level 3 Diamond Axe
 craft level 3 diamondaxe creation
@@ -23,7 +23,7 @@ diamond:2 + 2256:2
 air + 2256:2
 = diamond_axe:0:1
 @name &rDiamond Axe (&3Tier 3&r)
-@lore &eRight click to toggle instant mining.
+@enchantitem efficiency 3
 
 //Level 4 Diamond Axe
 craft level 4 diamondaxe creation
@@ -32,8 +32,7 @@ diamond:3 + 2256:3
 air + 2256:3
 = diamond_axe:0:1
 @name &rDiamond Axe (&5Tier 4&r)
-@lore &eBreaks blocks in a 3x3 radius.
-@lore &eRight click to toggle instant mining.
+@enchantitem efficiency 5
 
 //Level 5 Diamond Axe
 craft level 5 diamondaxe creation
@@ -42,4 +41,4 @@ diamond:4 + 2256:4
 air + 2256:4
 = diamond_axe:0:1
 @name &rDiamond Axe (&6Tier 5&r)
-@lore &eMake trees fall.
+@lore &aRight click to toggle instant mining.

@@ -1,0 +1,56 @@
+//Level 1 Iron Hoe
+craft vanilla ironhoe creation
+@override
+iron_ingot:0 + iron_ingot:0
+air + stick:0
+air + stick:0
+= iron_hoe:0:1
+@name &rIron Hoe (&8Tier 1&r)
+@lore &a3s harvest time
+
+//Level 2 Iron Hoe
+craft level 2 ironhoe creation
+iron_ingot:1 + iron_ingot:1
+air + 2256:1
+air + 2256:1
+= iron_hoe:0:1
+@name &rIron Hoe (&7Tier 2&r)
+@lore &a3s harvest time
+@lore &aRight click to toggle grass blowing.
+@lore &aCan harvest premium crops
+
+//Level 3 Iron Hoe
+craft level 3 ironhoe creation
+iron_ingot:2 + iron_ingot:2
+air + 2256:2
+air + 2256:2
+= iron_hoe:0:1
+@name &rIron Hoe (&3Tier 3&r)
+@lore &a3s harvest time
+@lore &aSneak holding this tool to scroll through skills.
+@lore &aRight click to activate said skill.
+@lore &aCan harvest deluxe crops
+
+//Level 4 Iron Hoe
+craft level 4 ironhoe creation
+iron_ingot:3 + iron_ingot:3
+air + 2256:3
+air + 2256:3
+= iron_hoe:0:1
+@name &rIron Hoe (&5Tier 4&r)
+@lore &a3s harvest time
+@lore &aSneak holding this tool to scroll through skills.
+@lore &aRight click to activate said skill.
+@lore &aCan harvest deluxe crops
+
+//Level 5 Iron Hoe
+craft level 5 ironhoe creation
+iron_ingot:4 + iron_ingot:4
+air + 2256:4
+air + 2256:4
+= iron_hoe:0:1
+@name &rIron Hoe (&6Tier 5&r)
+@lore &a3s harvest time
+@lore &aSneak holding this tool to scroll through skills.
+@lore &aRight click to activate said skill.
+@lore &aCan harvest god crops

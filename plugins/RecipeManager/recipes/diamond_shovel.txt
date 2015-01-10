@@ -1,0 +1,44 @@
+//Level 1 Diamond Shovel
+craft vanilla diamondshovel creation
+@override
+diamond:0
+stick:0
+stick:0
+= diamond_shovel:0:1
+@name &rDiamond Shovel (&8Tier 1&r)
+
+//Level 2 Diamond Shovel
+craft level 2 diamondshovel creation
+diamond:1
+2256:1
+2256:1
+= diamond_shovel:0:1
+@name &rDiamond Shovel (&7Tier 2&r)
+@enchantitem efficiency 2
+
+//Level 3 Diamond Shovel
+craft level 3 diamondshovel creation
+diamond:2
+2256:2
+2256:2
+= diamond_shovel:0:1
+@name &rDiamond Shovel (&3Tier 3&r)
+@enchantitem efficiency 3
+
+//Level 4 Diamond Shovel
+craft level 4 diamondshovel creation
+diamond:3
+2256:3
+2256:3
+= diamond_shovel:0:1
+@name &rDiamond Shovel (&5Tier 4&r)
+@enchantitem efficiency 5
+
+//Level 5 Diamond Shovel
+craft level 5 diamondshovel creation
+diamond:4
+2256:4
+2256:4
+= diamond_shovel:0:1
+@name &rDiamond Shovel (&6Tier 5&r)
+@lore &aRight click to toggle instant mining.

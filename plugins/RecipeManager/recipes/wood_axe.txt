@@ -1,0 +1,52 @@
+//Level 1 Wooden Axe
+craft vanilla woodaxe creation
+@displayresult first | silentfail
+@override
+wood + wood
+wood + stick:0
+air + stick:0
+= wood_axe:0:1
+@name &rWooden Axe (&8Tier 1&r)
+@ingredientcondition wood | data 0,1,2,3,4,5 | failmsg false
+
+//Level 2 Wooden Axe
+craft level 2 woodaxe creation
+wood:6 + wood:6
+wood:6 + 2256:1
+air + 2256:1
+= wood_axe:0:1
+@name &rWooden Axe (&7Tier 2&r)
+@enchantitem efficiency 1
+@enchantitem unbreaking 1
+
+//Level 3 Wooden Axe
+craft level 3 woodaxe creation
+wood:7 + wood:7
+wood:7 + 2256:2
+air + 2256:2
+= wood_axe:0:1
+@name &rWooden Axe (&3Tier 3&r)
+@enchantitem efficiency 2
+@enchantitem unbreaking 2
+
+//Level 4 Wooden Axe
+craft level 4 woodaxe creation
+wood:8 + wood:8
+wood:8 + 2256:3
+air + 2256:3
+= wood_axe:0:1
+@name &rWooden Axe (&5Tier 4&r)
+@enchantitem efficiency 3
+@enchantitem unbreaking 3
+@lore &aDrop amount +25%
+
+//Level 5 Wooden Axe
+craft level 5 woodaxe creation
+wood:9 + wood:9
+wood:9 + 2256:4
+air + 2256:4
+= wood_axe:0:1
+@name &rWooden Axe (&6Tier 5&r)
+@enchantitem efficiency 4
+@lore &aInfinite durability
+@lore &aDrop amount +50%

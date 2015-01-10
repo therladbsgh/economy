@@ -1,0 +1,47 @@
+//Level 1 Stone Shovel
+craft vanilla stoneshovel creation
+@override
+cobblestone
+stick:0
+stick:0
+= stone_shovel:0:1
+@name &rStone Shovel (&8Tier 1&r)
+
+//Level 2 Stone Shovel
+craft level 2 stoneshovel creation
+43:11
+2256:1
+2256:1
+= stone_shovel:0:1
+@name &rStone Shovel (&7Tier 2&r)
+@enchantitem unbreaking 2
+
+//Level 3 Stone Shovel
+craft level 3 stoneshovel creation
+43:19
+2256:2
+2256:2
+= stone_shovel:0:1
+@name &rStone Shovel (&3Tier 3&r)
+@enchantitem unbreaking 3
+@lore &a+10% enchant success rate
+
+//Level 4 Stone Shovel
+craft level 4 stoneshovel creation
+43:27
+2256:3
+2256:3
+= stone_shovel:0:1
+@name &rStone Shovel (&5Tier 4&r)
+@lore &aInfinite durability
+@lore &a+30% enchant success rate
+
+//Level 5 Stone Shovel
+craft level 5 stoneshovel creation
+43:35
+2256:4
+2256:4
+= stone_shovel:0:1
+@name &rStone Shovel (&6Tier 5&r)
+@lore &aInfinite durability
+@lore &a+50% enchant success rate

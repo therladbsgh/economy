@@ -1,8 +1,8 @@
-uuid: 09c3f1eb-ce3c-4f62-b81d-1087fe7c9a11
+uuid: dcf5ae04-a8b0-35cd-aa48-0b455e421cc5
 timestamps:
-  login: 1416070553956
+  login: 1420269406287
   logout: 1416075315966
-  lastteleport: 1416075283470
+  lastteleport: 1420273650193
 ipAddress: 112.119.206.215
 logoutlocation:
   world: world
@@ -13,12 +13,12 @@ logoutlocation:
   pitch: 16.500008
 lastlocation:
   world: world
-  x: 72.35541927949737
-  y: 105.0
-  z: -166.0706604859877
-  yaw: -344.15637
-  pitch: 27.3
-afk: false
+  x: -76.5
+  y: 77.16299265194209
+  z: -145.5
+  yaw: 196.15839
+  pitch: 25.703745
+afk: true
 ban:
   reason: '§4Banned:
 
@@ -27,10 +27,10 @@ ban:
 homes:
   home:
     world: world
-    x: 148.30149388237623
-    y: 98.0
-    z: -290.59464703954376
-    yaw: -134.86496
-    pitch: 23.250015
+    x: 135.21037576877177
+    y: 74.65382134423639
+    z: -265.40769831532674
+    yaw: 4.4764943
+    pitch: 21.700815
 godmode: false
 money: '514681.8799999999'
